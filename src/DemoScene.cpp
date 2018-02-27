@@ -72,13 +72,10 @@ void DemoScene::keyPress(QKeyEvent* io_event)
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::initMaterials()
 {
-  m_materials.reserve(6);
-  m_materials.emplace_back(new MaterialEnvMap(m_camera, m_shaderLib, &m_matrices));
-  m_materials.emplace_back(new MaterialPhong(m_camera, m_shaderLib, &m_matrices));
-  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {0.5f, 0.0f, 0.0f}, 1.0f, 1.0f, 0.5f, 1.0f));
-  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {0.1f, 0.2f, 0.5f}, 0.5f, 1.0f, 0.4f, 0.2f));
+  m_materials.reserve(2);
   m_materials.emplace_back(new MaterialWireframe(m_camera, m_shaderLib, &m_matrices));
-  m_materials.emplace_back(new MaterialFractal(m_camera, m_shaderLib, &m_matrices));
+  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {0.8f, 0.0f, 0.0f}, 0.5f, 1.0f, 0.5f, 1.0f));
+
   for (size_t i = 0; i < m_materials.size(); ++i)
   {
     auto& mat = m_materials[i];
@@ -127,13 +124,13 @@ void DemoScene::renderScene()
   // Scope the using declaration
   {
     using namespace SceneMatrices;
-    m_matrices[MODEL_VIEW] = glm::rotate(m_matrices[MODEL_VIEW], glm::radians(-1.0f * m_rotating), glm::vec3(0.0f, 1.0f, 0.0f));
+    m_matrices[MODEL_VIEW] = glm::rotate(m_matrices[MODEL_VIEW], glm::radians(1.0f * m_rotating), glm::vec3(0.0f, 1.0f, 0.0f));
   }
 
   m_materials[m_currentMaterial]->update();
 
   m_meshVBO.use();
-  glDrawElements(GL_TRIANGLES, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
+  glDrawElements(GL_TRIANGLE_STRIP, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
 //  glDrawArrays(GL_TRIANGLES, 0, m_meshes[m_meshIndex].getNVertData()/3);
 }
 //-----------------------------------------------------------------------------------------------------
