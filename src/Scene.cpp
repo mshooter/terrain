@@ -36,6 +36,12 @@ void Scene::resizeGL( int _w, int _h )
 //----------------------------------------------------------------------------------------------------------------------
 void Scene::keyPress(QKeyEvent* io_event)
 {
+    switch (io_event->key()) {
+    case Qt::Key_W : {m_mode = GL_LINE; break;}
+    case Qt::Key_S: {m_mode = GL_FILL; break; }
+    default:
+        break;
+    }
   m_camera->handleKey(io_event->key(), (io_event->type()==QKeyEvent::KeyPress));
 }
 //----------------------------------------------------------------------------------------------------------------------
@@ -71,8 +77,10 @@ void Scene::renderScene()
   // Clear the screen
   glClearColor(0.8f, 0.8f, 0.8f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glPolygonMode(GL_FRONT_AND_BACK, m_mode);
   // Update our camera view
   m_camera->update();
+
 
   // Scope the using declaration
   {

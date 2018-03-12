@@ -1,9 +1,7 @@
 #include "DemoScene.h"
-#include "MaterialWireframe.h"
 #include "MaterialPBR.h"
-#include "MaterialPhong.h"
-#include "MaterialFractal.h"
-#include "MaterialEnvMap.h"
+#include "MaterialTesselation.h"
+
 #include <QOpenGLContext>
 
 //-----------------------------------------------------------------------------------------------------
@@ -39,7 +37,6 @@ void DemoScene::init()
 
   initMaterials();
   initGeo();
-
   // Scope the using declaration
   {
     using namespace SceneMatrices;
@@ -49,12 +46,8 @@ void DemoScene::init()
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::initGeo()
 {
-  m_meshes[0].load("models/cube.obj");
-  m_meshes[1].load("models/plane.obj");
-  m_meshes[2].load("models/Face.obj");
-  m_meshes[3].load("models/Suzanne.obj");
-  m_meshes[4].load("models/test2.obj");
-  m_meshes[5].load("models/Asteroid.obj");
+  m_meshes[0].loadMyMesh();
+  m_meshes[1].loadMyMesh();
   // Create and bind our Vertex Array Object
   m_vao->create();
   m_vao->bind();
@@ -72,9 +65,10 @@ void DemoScene::keyPress(QKeyEvent* io_event)
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::initMaterials()
 {
-  m_materials.reserve(2);
-  m_materials.emplace_back(new MaterialWireframe(m_camera, m_shaderLib, &m_matrices));
-  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {0.8f, 0.0f, 0.0f}, 0.5f, 1.0f, 0.5f, 1.0f));
+  m_materials.reserve(3);
+  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {0.0f, 0.8f, 0.2f}, 0.5f, 1.0f, 0.5f, 1.0f));
+  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {1.0f, 1.0f, 1.0f}, 0.5f, 1.0f, 1.0f, 1.0f));
+  m_materials.emplace_back(new MaterialTesselation(m_camera, m_shaderLib, &m_matrices));
 
   for (size_t i = 0; i < m_materials.size(); ++i)
   {
@@ -125,12 +119,12 @@ void DemoScene::renderScene()
   {
     using namespace SceneMatrices;
     m_matrices[MODEL_VIEW] = glm::rotate(m_matrices[MODEL_VIEW], glm::radians(1.0f * m_rotating), glm::vec3(0.0f, 1.0f, 0.0f));
+
   }
 
   m_materials[m_currentMaterial]->update();
 
   m_meshVBO.use();
   glDrawElements(GL_TRIANGLE_STRIP, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
-//  glDrawArrays(GL_TRIANGLES, 0, m_meshes[m_meshIndex].getNVertData()/3);
 }
 //-----------------------------------------------------------------------------------------------------

@@ -7,6 +7,7 @@
 #include "MeshVBO.h"
 #include "vec3.hpp"
 #include "vec2.hpp"
+#include "Grid.h"
 
 class Mesh
 {
@@ -17,10 +18,8 @@ public:
   virtual ~Mesh() = default;
   //-----------------------------------------------------------------------------------------------------
   /// @brief Used to load a mesh from a file path.
-  /// @param [in] _fname is the path to the mesh file.
-  /// @param [in] _meshNum is the index of the mesh in the file's scene.
   //-----------------------------------------------------------------------------------------------------
-  void load(const std::string &_fname, const size_t _meshNum = 0);
+  void loadMyMesh();
   //-----------------------------------------------------------------------------------------------------
   /// @brief Used to reset the mesh arrays.
   //-----------------------------------------------------------------------------------------------------
@@ -76,6 +75,8 @@ public:
   /// @return The size of our data arrays combined.
   //-----------------------------------------------------------------------------------------------------
   int getNData() const noexcept;
+
+  Grid grid;
 
 protected:
   //-----------------------------------------------------------------------------------------------------

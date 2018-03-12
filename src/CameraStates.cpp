@@ -11,6 +11,7 @@ void CameraState::resetPosition(Camera* const io_camera, const int _key, const b
   if (_isPress && _key == Qt::Key_F)
     io_camera->resetPosition();
 }
+
 //-----------------------------------------------------------------------------------------------------
 void CameraZoom::handleMouseMove(Camera*const io_camera, const glm::vec2 &_mousePos)
 {

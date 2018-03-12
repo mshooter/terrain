@@ -25,6 +25,13 @@ public:
     // the edge table will return a 12 bit number, which will tell which side of the cube intersects.
     // link with the tri table and it will tell which vertices to join
     /// ------------------------------------------------------------------------------------------
+    /// @build function that divides a 3D space into voxel/points
+    /// ------------------------------------------------------------------------------------------
+    std::vector<glm::vec3> get3DSpacePoints();
+    /// ------------------------------------------------------------------------------------------
+    /// @build evaluate if the points or negative or postive (inside or outside the mesh)
+    std::vector<float> evaluatePoints();
+    /// ------------------------------------------------------------------------------------------
     /// @build get vertices, to set vertices for mesh (   std::vector<glm::vec3> m_vertices; )
     /// ------------------------------------------------------------------------------------------
     std::vector<glm::vec3> setVertices();
@@ -32,9 +39,19 @@ public:
     /// @build get indices, to set indices for mesh (  std::vector<GLushort> m_indices; )
     /// ------------------------------------------------------------------------------------------
     std::vector<GLushort> setIndices();
+    /// ------------------------------------------------------------------------------------------
+    /// @build temporary test function returns float, because need to know if it is positive or negative
+    /// this will tell if the mesh is in the cube or not
+    /// ------------------------------------------------------------------------------------------
+    float meshFunction(float x, float y, float z);
+
 
 
 private:
+    /// ------------------------------------------------------------------------------------------
+    /// @brief size of voxel
+    /// ------------------------------------------------------------------------------------------
+    int m_gridSize;
 
 };
 

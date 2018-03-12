@@ -1,6 +1,5 @@
-#version 420 // Keeping you on the bleeding edge!
+#version 400    // Keeping you on the bleeding edge!
 #extension GL_EXT_gpu_shader4 : enable
-
 layout (triangles) in;
 layout (line_strip, max_vertices = 4) out;
 
@@ -36,6 +35,7 @@ void main()
         outData.uv = inData[index].uv;
         outData.wireframeDist = vec3(0.0);
         outData.wireframeDist[index] = 1.0;
+
         EmitVertex();
     }
     EndPrimitive();

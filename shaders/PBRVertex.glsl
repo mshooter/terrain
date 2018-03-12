@@ -1,5 +1,4 @@
-#version 420 // Keeping you on the bleeding edge!
-#extension GL_EXT_gpu_shader4 : enable
+#version 400 // Keeping you on the bleeding edge!
 // this demo is based on code from here https://learnopengl.com/#!PBR/Lighting
 /// @brief the vertex passed in
 layout (location = 0) in vec3 inVert;

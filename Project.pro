@@ -10,6 +10,7 @@ QT += opengl core gui
 CONFIG += console c++14
 CONFIG -= app_bundle
 
+QMAKE_LFLAGS += -v
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -43,8 +44,9 @@ HEADERS += \
     include/MaterialWireframe.h \
     #include/MaterialFractal.h \
     #include/MaterialEnvMap.h \
-    include/Polygonizer.h \
-    include/Datatables.h
+    include/Datatables.h \
+    include/MaterialTesselation.h \
+    include/Grid.h
 
 SOURCES += \
     src/main.cpp \
@@ -61,13 +63,23 @@ SOURCES += \
     src/ShaderLib.cpp \
     src/MeshVBO.cpp \
     src/MaterialWireframe.cpp \
+    src/MaterialTesselation.cpp \
+    src/Grid.cpp
     #src/MaterialFractal.cpp \
     #src/MaterialEnvMap.cpp \
-    src/Polygonizer.cpp
 
 OTHER_FILES += \
-    $$files(shaders/*, true) \
-    $$files(shaderPrograms/*, true) \
+    shaders/PBRFragment.glsl \
+    shaders/PBRVertex.glsl \
+    shaders/tessvert.glsl \
+    shaders/tessfrag.glsl \
+    shaders/tessgeom.glsl \
+    shaders/tesseval.glsl \
+    shaders/tesscontrol.glsl \
+    shaderPrograms/tesselation.json \
+    shaderPrograms/PBR.json
+    #$$files(shaders/*, true) \
+    #$$files(shaderPrograms/*, true) \
     #$$files(models/*, true)
 
 FORMS += ui/mainwindow.ui
@@ -76,10 +88,9 @@ linux:{
     LIBS += -lGL -lGLU -lGLEW -lassimp
 }
 
+macx:{
+  INCLUDEPATH += /usr/local/include
+  INCLUDEPATH += /usr/local/Cellar
+  INCLUDEPATH += /usr/local/lib
+}
 
-#DISTFILES +=
-
-DISTFILES += \
-    shaders/WireframeGeometry.glsl \
-    shaders/WireframeVertex.glsl \
-    shaders/WireframeFragment.glsl

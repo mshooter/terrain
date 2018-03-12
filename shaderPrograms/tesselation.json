@@ -1,0 +1,8 @@
+{
+    "Name": "Tesselation",
+    "Vertex": "shaders/tessvert.glsl",
+    "Fragment": "shaders/tessfrag.glsl",
+    "Geometry": "shaders/tessgeom.glsl",
+    "TessellationControl": "shaders/tesseval.glsl",
+    "TessellationEvaluation": "shaders/tesscontrol.glsl",
+}

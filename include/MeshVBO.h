@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <array>
 
 //-------------------------------------------------------------------------------------------------------
 /// @brief used to refer to a section of buffer data

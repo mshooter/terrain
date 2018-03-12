@@ -1,4 +1,4 @@
-#version 420 // Keeping you on the bleeding edge!
+#version 400     // Keeping you on the bleeding edge!
 #extension GL_EXT_gpu_shader4 : enable
 
 /// @brief the vertex passed in
