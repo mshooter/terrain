@@ -79,6 +79,8 @@ public slots:
   /// the current Mesh.
   //-----------------------------------------------------------------------------------------------------
   void nextMaterial();
+
+  void setFrequency(int _freq);
 private:
   //-----------------------------------------------------------------------------------------------------
   /// @brief Used to write our mesh data into the vbo.
@@ -129,6 +131,8 @@ private:
   /// @brief Is the mesh rotating.
   //-----------------------------------------------------------------------------------------------------
   bool m_rotating = false;
+
+  double m_gridFrequency = 0 ;
 
 
 

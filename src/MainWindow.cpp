@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+ #include "MainWindow.h"
 
 
 void MainWindow::init(const std::shared_ptr<Scene> &io_scene)
@@ -9,6 +9,7 @@ void MainWindow::init(const std::shared_ptr<Scene> &io_scene)
   connect(m_ui.m_rotating, SIGNAL(clicked(bool)),m_scene.get(), SLOT(rotating(bool)));
   connect(m_ui.generate, SIGNAL( clicked(bool)), m_scene.get(), SLOT(generateNewGeometry()));
   connect(m_ui.material, SIGNAL( clicked(bool)), m_scene.get(), SLOT(nextMaterial()));
+  connect(m_ui.frequency, SIGNAL( valueChanged(int)), m_scene.get(), SLOT(setFrequency(int)));
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -13,14 +13,14 @@ Grid::~Grid()
 
 void Grid::createGrid()
 {
-    m_noise.setNoise(1,10,3,1,1);
+    m_noise.setNoise(0.3,10,2,1,1);
 
     for(float j = 0 ; j < m_size; ++j)
     {
         for(float i = 0 ; i < m_size; ++i)
         {
-            m_listOfVertices.insert(m_listOfVertices.end(), {i * m_scale,(m_noise.getNoise(i,j) + m_noise.getNoise(i*2,j*2) * 0.5) * m_scale, j * m_scale});
-            m_listOfNormals.insert(m_listOfNormals.end(), {i * m_scale,(m_noise.getNoise(i,j) + m_noise.getNoise(i*2,j*2) * 0.5) * m_scale, j * m_scale});
+            m_listOfVertices.insert(m_listOfVertices.end(), {i * m_scale,m_noise.getNoise(i,j) * m_scale, j * m_scale});
+            m_listOfNormals.insert(m_listOfNormals.end(), {i * m_scale,m_noise.getNoise(i,j) * m_scale, j * m_scale});
         }
     }
 }

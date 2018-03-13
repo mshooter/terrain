@@ -47,8 +47,8 @@ void DemoScene::init()
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::initGeo()
 {
-  m_meshes[0].loadMyMesh();
-  m_meshes[1].loadMyMesh();
+  m_meshes[0].loadMyMesh(Mesh::MODELS::GRID);
+  m_meshes[1].loadMyMesh(Mesh::MODELS::OTHER);
   // Create and bind our Vertex Array Object
   m_vao->create();
   m_vao->bind();
@@ -67,7 +67,7 @@ void DemoScene::keyPress(QKeyEvent* io_event)
 void DemoScene::initMaterials()
 {
   m_materials.reserve(3);
-  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {1.0f, 0.2f, 0.2f}, 0.5f, 1.0f, 0.5f, 1.0f));
+  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {1.0f, 0.0f, 0.2f}, 0.5f, 1.0f, 0.5f, 1.0f));
   //m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {1.0f, 1.0f, 1.0f}, 0.5f, 1.0f, 1.0f, 1.0f));
   //m_materials.emplace_back(new MaterialTesselation(m_camera, m_shaderLib, &m_matrices));
   m_materials.emplace_back(new MaterialBump(m_camera, m_shaderLib, &m_matrices));
@@ -119,9 +119,8 @@ void DemoScene::renderScene()
   {
     using namespace SceneMatrices;
     m_matrices[MODEL_VIEW] = glm::rotate(m_matrices[MODEL_VIEW], glm::radians(1.0f * m_rotating), glm::vec3(0.0f, 1.0f, 0.0f));
-
   }
-
+  std::cout<<m_gridFrequency<<std::endl;
   m_materials[m_currentMaterial]->update();
 
 
@@ -130,3 +129,8 @@ void DemoScene::renderScene()
 
 }
 //-----------------------------------------------------------------------------------------------------
+void DemoScene::setFrequency(int _freq)
+{
+    m_gridFrequency = _freq; /*/ 10.0f;*/
+    update();
+}

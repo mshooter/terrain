@@ -1,15 +1,30 @@
 #include "Mesh.h"
 #include <math.h>
 
-void Mesh::loadMyMesh()
+void Mesh::loadMyMesh(int _model)
 {
-    grid.setSize(15);
-    grid.setScale(1);
-    grid.createGrid();
-    m_vertices = grid.getListOfGridVertices();
-    m_normals = grid.getListOfGridNormals();
-    grid.setListOfIndices();
-    m_indices = grid.getListOfGridIndices();
+    switch (_model) {
+    case GRID:
+        grid.setSize(15);
+        grid.setScale(1);
+        grid.createGrid();
+        m_vertices = grid.getListOfGridVertices();
+        m_normals = grid.getListOfGridNormals();
+        grid.setListOfIndices();
+        m_indices = grid.getListOfGridIndices();
+        break;
+    case OTHER:
+        grid.setSize(5);
+        grid.setScale(1);
+        grid.createGrid();
+        m_vertices = grid.getListOfGridVertices();
+        m_normals = grid.getListOfGridNormals();
+        grid.setListOfIndices();
+        m_indices = grid.getListOfGridIndices();
+        break;
+    default:
+        break;
+    }
 }
 
 // ---------------------------------------------------------
@@ -78,4 +93,10 @@ int Mesh::getNUVData() const noexcept
 int Mesh::getNData() const noexcept
 {
     return getNVertData() + getNNormData() + getNUVData();
+}
+
+
+void Mesh::update(int _freq)
+{
+    grid.setSize(_freq);
 }
