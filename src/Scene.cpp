@@ -68,6 +68,7 @@ void Scene::paintGL()
   glViewport(0, 0, width()*devicePixelRatio(), height()*devicePixelRatio());
   // Call the render scene function that may be overriden
   renderScene();
+
   // Update the OpenGL widget
   update();
 }

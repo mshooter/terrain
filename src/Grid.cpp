@@ -13,12 +13,14 @@ Grid::~Grid()
 
 void Grid::createGrid()
 {
+    m_noise.setNoise(1,10,3,1,1);
+
     for(float j = 0 ; j < m_size; ++j)
     {
         for(float i = 0 ; i < m_size; ++i)
         {
-            m_listOfVertices.insert(m_listOfVertices.end(), {i * m_scale,static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/2)) * m_scale, j * m_scale});
-            m_listOfNormals.insert(m_listOfNormals.end(), {i * m_scale,static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/2)) * m_scale, j * m_scale});
+            m_listOfVertices.insert(m_listOfVertices.end(), {i * m_scale,(m_noise.getNoise(i,j) + m_noise.getNoise(i*2,j*2) * 0.5) * m_scale, j * m_scale});
+            m_listOfNormals.insert(m_listOfNormals.end(), {i * m_scale,(m_noise.getNoise(i,j) + m_noise.getNoise(i*2,j*2) * 0.5) * m_scale, j * m_scale});
         }
     }
 }
@@ -62,7 +64,7 @@ void Grid::setListOfIndices()
         else
         {
             // odd row
-            int x;
+            short int x;
             for(x = m_size -1 ; x >= 0; --x)
             {
                 m_listOfIndices.insert(m_listOfIndices.end(), {static_cast<unsigned short>(x + (z * m_size)), static_cast<unsigned short>(x + (z * m_size) + m_size)});
@@ -85,3 +87,4 @@ std::vector<glm::vec3> Grid::getListOfGridNormals()
 {
     return m_listOfNormals;
 }
+

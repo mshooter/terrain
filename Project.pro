@@ -44,9 +44,10 @@ HEADERS += \
     include/MaterialWireframe.h \
     #include/MaterialFractal.h \
     #include/MaterialEnvMap.h \
-    include/Datatables.h \
     include/MaterialTesselation.h \
-    include/Grid.h
+    include/Grid.h \
+    include/materialbump.h \
+    include/noise.h
 
 SOURCES += \
     src/main.cpp \
@@ -64,7 +65,9 @@ SOURCES += \
     src/MeshVBO.cpp \
     src/MaterialWireframe.cpp \
     src/MaterialTesselation.cpp \
-    src/Grid.cpp
+    src/Grid.cpp \
+    src/bump.cpp \
+    src/noise.cpp
     #src/MaterialFractal.cpp \
     #src/MaterialEnvMap.cpp \
 
@@ -76,8 +79,11 @@ OTHER_FILES += \
     shaders/tessgeom.glsl \
     shaders/tesseval.glsl \
     shaders/tesscontrol.glsl \
+    shaders/bump_vert.glsl \
+    shaders/bump_frag.glsl \
     shaderPrograms/tesselation.json \
-    shaderPrograms/PBR.json
+    shaderPrograms/PBR.json \
+    shaderPrograms/bump.json
     #$$files(shaders/*, true) \
     #$$files(shaderPrograms/*, true) \
     #$$files(models/*, true)
@@ -92,5 +98,6 @@ macx:{
   INCLUDEPATH += /usr/local/include
   INCLUDEPATH += /usr/local/Cellar
   INCLUDEPATH += /usr/local/lib
+
 }
 

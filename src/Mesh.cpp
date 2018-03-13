@@ -3,7 +3,7 @@
 
 void Mesh::loadMyMesh()
 {
-    grid.setSize(10);
+    grid.setSize(15);
     grid.setScale(1);
     grid.createGrid();
     m_vertices = grid.getListOfGridVertices();

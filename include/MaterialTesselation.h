@@ -3,7 +3,6 @@
 
 #include "Material.h"
 #include "vec3.hpp"
-
 class MaterialTesselation : public Material
 {
 public:
@@ -23,8 +22,9 @@ public:
   virtual const char* shaderFileName() const override;
 
 private:
-  float m_innerLevel = 1.0f;
-  float m_outerLevel = 1.0f;
+  float m_innerLevel;
+  float m_outerLevel;
+  glm::vec3 m_ambient;
 };
 
 #endif // MATERIALTESSELATION_H

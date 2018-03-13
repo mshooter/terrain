@@ -1,6 +1,7 @@
 #include "DemoScene.h"
 #include "MaterialPBR.h"
 #include "MaterialTesselation.h"
+#include "materialbump.h"
 
 #include <QOpenGLContext>
 
@@ -66,10 +67,10 @@ void DemoScene::keyPress(QKeyEvent* io_event)
 void DemoScene::initMaterials()
 {
   m_materials.reserve(3);
-  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {0.0f, 0.8f, 0.2f}, 0.5f, 1.0f, 0.5f, 1.0f));
-  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {1.0f, 1.0f, 1.0f}, 0.5f, 1.0f, 1.0f, 1.0f));
-  m_materials.emplace_back(new MaterialTesselation(m_camera, m_shaderLib, &m_matrices));
-
+  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {1.0f, 0.2f, 0.2f}, 0.5f, 1.0f, 0.5f, 1.0f));
+  //m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {1.0f, 1.0f, 1.0f}, 0.5f, 1.0f, 1.0f, 1.0f));
+  //m_materials.emplace_back(new MaterialTesselation(m_camera, m_shaderLib, &m_matrices));
+  m_materials.emplace_back(new MaterialBump(m_camera, m_shaderLib, &m_matrices));
   for (size_t i = 0; i < m_materials.size(); ++i)
   {
     auto& mat = m_materials[i];
@@ -114,7 +115,6 @@ void DemoScene::nextMaterial()
 void DemoScene::renderScene()
 {
   Scene::renderScene();
-
   // Scope the using declaration
   {
     using namespace SceneMatrices;
@@ -124,7 +124,9 @@ void DemoScene::renderScene()
 
   m_materials[m_currentMaterial]->update();
 
+
   m_meshVBO.use();
   glDrawElements(GL_TRIANGLE_STRIP, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
+
 }
 //-----------------------------------------------------------------------------------------------------
