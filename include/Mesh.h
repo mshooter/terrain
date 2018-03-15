@@ -78,7 +78,7 @@ public:
 
   Grid grid;
   enum MODELS {GRID, OTHER};
-  void update(int _freq);
+  void changeSize(int _size);
 
 protected:
   //-----------------------------------------------------------------------------------------------------
@@ -97,6 +97,8 @@ protected:
   /// @brief m_indices contains the indices
   //-----------------------------------------------------------------------------------------------------
   std::vector<GLushort> m_indices;
+
+  int m_size;
 
 };
 

@@ -13,19 +13,8 @@ public:
     ~Noise(){;}
     // get height
     double getNoise(double _x, double _y) const;
-    // getters
-    double getPersistence() const;
-    double getFrequency() const;
-    double getAmplitude() const;
-    int getOctaves() const;
-    int getRandomSeed() const;
     // setters
     void setNoise(double _persistence, double _frequency, double _amplitude, int _octaves, int _randomseed);
-    void setPersistence(double _persistence);
-    void setFrequency(double _frequency);
-    void setAmplitude(double _amplitude);
-    void setOctaves(int _octaves);
-    void setRandomSeed(int _randomSeed);
 
 private:
 

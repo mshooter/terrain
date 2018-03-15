@@ -32,31 +32,6 @@ void Noise::setNoise(double _persistence, double _frequency, double _amplitude, 
     m_randomseed = 2 + _randomseed * _randomseed;
 }
 
-void Noise::setPersistence(double _persistence)
-{
-    m_persistence = _persistence;
-}
-
-void Noise::setFrequency(double _frequency)
-{
-    m_frequency = _frequency;
-}
-
-void Noise::setAmplitude(double _amplitude)
-{
-    m_amplitude = _amplitude;
-}
-
-void Noise::setOctaves(int _octaves)
-{
-    m_octaves = _octaves;
-}
-
-void Noise::setRandomSeed(int _randomSeed)
-{
-    m_randomseed = _randomSeed;
-}
-
 double Noise::Total(double i, double j) const
 {
     double t = 0.0f;

@@ -47,14 +47,13 @@ void DemoScene::init()
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::initGeo()
 {
-  m_meshes[0].loadMyMesh(Mesh::MODELS::GRID);
-  m_meshes[1].loadMyMesh(Mesh::MODELS::OTHER);
-  // Create and bind our Vertex Array Object
-  m_vao->create();
-  m_vao->bind();
-  // Create and bind our Vertex Buffer Object
-  m_meshVBO.init();
-  generateNewGeometry();
+    m_meshes[0].loadMyMesh(Mesh::MODELS::GRID);
+    // Create and bind our Vertex Array Object
+    m_vao->create();
+    m_vao->bind();
+    // Create and bind our Vertex Buffer Object
+    m_meshVBO.init();
+    generateNewGeometry();
 }
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::keyPress(QKeyEvent* io_event)
@@ -88,6 +87,7 @@ void DemoScene::rotating( const bool _rotating )
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::generateNewGeometry()
 {
+
   makeCurrent();
   m_meshIndex = (m_meshIndex + 1) % m_meshes.size();
   auto& mesh = m_meshes[m_meshIndex];
@@ -114,23 +114,26 @@ void DemoScene::nextMaterial()
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::renderScene()
 {
+      m_meshes[0].changeSize(m_GridSize);
   Scene::renderScene();
   // Scope the using declaration
   {
     using namespace SceneMatrices;
     m_matrices[MODEL_VIEW] = glm::rotate(m_matrices[MODEL_VIEW], glm::radians(1.0f * m_rotating), glm::vec3(0.0f, 1.0f, 0.0f));
   }
-  std::cout<<m_gridFrequency<<std::endl;
+  std::cout<<m_GridSize<<std::endl;
+  m_meshes[m_meshIndex].changeSize(m_GridSize);
   m_materials[m_currentMaterial]->update();
-
 
   m_meshVBO.use();
   glDrawElements(GL_TRIANGLE_STRIP, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
 
 }
 //-----------------------------------------------------------------------------------------------------
-void DemoScene::setFrequency(int _freq)
+void DemoScene::gridSize(int _size)
 {
-    m_gridFrequency = _freq; /*/ 10.0f;*/
-    update();
+    makeCurrent();
+    m_GridSize = _size;
+    writeMeshAttributes();
+    setAttributeBuffers();
 }

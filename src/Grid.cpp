@@ -13,7 +13,7 @@ Grid::~Grid()
 
 void Grid::createGrid()
 {
-    m_noise.setNoise(0.3,10,2,1,1);
+    m_noise.setNoise(1,1,1,1,1);
 
     for(float j = 0 ; j < m_size; ++j)
     {
@@ -87,4 +87,5 @@ std::vector<glm::vec3> Grid::getListOfGridNormals()
 {
     return m_listOfNormals;
 }
+
 
