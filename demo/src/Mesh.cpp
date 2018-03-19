@@ -5,13 +5,11 @@ void Mesh::loadMyMesh(int _model)
 {
     switch (_model) {
     case GRID:
-        grid.setSize(m_size);
-        grid.setScale(1);
-        grid.createGrid();
-        m_vertices = grid.getListOfGridVertices();
-        m_normals = grid.getListOfGridNormals();
-        grid.setListOfIndices();
-        m_indices = grid.getListOfGridIndices();
+        grid->createGrid();
+        m_vertices = grid->getListOfGridVertices();
+        m_normals = grid->getListOfGridNormals();
+        grid->setListOfIndices();
+        m_indices = grid->getListOfGridIndices();
         break;
     default:
         break;
@@ -84,9 +82,4 @@ int Mesh::getNUVData() const noexcept
 int Mesh::getNData() const noexcept
 {
     return getNVertData() + getNNormData() + getNUVData();
-}
-
-void Mesh::changeSize(int _size)
-{
-    m_size = _size;
 }

@@ -76,9 +76,8 @@ public:
   //-----------------------------------------------------------------------------------------------------
   int getNData() const noexcept;
 
-  Grid grid;
+  Grid *grid = new Grid(100,2,0.4,12,1,1);
   enum MODELS {GRID, OTHER};
-  void changeSize(int _size);
 
 protected:
   //-----------------------------------------------------------------------------------------------------
@@ -97,8 +96,6 @@ protected:
   /// @brief m_indices contains the indices
   //-----------------------------------------------------------------------------------------------------
   std::vector<GLushort> m_indices;
-
-  int m_size;
 
 };
 

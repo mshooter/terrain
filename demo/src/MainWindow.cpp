@@ -9,7 +9,6 @@ void MainWindow::init(const std::shared_ptr<Scene> &io_scene)
   connect(m_ui.m_rotating, SIGNAL(clicked(bool)),m_scene.get(), SLOT(rotating(bool)));
   connect(m_ui.generate, SIGNAL( clicked(bool)), m_scene.get(), SLOT(generateNewGeometry()));
   connect(m_ui.material, SIGNAL( clicked(bool)), m_scene.get(), SLOT(nextMaterial()));
-  connect(m_ui.frequency, SIGNAL(sliderMoved(int)), m_scene.get(), SLOT(gridSize(int)));
 }
 
 //----------------------------------------------------------------------------------------------------------------------

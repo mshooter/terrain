@@ -10,6 +10,9 @@ QT += opengl core gui
 CONFIG += console c++14
 CONFIG -= app_bundle
 
+DEPENDPATH += . ../terrainLib/lib
+INCLUDEPATH += ../terrainLib/include
+
 QMAKE_LFLAGS += -v
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -45,9 +48,7 @@ HEADERS += \
     #include/MaterialFractal.h \
     #include/MaterialEnvMap.h \
     include/MaterialTesselation.h \
-    include/Grid.h \
-    include/materialbump.h \
-    include/noise.h
+    include/materialbump.h
 
 SOURCES += \
     src/main.cpp \
@@ -65,9 +66,7 @@ SOURCES += \
     src/MeshVBO.cpp \
     src/MaterialWireframe.cpp \
     src/MaterialTesselation.cpp \
-    src/Grid.cpp \
-    src/bump.cpp \
-    src/noise.cpp
+    src/bump.cpp
     #src/MaterialFractal.cpp \
     #src/MaterialEnvMap.cpp \
 
@@ -89,6 +88,10 @@ OTHER_FILES += \
     #$$files(models/*, true)
 
 FORMS += ui/mainwindow.ui
+
+QMAKE_CXXFLAGS += -O3 -std=c++14 -msse -msse2 -msse3
+
+LIBS+= -L../terrainLib/lib -lterrain
 
 linux:{
     LIBS += -lGL -lGLU -lGLEW -lassimp

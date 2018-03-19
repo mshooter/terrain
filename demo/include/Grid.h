@@ -12,7 +12,11 @@ public:
     // ---------------------------------------------------------
     /// @build default constructor
     // ---------------------------------------------------------
-    Grid();
+    Grid(){;}
+    // ---------------------------------------------------------
+    /// @build copy constructor
+    // ---------------------------------------------------------
+    Grid(float _size, double _persistence, double _frequecy, double _amplitudd, int _octaves, int _randomSeed);
     // ---------------------------------------------------------
     /// @build deconstructor
     // ---------------------------------------------------------
@@ -55,10 +59,6 @@ private:
     // ---------------------------------------------------------
     float m_size;
     // ---------------------------------------------------------
-    /// @build scale
-    // ---------------------------------------------------------
-    float m_scale;
-    // ---------------------------------------------------------
     /// @build list of vertices
     // ---------------------------------------------------------
     std::vector<glm::vec3> m_listOfVertices;
@@ -72,6 +72,11 @@ private:
     std::vector<glm::vec3> m_listOfNormals;
 
     Noise m_noise;
+    double m_persistence;
+    double m_frequency;
+    double m_amplitude;
+    int m_octaves;
+    int m_randomseed;
 
 
 };

@@ -2,11 +2,6 @@
 
 Noise::Noise()
 {
-    m_persistence = 0;
-    m_frequency = 0;
-    m_amplitude = 0;
-    m_octaves = 0;
-    m_randomseed = 0;
 }
 
 Noise::Noise(double _persistence, double _frequency, double _amplitude, int _octaves, int _randomSeed)

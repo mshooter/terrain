@@ -114,26 +114,15 @@ void DemoScene::nextMaterial()
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::renderScene()
 {
-      m_meshes[0].changeSize(m_GridSize);
   Scene::renderScene();
   // Scope the using declaration
   {
     using namespace SceneMatrices;
     m_matrices[MODEL_VIEW] = glm::rotate(m_matrices[MODEL_VIEW], glm::radians(1.0f * m_rotating), glm::vec3(0.0f, 1.0f, 0.0f));
   }
-  std::cout<<m_GridSize<<std::endl;
-  m_meshes[m_meshIndex].changeSize(m_GridSize);
   m_materials[m_currentMaterial]->update();
 
   m_meshVBO.use();
   glDrawElements(GL_TRIANGLE_STRIP, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
 
-}
-//-----------------------------------------------------------------------------------------------------
-void DemoScene::gridSize(int _size)
-{
-    makeCurrent();
-    m_GridSize = _size;
-    writeMeshAttributes();
-    setAttributeBuffers();
 }
