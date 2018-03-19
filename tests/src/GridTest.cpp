@@ -1,0 +1,6 @@
+#include "gtest/gtest.h"
+#include "Grid.h"
+
+TEST(Grid, size)
+{
+}
