@@ -1,11 +1,10 @@
 #include "Mesh.h"
 #include <math.h>
-
 void Mesh::loadMyMesh(int _model)
 {
     switch (_model) {
     case GRID:
-        grid->createGrid();
+        grid->setVertices();
         m_vertices = grid->getListOfGridVertices();
         m_normals = grid->getListOfGridNormals();
         grid->setListOfIndices();

@@ -16,7 +16,7 @@ Grid::~Grid()
 
 }
 
-void Grid::createGrid()
+void Grid::setVertices()
 {
     m_noise.setNoise(m_persistence,m_frequency,m_amplitude,m_octaves,m_randomseed);
 

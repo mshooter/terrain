@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = TerrainTests
+TARGET = tests
 
 OBJECTS_DIR = obj
 
@@ -11,6 +11,7 @@ HEADERS += \
 
 SOURCES += \
     src/main.cpp \
+    src/GridTest.cpp \
 
 DEPENDPATH += . ../terrainLib
 INCLUDEPATH = ../terrainLib/include
