@@ -228,7 +228,7 @@ std::vector<float> MarchingCube::evaluate()
       }
 
       std::vector<float> p;
-      std::vector<glm::vec3> MC = this->marchingCube( points, values );
+      std::vector<glm::vec3> MC = this->MC( points, values );
       p.reserve( MC.size() * 3 );
       for ( auto &a : MC )
       {

@@ -10,12 +10,6 @@ Grid::Grid(float _size, double _persistence, double _frequecy, double _amplitudd
     m_octaves = _octaves;
     m_randomseed = _randomSeed;
 }
-
-Grid::~Grid()
-{
-
-}
-
 void Grid::setVertices()
 {
     m_noise.setNoise(m_persistence,m_frequency,m_amplitude,m_octaves,m_randomseed);
@@ -35,10 +29,29 @@ void Grid::setSize(float _size)
     m_size = _size;
 }
 
-
-std::vector<glm::vec3> Grid::getListOfGridVertices()
+void Grid::setPersistence(double _persistence)
 {
-    return m_listOfVertices;
+    m_persistence = _persistence;
+}
+
+void Grid::setFrequency(double _frequency)
+{
+    m_frequency = _frequency;
+}
+
+void Grid::setAmplitude(double _amplitude)
+{
+    m_amplitude = _amplitude;
+}
+
+void Grid::setOctaves(int _octaves)
+{
+    m_octaves = _octaves;
+}
+
+void Grid::setSeed(int _randomSeed)
+{
+    m_randomseed = _randomSeed;
 }
 
 void Grid::setListOfIndices()
@@ -88,5 +101,11 @@ std::vector<glm::vec3> Grid::getListOfGridNormals()
 {
     return m_listOfNormals;
 }
+
+std::vector<glm::vec3> Grid::getListOfGridVertices()
+{
+    return m_listOfVertices;
+}
+
 
 

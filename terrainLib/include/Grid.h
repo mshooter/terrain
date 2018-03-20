@@ -20,7 +20,7 @@ public:
     // ---------------------------------------------------------
     /// @build deconstructor
     // ---------------------------------------------------------
-    ~Grid();
+    ~Grid(){;}
     // ---------------------------------------------------------
     /// @build create grid
     // ---------------------------------------------------------
@@ -30,15 +30,11 @@ public:
     /// @parm[_in] _size
     // ---------------------------------------------------------
     void setSize(float _size);
-    // ---------------------------------------------------------
-    /// @build set scale of grid
-    /// @parm [_in] _scale
-    // ---------------------------------------------------------
-    void setScale(float _scale);
-    // ---------------------------------------------------------
-    /// @build get list of grid vertices
-    // ---------------------------------------------------------
-    std::vector<glm::vec3> getListOfGridVertices();
+    void setPersistence(double _persistence);
+    void setFrequency(double _frequency);
+    void setAmplitude(double _amplitude);
+    void setOctaves(int _octaves);
+    void setSeed(int _randomSeed);
     // ---------------------------------------------------------
     /// @build set list of indices
     // ---------------------------------------------------------
@@ -51,6 +47,11 @@ public:
     /// @build get list normals
     // ---------------------------------------------------------
     std::vector<glm::vec3> getListOfGridNormals();
+    // ---------------------------------------------------------
+    /// @build get list of grid vertices
+    // ---------------------------------------------------------
+    std::vector<glm::vec3> getListOfGridVertices();
+    // ---------------------------------------------------------
 
 
 private:
