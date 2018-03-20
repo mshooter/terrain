@@ -91,7 +91,7 @@ FORMS += ui/mainwindow.ui
 
 QMAKE_CXXFLAGS += -O3 -std=c++14 -msse -msse2 -msse3
 
-#LIBS+= -L../terrainLib/lib -lterrain
+LIBS+= -L../terrainLib/lib -lterrainLib
 
 linux:{
     LIBS += -lGL -lGLU -lGLEW -lassimp

@@ -31,5 +31,7 @@ linux:{
 
 mac:{
   LIBS+= -L/usr/local/lib -lassimp
+  INCLUDEPATH = ../terrainLib/include
+  LIBS += -L$$PWD/../terrainLib/lib -lterrain -lgtest -pthread
   QMAKE_CXXFLAGS += -arch x86_64
 }

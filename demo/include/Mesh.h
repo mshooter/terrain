@@ -8,6 +8,8 @@
 #include "vec3.hpp"
 #include "vec2.hpp"
 #include "Grid.h"
+#include "MarchingCube.h"
+
 
 class Mesh
 {
@@ -76,6 +78,7 @@ public:
   //-----------------------------------------------------------------------------------------------------
   int getNData() const noexcept;
 
+  MarchingCube *cube = new MarchingCube();
   Grid *grid = new Grid(100,2,0.4,12,1,1);
   enum MODELS {GRID, OTHER};
 

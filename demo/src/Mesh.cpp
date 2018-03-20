@@ -10,6 +10,8 @@ void Mesh::loadMyMesh(int _model)
         grid->setListOfIndices();
         m_indices = grid->getListOfGridIndices();
         break;
+    case OTHER:
+        break;
     default:
         break;
     }

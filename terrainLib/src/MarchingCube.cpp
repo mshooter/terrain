@@ -210,6 +210,35 @@ std::vector<glm::vec3> MarchingCube::MC(std::vector<glm::vec3> &_points, std::ve
                  return vertices;
 }
 
+std::vector<float> MarchingCube::evaluate()
+{
+    float x, y, z;
+    std::vector<glm::vec3> points = this->getPoints();
+    std::vector<float> values;
+    values.reserve( points.size() );
+
+    for( unsigned int i = 0; i < points.size(); ++i )
+     {
+       x = points[i].x;
+       y = points[i].y;
+       z = points[i].z;
+
+    //        values[i] = x*x + y*y + z*z - 1;
+        values[i] = std::min(std::min( -x * x, -y * y), -z * z ) + 1; // cone(x,y,z,0.5f, 1);
+      }
+
+      std::vector<float> p;
+      std::vector<glm::vec3> MC = this->marchingCube( points, values );
+      p.reserve( MC.size() * 3 );
+      for ( auto &a : MC )
+      {
+        p.push_back(a.x);
+        p.push_back(a.y);
+        p.push_back(a.z);
+      }
+
+      return p;
+}
 
 glm::vec3 MarchingCube::interpolate(float isolevel, glm::vec3 p1, glm::vec3 p2, float val1, float val2)
 {
@@ -228,4 +257,9 @@ glm::vec3 MarchingCube::interpolate(float isolevel, glm::vec3 p1, glm::vec3 p2, 
 
     return p;
 
+}
+
+float MarchingCube::cone(float x, float y, float z, float r, float h)
+{
+    return sqrt(x*x + y*y + z*z) - 1.0;
 }

@@ -5,8 +5,6 @@
 
 #include <QOpenGLContext>
 
-#include "MarchingCube.h"
-
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::writeMeshAttributes()
 {
