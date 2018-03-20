@@ -1,24 +1,28 @@
 #ifndef MARCHINGCUBE_H
 #define MARCHINGCUBE_H
 
-#include "vec3.hpp"
+#include <QOpenGLFunctions>
 #include <vector>
+#include "vec3.hpp"
+
 class MarchingCube
 {
 public:
     MarchingCube();
-    ~MarchingCube();
+    ~MarchingCube(){;}
     std::vector<glm::vec3> getPoints();
-    std::vector<float> evaluate();
-    void polygonize();
-    float cone(float x, float y, float z, float r, float h);
+    void Testeval(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals);
+    float cone(float _x, float _y, float _z, float _r, float _h);
+    void MC(std::vector<glm::vec3> &_points,
+            std::vector<float> &_values, std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals);
+
 private:
+    std::vector<float> m_values;
     int m_size;
     int m_axisMin;
     int m_axisMax;
     int m_axisRange;
-    std::vector<glm::vec3> MC(std::vector<glm::vec3> &_points, std::vector<float> &_values);
-    glm::vec3 interpolate(float isolevel, glm::vec3 p1, glm::vec3 p2, float val1, float val2);
+
 };
 
 #endif // MARCHINGCUBE_H

@@ -22,6 +22,7 @@ public:
   /// @brief Used to load a mesh from a file path.
   //-----------------------------------------------------------------------------------------------------
   void loadMyMesh(int _model);
+  void testMesh(std::vector<float> _vert);
   //-----------------------------------------------------------------------------------------------------
   /// @brief Used to reset the mesh arrays.
   //-----------------------------------------------------------------------------------------------------
@@ -78,8 +79,7 @@ public:
   //-----------------------------------------------------------------------------------------------------
   int getNData() const noexcept;
 
-  MarchingCube *cube = new MarchingCube();
-  Grid *grid = new Grid(100,2,0.4,12,1,1);
+  MarchingCube cube = MarchingCube();
   enum MODELS {GRID, OTHER};
 
 protected:
@@ -99,6 +99,8 @@ protected:
   /// @brief m_indices contains the indices
   //-----------------------------------------------------------------------------------------------------
   std::vector<GLushort> m_indices;
+
+  std::vector<glm::vec3> MC_points;
 
 };
 

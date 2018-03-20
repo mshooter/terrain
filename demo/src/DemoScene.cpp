@@ -2,7 +2,6 @@
 #include "MaterialPBR.h"
 #include "MaterialTesselation.h"
 #include "materialbump.h"
-
 #include <QOpenGLContext>
 
 //-----------------------------------------------------------------------------------------------------
@@ -53,6 +52,7 @@ void DemoScene::initGeo()
     m_vao->bind();
     // Create and bind our Vertex Buffer Object
     m_meshVBO.init();
+
     generateNewGeometry();
 }
 //-----------------------------------------------------------------------------------------------------
@@ -123,6 +123,7 @@ void DemoScene::renderScene()
   m_materials[m_currentMaterial]->update();
 
   m_meshVBO.use();
-  glDrawElements(GL_TRIANGLE_STRIP, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
+  glDrawElements(GL_TRIANGLES, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
+  //glDrawArrays(GL_TRIANGLES,0, m_meshes[m_meshIndex].getNData());
 
 }

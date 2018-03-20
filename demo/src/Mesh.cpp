@@ -4,13 +4,7 @@ void Mesh::loadMyMesh(int _model)
 {
     switch (_model) {
     case GRID:
-        grid->setVertices();
-        m_vertices = grid->getListOfGridVertices();
-        m_normals = grid->getListOfGridNormals();
-        grid->setListOfIndices();
-        m_indices = grid->getListOfGridIndices();
-        break;
-    case OTHER:
+        cube.Testeval(m_vertices, m_indices, m_normals);
         break;
     default:
         break;
