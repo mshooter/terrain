@@ -4,10 +4,11 @@
 
 #include "MarchingCube.h"
 #include "McData.h"
+#include "Noise.h"
 
 MarchingCube::MarchingCube()
 {
-    m_size = 200;
+    m_size = 50;
     m_axisMin = -10;
     m_axisMax = 10;
     m_axisRange = m_axisMax - m_axisMin;
@@ -17,18 +18,18 @@ std::vector<glm::vec3> MarchingCube::getPoints()
 {
     glm::vec3 point;
     std::vector<glm::vec3> points;
-    points.reserve(m_size * m_size);
+    points.reserve(m_size * m_size * m_size);
 
-    for(int k = 0 ; k < m_size ; ++k)
+    for(int k = 0 ; k < m_size; ++k)
     {
         for(int j = 0 ; j < m_size; ++j)
         {
-            for(int i = 0 ; i < m_size ; ++i)
+            for(int i = 0 ; i < m_size; ++i)
             {
 
-                point = glm::vec3(static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * i / ( static_cast<float>(m_size) - 1 ),
-                                  static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * j / ( static_cast<float>(m_size) - 1 ),
-                                  static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * k / ( static_cast<float>(m_size) - 1 ));
+                point = glm::vec3(static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * i / ( static_cast<float>(m_size)  -1),
+                                  static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * j / ( static_cast<float>(m_size)  -1),
+                                  static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * k / ( static_cast<float>(m_size)  -1));
                 points.push_back( point );
             }
         }
@@ -126,18 +127,22 @@ void MarchingCube::Testeval(std::vector<glm::vec3> &io_verts,
                             std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals)
 {
     glm::vec3 _position;
+    // get the 3d grid points
     std::vector<glm::vec3> points = getPoints();
+    // reserve space for the values
     m_values.reserve( points.size() );
-
+    // create noise
+    Noise noise = Noise(1.0,0.4,0.5,1,1);
     // fill in values
-    for( unsigned int i = 0; i < points.size(); ++i )
+    for( float i = 0; i < points.size(); ++i )
     {
         _position = glm::vec3(points[i].x, points[i].y, points[i].z);
-        auto _x = points[i].x;
-        auto _y = points[i].y;
-        auto _z = points[i].z;
+        auto x = points[i].x;
+        auto y = points[i].y;
+        auto z = points[i].z;
         // evaluate function
-        m_values[i] = sin(_x) * _x + _y + sin(_z) - 1.0f ;
+       //m_poly->createSphere(x/5+0.8,y,z/5,0.5,m_values[i]);
+        m_values[i] = std::min(std::min( -x * x, -y * y), -z * z) + 1; // cone(x,y,z,0.5f, 1);
     }
 
     MC(points,m_values, io_verts, io_indices, io_normals);

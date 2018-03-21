@@ -4,6 +4,7 @@
 #include <QOpenGLFunctions>
 #include <vector>
 #include "vec3.hpp"
+#include "Polygon.h"
 
 class MarchingCube
 {
@@ -18,6 +19,7 @@ public:
 
 private:
     std::vector<float> m_values;
+    Polygon *m_poly;
     int m_size;
     int m_axisMin;
     int m_axisMax;
