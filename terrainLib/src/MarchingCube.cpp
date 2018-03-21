@@ -1,22 +1,23 @@
-#include "MarchingCube.h"
-#include "McData.h"
 #include <math.h>
 #include <array>
 #include <glm/gtx/compatibility.hpp>
 
+#include "MarchingCube.h"
+#include "McData.h"
+
 MarchingCube::MarchingCube()
 {
-    m_size = 5000;
-    m_axisMin = -100;
-    m_axisMax = 100;
+    m_size = 200;
+    m_axisMin = -10;
+    m_axisMax = 10;
     m_axisRange = m_axisMax - m_axisMin;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 std::vector<glm::vec3> MarchingCube::getPoints()
 {
     glm::vec3 point;
     std::vector<glm::vec3> points;
-    points.reserve(m_size * m_size * m_size);
+    points.reserve(m_size * m_size);
 
     for(int k = 0 ; k < m_size ; ++k)
     {
@@ -34,11 +35,11 @@ std::vector<glm::vec3> MarchingCube::getPoints()
     }
     return points;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 void MarchingCube::MC( std::vector<glm::vec3> &_points, std::vector<float> &_values, std::vector<glm::vec3> &io_verts,
                                                   std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals )
 {
-  io_verts.reserve( m_size * 3 );
+  io_verts.reserve( m_size * 3);
   std::array<glm::vec3, 12> vList;
   float size = m_size * m_size;
 
@@ -119,9 +120,8 @@ void MarchingCube::MC( std::vector<glm::vec3> &_points, std::vector<float> &_val
       }
     }
   }
-
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 void MarchingCube::Testeval(std::vector<glm::vec3> &io_verts,
                             std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals)
 {
@@ -137,7 +137,7 @@ void MarchingCube::Testeval(std::vector<glm::vec3> &io_verts,
         auto _y = points[i].y;
         auto _z = points[i].z;
         // evaluate function
-        m_values[i] = std::min((_y-1.0)*(_y - 1.0) - (_x/0.5)*(_x/0.5) - (_z/1.0)*(_z/0.5), -( _y * _y - 1.0 ));
+        m_values[i] = sin(_x) * _x + _y + sin(_z) - 1.0f ;
     }
 
     MC(points,m_values, io_verts, io_indices, io_normals);
