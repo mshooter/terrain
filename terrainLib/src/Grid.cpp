@@ -12,14 +12,14 @@ Grid::Grid(float _size, double _persistence, double _frequecy, double _amplitudd
 }
 void Grid::setVertices()
 {
-    m_noise.setNoise(m_persistence,m_frequency,m_amplitude,m_octaves,m_randomseed);
+//    m_noise.setNoise(m_persistence,m_frequency,m_amplitude,m_octaves,m_randomseed);
 
     for(float j = 0 ; j < m_size; ++j)
     {
         for(float i = 0 ; i < m_size; ++i)
-        {
+        {/*
             m_listOfVertices.insert(m_listOfVertices.end(), {i ,m_noise.getNoise(i,j), j});
-            m_listOfNormals.insert(m_listOfNormals.end(), {i ,m_noise.getNoise(i,j), j });
+            m_listOfNormals.insert(m_listOfNormals.end(), {i ,m_noise.getNoise(i,j), j });*/
         }
     }
 }

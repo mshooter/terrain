@@ -30,7 +30,7 @@ INCLUDEPATH += \
     /usr/local/include \
     $$PWD/include
 
-QMAKE_CXXFLAGS += -O3 -std=c++11 -msse -msse2 -msse3 -arch x86_64
+QMAKE_CXXFLAGS += -O3 -std=c++11 -msse -msse2 -msse3
 
 linux:{
     LIBS += -lGL -lGLU -lGLEW -lassimp

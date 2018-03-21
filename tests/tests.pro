@@ -23,7 +23,7 @@ INCLUDEPATH += \
 
 QMAKE_CXXFLAGS += -O3 -std=c++11 -msse -msse2 -msse3
 
-LIBS += -L../terrainLib/lib -lterrain -lgtest -pthread
+LIBS += -L../terrainLib/lib -lterrainLib -lgtest -pthread
 
 linux:{
     LIBS += -lGL -lGLU -lGLEW -lassimp
@@ -32,6 +32,5 @@ linux:{
 mac:{
   LIBS+= -L/usr/local/lib -lassimp
   INCLUDEPATH = ../terrainLib/include
-  LIBS += -L$$PWD/../terrainLib/lib -lterrain -lgtest -pthread
-  QMAKE_CXXFLAGS += -arch x86_64
+  LIBS += -L$$PWD/../terrainLib/lib -lterrainLib -lgtest -pthread
 }

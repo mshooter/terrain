@@ -17,8 +17,8 @@ uniform vec3 camPos;
 uniform float exposure;
 
 // lights
-const float scale = 80.0f;
-const float height = 5.0f;
+const float scale = 100.0f;
+const float height = 8.0f;
 const vec3 lightPositions[4] = vec3[4](
       vec3(-scale, height, -scale),
       vec3( scale, height, -scale),
@@ -26,7 +26,7 @@ const vec3 lightPositions[4] = vec3[4](
       vec3( scale, height,  scale)
       );
 
-const float intensity = 5000.f;
+const float intensity = 10000.0f;
 const vec3 lightColors[4] = vec3[4](
       vec3(intensity, intensity, intensity),
       vec3(intensity, intensity, intensity),

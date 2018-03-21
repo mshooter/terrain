@@ -89,7 +89,7 @@ OTHER_FILES += \
 
 FORMS += ui/mainwindow.ui
 
-QMAKE_CXXFLAGS += -O3 -std=c++14 -msse -msse2 -msse3 -arch x86_64
+QMAKE_CXXFLAGS += -O3 -std=c++14 -msse -msse2 -msse3
 
 LIBS+= -L../terrainLib/lib -lterrainLib
 

@@ -4,7 +4,6 @@
 #include <vector>
 #include <vec3.hpp>
 #include <QOpenGLFunctions>
-#include "Noise.h"
 
 class Grid
 {
@@ -72,7 +71,7 @@ private:
     // ---------------------------------------------------------
     std::vector<glm::vec3> m_listOfNormals;
 
-    Noise m_noise;
+    //Noise m_noise;
     double m_persistence;
     double m_frequency;
     double m_amplitude;
