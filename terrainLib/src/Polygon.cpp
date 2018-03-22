@@ -1,37 +1,40 @@
 #include "Polygon.h"
 #include <algorithm>
-float Polygon::createCone(float _x,
-                         float _y,
-                         float _z,
+float Polygon::createCone(glm::vec3 _pos,
                          float _r,
                          float _h)
 {
-    return std::min((_y-_h)*(_y - _h) - (_x/_r)*(_x/_r) - (_z/_r)*(_z/_r), -( _y * _y - _h ));
+    return std::min((_pos.y-_h)*(_pos.y - _h) - (_pos.x/_r)*(_pos.x/_r) - (_pos.z/_r)*(_pos.z/_r), -( _pos.y * _pos.y - _h ));
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
-float Polygon::createSphere(float _x, float _y, float _z, float _size)
+float Polygon::createSphere(glm::vec3 _pos, float _size)
 {
-    return sqrt(_x*_x + _y*_y + _z*_z) - _size;
-}
-//------------------------------------------------------------------------------------------------------------------------------------------
-void Polygon::unions(float d1, float d2, float &io_value)
-{
-    io_value = std::min(d1,d2);
-}
-//------------------------------------------------------------------------------------------------------------------------------------------
-void Polygon::difference(float d1, float d2, float &io_value)
-{
-    io_value = std::max(-d1,d2);
-}
-//------------------------------------------------------------------------------------------------------------------------------------------
-void Polygon::displacement(float x, float y, float z, float &io_value)
-{
-    float d1 = createCone(x,y,z,0.2,1);
-    float d2 =  sin(20*x)*sin(20*y)*sin(20*z);
-    io_value = d1+d2;
+    return sqrt(_pos.x*_pos.x + _pos.y*_pos.y + _pos.z*_pos.z) - _size;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
 float Polygon::createPlane(glm::vec3 _pos)
 {
     return _pos.y;
+}
+float Polygon::createCube(glm::vec3 _pos, float _size)
+{
+    return std::min(std::min( -_pos.x * _pos.x, -_pos.y * _pos.y), -_pos.z * _pos.z ) + _size;
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+float Polygon::unions(float d1, float d2)
+{
+    return std::min(d1,d2);
+}
+//------------------------------------------------------------------------------------------------------------------------------------------
+float Polygon::difference(float d1, float d2)
+{
+    return std::max(-d1,d2);
+}
+//------------------------------------------------------------------------------------------------------------------------------------------
+float Polygon::displacement(glm::vec3 _pos)
+{
+    float d1 = createCone(_pos,0.2,1);
+    float d2 =  sin(20*_pos.x)*sin(20*_pos.y)*sin(20*_pos.z);
+    return d1+d2;
 }

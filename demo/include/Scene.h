@@ -1,7 +1,6 @@
 #ifndef SCENE_H_
 #define SCENE_H_
 
-#include "Mesh.h"
 #include <gtc/matrix_transform.hpp>
 #include <ext.hpp>
 #include <glm.hpp>
@@ -10,6 +9,7 @@
 #include <QResizeEvent>
 #include <QEvent>
 #include <memory>
+#include "Mesh.h"
 #include "MeshVBO.h"
 #include "Camera.h"
 

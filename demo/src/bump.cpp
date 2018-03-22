@@ -19,7 +19,7 @@ void MaterialBump::initColor()
 {
   using tex = QOpenGLTexture;
   m_colorMap.reset(new QOpenGLTexture(QOpenGLTexture::Target2D));
-  auto map = QImage("images/grasstexture.jpg").mirrored().convertToFormat(QImage::Format_RGB888);
+  auto map = QImage("images/terrainGround.jpg").mirrored().convertToFormat(QImage::Format_RGB888);
 
   m_colorMap->create();
   m_colorMap->bind(0);
@@ -37,7 +37,7 @@ void MaterialBump::initNormal()
 {
   using tex = QOpenGLTexture;
   m_normalMap.reset(new QOpenGLTexture(QOpenGLTexture::Target2D));
-  auto map = QImage("images/grasstexture.jpg").mirrored().convertToFormat(QImage::Format_RGB888);
+  auto map = QImage("images/terrainGroundnormals.png").mirrored().convertToFormat(QImage::Format_RGB888);
 
   m_normalMap->create();
   m_normalMap->bind(1);

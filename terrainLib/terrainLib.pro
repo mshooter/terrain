@@ -15,18 +15,23 @@ SOURCES += \
     src/Grid.cpp \
     src/Noise.cpp \
     src/MarchingCube.cpp \
-    src/Polygon.cpp
+    src/Polygon.cpp \
+    src/MeshVBO.cpp \
+    src/Mesh.cpp
 
 HEADERS += \
     include/Grid.h \
     include/Noise.h \
     include/McData.h \
     include/MarchingCube.h \
-    include/Polygon.h
+    include/Polygon.h \
+    include/MeshVBO.h \
+    include/Mesh.h
 
 INCLUDEPATH += \
     /usr/local/include/glm/glm \
     /usr/local/include/glm \
+  #  /usr/local/include/noise \
     /usr/local/include \
     $$PWD/include
 
@@ -37,6 +42,6 @@ linux:{
 }
 
 mac:{
-  LIBS+= -L/usr/local/lib -lassimp
+  LIBS+= -L/usr/local/lib -lassimp #-L/usr/local/lib -lnoise
   QMAKE_CXXFLAGS += -arch x86_64
 }

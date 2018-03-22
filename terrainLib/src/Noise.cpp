@@ -4,33 +4,29 @@
 #include <numeric>
 #include <cmath>
 
-Noise::Noise()
+Noise::Noise(double _frequency, double _amplitude, int _randomSeed)
 {
-}
-
-Noise::Noise(double _persistence, double _frequency, double _amplitude, int _octaves, int _randomSeed)
-{
-    m_persistence = _persistence;
+    m_persistence = 1.0f;
     m_frequency = _frequency;
     m_amplitude = _amplitude;
-    m_octaves = _octaves;
+    m_octaves = 1;
     m_randomseed = 2 + _randomSeed * _randomSeed;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 double Noise::getNoise(double _x, double _y) const
 {
     return m_amplitude * Total(_x, _y);
 }
-
-void Noise::setNoise(double _persistence, double _frequency, double _amplitude, int _octaves, int _randomseed)
+//------------------------------------------------------------------------------------------------------------------------------------------
+void Noise::setNoise(double _frequency, double _amplitude, int _randomseed)
 {
-    m_persistence = _persistence;
+    m_persistence = 1.0f;
     m_frequency = _frequency;
     m_amplitude = _amplitude;
-    m_octaves = _octaves;
+    m_octaves = 1;
     m_randomseed = 2 + _randomseed * _randomseed;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 double Noise::Total(double i, double j) const
 {
     double t = 0.0f;
@@ -45,7 +41,7 @@ double Noise::Total(double i, double j) const
     }
     return t;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 double Noise::GetValue(double x, double y) const
 {
     int Xint = (int)x;
@@ -87,7 +83,7 @@ double Noise::GetValue(double x, double y) const
 
     return fin;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 double Noise::Interpolate(double x, double y, double a) const
 {
     double negA = 1.0 - a;
@@ -98,7 +94,7 @@ double Noise::Interpolate(double x, double y, double a) const
 
     return x * fac1 + y * fac2; //add the weighted factors
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 double Noise::PNoise(int x, int y) const
 {
     int n = x + y * 57;
@@ -107,80 +103,3 @@ double Noise::PNoise(int x, int y) const
     return 1.0 - double(t) * 0.931322574615478515625e-9;/// 1073741824.0);
 }
 
-double Noise::fade3D(double _t)
-{
-    return _t * _t * _t * (_t * (_t * 6 -15) + 10);
-}
-
-double Noise::lerp3D(double _t, double _a, double _b)
-{
-    return _a + _t * (_b - _a);
-}
-
-double Noise::grad3D(int hash, double x, double y, double z)
-{
-    int h = hash & 15;
-    double u = h < 8 ? x : y;
-    double v = h < 4 ? y : h == 12 || h == 14 ? x : z;
-    return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v);
-}
-
-Noise::Noise(uint32_t seed)
-{
-    if(!seed)
-    {
-        seed = time(0);
-    }
-
-    auto mid_range = p.begin() + 256;
-    std::mt19937 engine(seed);
-    // generate sequential numbers in the loop
-    std::iota(p.begin(), mid_range, 0);
-    // shuffle lower half
-    std::shuffle(p.begin(), mid_range, engine);
-    // copy lower half to the upper half
-    std::copy(p.begin(), mid_range, mid_range);
-    // p now has the numbers 0-255, shuffled and duplicated
-}
-
-double Noise::get3Dnoise(double x, double y, double z)
-{
-   //See here for algorithm: http://cs.nyu.edu/~perlin/noise/
-   const int32_t X = static_cast<int32_t>(std::floor(x)) & 255;
-   const int32_t Y = static_cast<int32_t>(std::floor(y)) & 255;
-   const int32_t Z = static_cast<int32_t>(std::floor(z)) & 255;
-
-   x -= std::floor(x);
-   y -= std::floor(y);
-   z -= std::floor(z);
-
-   double u = fade3D(x);
-   double v = fade3D(y);
-   double w = fade3D(z);
-
-   auto A = p[X] + Y;
-   auto AA = p[A] + Z;
-   auto AB = p[A + 1] + Z;
-   auto B = p[X + 1] + Y;
-   auto BA = p[B] + Z;
-   auto BB = p[B + 1] + Z;
-
-   auto PAA = p[AA];
-   auto PBA = p[BA];
-   auto PAB = p[AB];
-   auto PBB = p[BB];
-   auto PAA1 = p[AA + 1];
-   auto PBA1 = p[BA + 1];
-   auto PAB1 = p[AB + 1];
-   auto PBB1 = p[BB + 1];
-
-   const auto a = lerp3D(v,
-                         lerp3D(u, grad3D(PAA, x, y, z), grad3D(PBA, x-1, y, z)),
-                         lerp3D(u, grad3D(PAB, x, y-1, z), grad3D(PBB, x-1, y-1, z))
-                         );
-   const auto b = lerp3D(v,
-                         lerp3D(u, grad3D(PAA1, x, y, z-1), grad3D(PBA1, x-1, y, z-1)),
-                         lerp3D(u, grad3D(PAB1, x, y-1, z-1), grad3D(PBB1, x-1, y-1, z-1))
-                         );
-   return lerp3D(w,a,b);
-}

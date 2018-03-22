@@ -38,12 +38,10 @@ HEADERS += \
     include/CameraStates.h \
     include/Material.h \
     include/MaterialPBR.h \
-    include/Mesh.h \
     include/Scene.h \
     include/DemoScene.h \
     #include/MaterialPhong.h \
     include/ShaderLib.h \
-    include/MeshVBO.h \
     include/MaterialWireframe.h \
     #include/MaterialFractal.h \
     #include/MaterialEnvMap.h \
@@ -56,16 +54,13 @@ SOURCES += \
     src/Camera.cpp \
     src/TrackballCamera.cpp \
     src/CameraStates.cpp \
-    src/Mesh.cpp \
     src/Material.cpp \
     src/MaterialPBR.cpp \
     src/Scene.cpp \
     src/DemoScene.cpp \
     #src/MaterialPhong.cpp \
     src/ShaderLib.cpp \
-    src/MeshVBO.cpp \
     src/MaterialWireframe.cpp \
-    src/MaterialTesselation.cpp \
     src/bump.cpp
     #src/MaterialFractal.cpp \
     #src/MaterialEnvMap.cpp \
@@ -73,14 +68,8 @@ SOURCES += \
 OTHER_FILES += \
     shaders/PBRFragment.glsl \
     shaders/PBRVertex.glsl \
-    shaders/tessvert.glsl \
-    shaders/tessfrag.glsl \
-    shaders/tessgeom.glsl \
-    shaders/tesseval.glsl \
-    shaders/tesscontrol.glsl \
     shaders/bump_vert.glsl \
     shaders/bump_frag.glsl \
-    shaderPrograms/tesselation.json \
     shaderPrograms/PBR.json \
     shaderPrograms/bump.json
     #$$files(shaders/*, true) \

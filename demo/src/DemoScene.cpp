@@ -46,7 +46,7 @@ void DemoScene::init()
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::initGeo()
 {
-    m_meshes[0].loadMyMesh(Mesh::MODELS::GRID);
+    m_meshes[0].loadMyMesh();
     // Create and bind our Vertex Array Object
     m_vao->create();
     m_vao->bind();
@@ -66,10 +66,8 @@ void DemoScene::keyPress(QKeyEvent* io_event)
 void DemoScene::initMaterials()
 {
   m_materials.reserve(3);
-  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {1.0f, 0.0f, 0.2f}, 1.0f, 1.0f, 1.0f, 1.0f));
-  //m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {1.0f, 1.0f, 1.0f}, 0.5f, 1.0f, 1.0f, 1.0f));
-  //m_materials.emplace_back(new MaterialTesselation(m_camera, m_shaderLib, &m_matrices));
-  m_materials.emplace_back(new MaterialBump(m_camera, m_shaderLib, &m_matrices));
+  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {0.0f, 0.8f, 0.2f}, 1.0f, 1.0f, 1.0f, 1.0f));
+  m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {0.8f, 0.3f, 0.2f}, 1.0f, 1.0f, 1.0f, 1.0f));
   for (size_t i = 0; i < m_materials.size(); ++i)
   {
     auto& mat = m_materials[i];

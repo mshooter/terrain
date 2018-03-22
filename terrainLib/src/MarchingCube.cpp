@@ -8,11 +8,12 @@
 
 MarchingCube::MarchingCube()
 {
-    // amount of cells
-    m_NCells = 50;
+    // amount of cells either double or half, this is the resolutions
+    m_NCells = 120;
     // size of the cube
-    m_axisMin = -10;
-    m_axisMax = 10;
+    m_axisMin = -50;
+    m_axisMax = 50;
+
     m_axisRange = m_axisMax - m_axisMin;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
@@ -30,9 +31,9 @@ std::vector<glm::vec3> MarchingCube::getPoints()
             for(int i = 0 ; i < m_NCells; ++i)
             {
 
-                point = glm::vec3(static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * i / ( static_cast<float>(m_NCells)  -1),
-                                  static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * j / ( static_cast<float>(m_NCells)  -1),
-                                  static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * k / ( static_cast<float>(m_NCells)  -1));
+                point = glm::vec3(static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * k / ( static_cast<float>(m_NCells-1)),
+                                  static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * j / ( static_cast<float>(m_NCells-1)),
+                                  static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * i / ( static_cast<float>(m_NCells-1)));
                 points.push_back( point );
             }
         }
@@ -112,58 +113,35 @@ void MarchingCube::MC( std::vector<glm::vec3> &_points, std::vector<float> &_val
             GLushort index = triTable[ cubeindex + i ];
             GLushort index1 = triTable[ cubeindex + i + 1 ];
             GLushort index2 = triTable[ cubeindex + i + 2];
-
-            io_verts.insert(io_verts.end(),{ vList[index], vList[index1], vList[index2] });
-//            auto edge1 = vList[index1] - vList[index];
-//            auto edge2 = vList[index2] - vList[index];
-
-//            io_normals.push_back(glm::normalize(glm::cross(edge1,edge2)));
-            io_normals.insert(io_normals.end(),{ vList[index], vList[index1], vList[index2] });
-
             GLushort size = io_indices.size();
             GLushort size1 = size+1;
             GLushort size2 = size+2;
+
+            io_verts.insert(io_verts.end(),{ vList[index], vList[index1], vList[index2]});
             io_indices.insert(io_indices.end(), {size, size1, size2});
+            io_normals.insert(io_normals.end(),{ vList[index], vList[index1], vList[index2]});
+//            auto edge1 = vList[index1] - vList[index];
+//            auto edge2 = vList[index2] - vList[index];
+//            io_normals.push_back(glm::cross(edge1,edge2)/3.0f);
+            //io_normals.insert(io_normals.end(),{ vList[index], vList[index1], vList[index2] });
+            //io_normals.push_back(glm::normalize(glm::cross(edge1,edge2)*2.0f));
         }
       }
     }
   }
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
-void MarchingCube::Testeval(std::vector<glm::vec3> &io_verts,
-                            std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals)
+void MarchingCube::setNCells(int _cells)
 {
-    glm::vec3 _position;
-    // get the 3d grid points
-    std::vector<glm::vec3> points = getPoints();
-    // reserve space for the values
-    m_values.reserve( points.size() );
-    // create noise
-    Noise noise = Noise(1.0f,0.2f,12.0f,1,1);
-    //Noise noise = Noise(static_cast<uint32_t>(0.001));
-    // fill in values
-    for( float i = 0; i < points.size(); ++i )
-    {
-        _position = glm::vec3(points[i].x, points[i].y, points[i].z);
-        auto x = points[i].x;
-        auto y = points[i].y;
-        auto z = points[i].z;
-        // evaluate function
-        // m_poly->createSphere(x,y,z,0.5,m_values[i]);
-        // generate a cube rectangle
-        //m_values[i] = y + noise.getNoise(x,z);
-        //m_values[i] = y + noise.get3Dnoise(x/3,y/3,z/3);
-        //m_values[i] = y + noise.get3Dnoise(x/4,y/2,z/4);
-        //m_values[i] = std::min(x*-x, y*-y) + 1;
-        //m_values[i] = std::min(std::min( -x * x, -y * y), -z * z) + 1; // cone(x,y,z,0.5f, 1);
-        //m_poly->unions(m_poly->createSphere(x,y,z,0.5),m_poly->createSphere(x+0.6,y,z,0.5), m_values[i]);
-        //m_poly->displacement(x,y,z,m_values[i]);
-        m_poly->difference(m_poly->createSphere(x,y-2.5f,z,2),y + noise.getNoise(x,z), m_values[i]);
-        // Ncells = 50
-        //m_values[i] = y+sin(-x);
-        //m_values[i] = y + noise.getNoise(x,z);
-    }
-
-    MC(points,m_values, io_verts, io_indices, io_normals);
+    m_NCells = _cells;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
+void MarchingCube::setAxisMin(int _minAxis)
+{
+    m_axisMin = _minAxis;
+}
+//------------------------------------------------------------------------------------------------------------------------------------------
+void MarchingCube::setAxisMax(int _maxAxis)
+{
+    m_axisMax = _maxAxis;
+}
