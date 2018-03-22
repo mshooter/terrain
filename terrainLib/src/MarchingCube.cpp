@@ -9,10 +9,10 @@
 MarchingCube::MarchingCube()
 {
     // amount of cells
-    m_NCells = 100;
+    m_NCells = 50;
     // size of the cube
-    m_axisMin = -5;
-    m_axisMax = 5;
+    m_axisMin = -10;
+    m_axisMax = 10;
     m_axisRange = m_axisMax - m_axisMin;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
@@ -114,10 +114,10 @@ void MarchingCube::MC( std::vector<glm::vec3> &_points, std::vector<float> &_val
             GLushort index2 = triTable[ cubeindex + i + 2];
 
             io_verts.insert(io_verts.end(),{ vList[index], vList[index1], vList[index2] });
-            //auto edge1 = vList[index1] - vList[index];
-            //auto edge2 = vList[index2] - vList[index];
+//            auto edge1 = vList[index1] - vList[index];
+//            auto edge2 = vList[index2] - vList[index];
 
-            //io_normals.push_back(glm::normalize(glm::cross(edge1,edge2)));
+//            io_normals.push_back(glm::normalize(glm::cross(edge1,edge2)));
             io_normals.insert(io_normals.end(),{ vList[index], vList[index1], vList[index2] });
 
             GLushort size = io_indices.size();
@@ -139,8 +139,8 @@ void MarchingCube::Testeval(std::vector<glm::vec3> &io_verts,
     // reserve space for the values
     m_values.reserve( points.size() );
     // create noise
-    Noise noise = Noise(2.0f,0.5f,5.0f,1.0f,1.0f);
-    //Noise noise = Noise(0.0001);
+    Noise noise = Noise(1.0f,0.2f,12.0f,1,1);
+    //Noise noise = Noise(static_cast<uint32_t>(0.001));
     // fill in values
     for( float i = 0; i < points.size(); ++i )
     {
@@ -151,14 +151,17 @@ void MarchingCube::Testeval(std::vector<glm::vec3> &io_verts,
         // evaluate function
         // m_poly->createSphere(x,y,z,0.5,m_values[i]);
         // generate a cube rectangle
-        m_values[i] = y + noise.getNoise(x,z);
+        //m_values[i] = y + noise.getNoise(x,z);
         //m_values[i] = y + noise.get3Dnoise(x/3,y/3,z/3);
         //m_values[i] = y + noise.get3Dnoise(x/4,y/2,z/4);
         //m_values[i] = std::min(x*-x, y*-y) + 1;
         //m_values[i] = std::min(std::min( -x * x, -y * y), -z * z) + 1; // cone(x,y,z,0.5f, 1);
         //m_poly->unions(m_poly->createSphere(x,y,z,0.5),m_poly->createSphere(x+0.6,y,z,0.5), m_values[i]);
         //m_poly->displacement(x,y,z,m_values[i]);
-        m_poly->difference(m_poly->createSphere(x,y,z,0.5),y, m_values[i]);
+        m_poly->difference(m_poly->createSphere(x,y-2.5f,z,2),y + noise.getNoise(x,z), m_values[i]);
+        // Ncells = 50
+        //m_values[i] = y+sin(-x);
+        //m_values[i] = y + noise.getNoise(x,z);
     }
 
     MC(points,m_values, io_verts, io_indices, io_normals);
