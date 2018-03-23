@@ -79,7 +79,7 @@ void MarchingCube::MC( std::vector<glm::vec3> &_points, std::vector<float> &_val
 
         for (unsigned short i = 0; i < 8; ++i)
         {
-            if (values[i] < isolevel) cubeindex |= powers[i];
+            if (values[i] <= isolevel) cubeindex |= powers[i];
         }
 
         // bits = 12 bit number, indicates which edges are crossed by the isosurface

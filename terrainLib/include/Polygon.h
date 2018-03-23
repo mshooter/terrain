@@ -4,6 +4,7 @@
 #include <math.h>
 #include <vec3.hpp>
 #include <vector>
+#include "Noise.h"
 
 
 // todo : change into a base class and derivate classes
@@ -61,6 +62,12 @@ public:
     /// @parm[_in] _pos : position of object
     // ----------------------------------------------------------------------------------------------------------------------------------------
     float displacement(glm::vec3 _pos);
+
+    float createTerrain1(glm::vec3 _pos,  Noise &io_noise);
+    float createTerrain2(glm::vec3 _ps, Noise &io_noise);
+
+private:
+
 
 
 };

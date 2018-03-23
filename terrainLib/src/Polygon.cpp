@@ -1,5 +1,5 @@
 #include "Polygon.h"
-#include <algorithm>
+
 float Polygon::createCone(glm::vec3 _pos,
                          float _r,
                          float _h)
@@ -37,4 +37,14 @@ float Polygon::displacement(glm::vec3 _pos)
     float d1 = createCone(_pos,0.2,1);
     float d2 =  sin(20*_pos.x)*sin(20*_pos.y)*sin(20*_pos.z);
     return d1+d2;
+}
+
+float Polygon::createTerrain1(glm::vec3 _pos, Noise &io_noise)
+{
+    return _pos.y + io_noise.getNoise(_pos.x,_pos.z);
+}
+
+float Polygon::createTerrain2(glm::vec3 _pos, Noise &io_noise)
+{
+    return _pos.y + io_noise.getNoise(_pos.x,_pos.z) + io_noise.getNoise(_pos.z,_pos.y );
 }

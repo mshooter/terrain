@@ -20,7 +20,7 @@ void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &i
         float z = points[i].z;
         // creating terrain
         //std::max(lower, std::min(n, upper))
-        m_values[i] =  y + noise.getNoise(x,z) + noise.getNoise(z,y);
+        m_values[i] =  m_poly->createTerrain2(_position,noise);
     }
     cube.MC(points,m_values, io_verts, io_indices, io_normals);
 }
@@ -54,3 +54,5 @@ void Grid::setSeed(int _seed)
 {
     m_randomSeed = _seed;
 }
+
+
