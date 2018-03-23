@@ -46,7 +46,9 @@ HEADERS += \
     #include/MaterialFractal.h \
     #include/MaterialEnvMap.h \
     include/MaterialTesselation.h \
-    include/materialbump.h
+    include/materialbump.h \ 
+    include/MaterialTerrain.h  
+    
 
 SOURCES += \
     src/main.cpp \
@@ -61,7 +63,8 @@ SOURCES += \
     #src/MaterialPhong.cpp \
     src/ShaderLib.cpp \
     src/MaterialWireframe.cpp \
-    src/bump.cpp
+    src/bump.cpp \ 
+    src/MaterialTerrain.cpp 
     #src/MaterialFractal.cpp \
     #src/MaterialEnvMap.cpp \
 
@@ -70,8 +73,11 @@ OTHER_FILES += \
     shaders/PBRVertex.glsl \
     shaders/bump_vert.glsl \
     shaders/bump_frag.glsl \
+    shaders/terrain_vert.glsl \
+    shaders/terrain_frag.glsl \ 
     shaderPrograms/PBR.json \
-    shaderPrograms/bump.json
+    shaderPrograms/bump.json \ 
+    shaderPrograms/Terrain.json \
     #$$files(shaders/*, true) \
     #$$files(shaderPrograms/*, true) \
     #$$files(models/*, true)

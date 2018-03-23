@@ -5,8 +5,7 @@
 void MaterialPBR::init()
 {
   auto shaderPtr = m_shaderLib->getCurrentShader();
-
-  shaderPtr->setUniformValue("albedo", QVector3D{m_albedo.x, m_albedo.y, m_albedo.z});
+  shaderPtr->setUniformValue("albedo", QVector3D{m_albedo.x,m_albedo.y,m_albedo.z});
   shaderPtr->setUniformValue("ao", m_ao);
   shaderPtr->setUniformValue("exposure", m_exposure);
   shaderPtr->setUniformValue("roughness", m_roughness);

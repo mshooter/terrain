@@ -1,6 +1,7 @@
+
 #include "DemoScene.h"
 #include "MaterialPBR.h"
-#include "MaterialTesselation.h"
+#include "MaterialTerrain.h"
 #include "materialbump.h"
 #include <QOpenGLContext>
 
@@ -65,9 +66,11 @@ void DemoScene::keyPress(QKeyEvent* io_event)
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::initMaterials()
 {
+
   m_materials.reserve(3);
   m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {0.0f, 0.8f, 0.2f}, 1.0f, 1.0f, 1.0f, 1.0f));
   m_materials.emplace_back(new MaterialPBR(m_camera, m_shaderLib, &m_matrices, {0.8f, 0.3f, 0.2f}, 1.0f, 1.0f, 1.0f, 1.0f));
+  m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices,1.0f, 1.0f, 1.0f, 1.0f));
   for (size_t i = 0; i < m_materials.size(); ++i)
   {
     auto& mat = m_materials[i];

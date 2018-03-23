@@ -1,6 +1,5 @@
-#version 410 // Keeping you on the bleeding edge!
-#extension GL_EXT_gpu_shader4 : enable
-// This code is based on code from here https://learnopengl.com/#!PBR/Lighting
+#version 400
+
 layout (location = 0) out vec4 fragColour;
 
 in vec2 TexCoords;
@@ -8,7 +7,8 @@ in vec3 WorldPos;
 in vec3 Normal;
 
 // material parameters
-uniform vec3  albedo;
+//uniform vec3  albedo;
+vec3 albedo;
 uniform float metallic;
 uniform float roughness;
 uniform float ao;
@@ -77,9 +77,31 @@ vec3 fresnelSchlick(float cosTheta, vec3 F0)
   return F0 + (1.0 - F0) * pow(1.0 - cosTheta, 5.0);
 }
 // ----------------------------------------------------------------------------
+
+
 void main()
 {
-
+    vec3 terrain_colours[4];
+    terrain_colours[0] = vec3(1.0, 1.0, 1.0);
+    terrain_colours[1] = vec3(0.9, 0.4, 0.2);
+    terrain_colours[2] = vec3(0.2, 0.5, 0.2);
+    //terrain_colours[3] = vec3(0.0, 0.2, 0.5);
+    terrain_colours[3] = vec3(0.0, 0.5, 0.5);
+    if(WorldPos.y < -8)
+    {
+        albedo = terrain_colours[3];
+    }
+    else
+    {
+//        if(WorldPos.y > 10 && WorldPos.y < 100)
+//        {
+//            albedo = terrain_colours[0];
+//        }
+//        else
+        {
+            albedo = terrain_colours[1];
+        }
+    }
   vec3 N = normalize(Normal);
   vec3 V = normalize(camPos - WorldPos);
   vec3 R = reflect(-V, N);

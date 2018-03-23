@@ -1,0 +1,5 @@
+{
+    "Name" : "Terrain",
+    "Vertex" : "shaders/terrain_vert.glsl",
+    "Fragment" : "shaders/terrain_frag.glsl"
+}

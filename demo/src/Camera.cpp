@@ -47,7 +47,7 @@ void Camera::resetPosition()
 {
   m_lastPos = {0.0f, 0.0f};
   m_target = {0.0f, 0.0f, 0.0f};
-  m_camOrigin = {-5.0f, 0.0f, -10.0f};
+  m_camOrigin = {0.0f, 0.0f, 100.0f};
 }
 //-----------------------------------------------------------------------------------------------------
 const glm::mat4& Camera::viewMatrix()
