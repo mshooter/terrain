@@ -12,7 +12,8 @@ HEADERS += \
 SOURCES += \
     src/main.cpp \
     src/PolygonTest.cpp \
-    src/GridTest.cpp 
+    src/GridTest.cpp \
+    src/MarchingCubeTest.cpp
 
 DEPENDPATH += . ../terrainLib
 INCLUDEPATH = ../terrainLib/include

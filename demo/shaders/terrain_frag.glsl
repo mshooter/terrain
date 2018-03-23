@@ -29,7 +29,7 @@ const vec3 lightPositions[4] = vec3[4](
       vec3( scale, height,  scale)
       );
 
-const float intensity = 3000.0f;
+const float intensity = 3500.0f;
 const vec3 lightColors[4] = vec3[4](
       vec3(intensity, intensity, intensity),
       vec3(intensity, intensity, intensity),

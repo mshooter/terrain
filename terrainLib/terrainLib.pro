@@ -16,8 +16,6 @@ SOURCES += \
     src/Noise.cpp \
     src/MarchingCube.cpp \
     src/Polygon.cpp \
-    src/MeshVBO.cpp \
-    src/Mesh.cpp
 
 HEADERS += \
     include/Grid.h \
@@ -25,8 +23,6 @@ HEADERS += \
     include/McData.h \
     include/MarchingCube.h \
     include/Polygon.h \
-    include/MeshVBO.h \
-    include/Mesh.h
 
 INCLUDEPATH += \
     /usr/local/include/glm/glm \

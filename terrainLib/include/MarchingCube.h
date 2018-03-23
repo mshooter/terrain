@@ -29,6 +29,11 @@ public:
     void setNCells(int _cells);
     void setAxisMin(int _minAxis);
     void setAxisMax(int _maxAxis);
+    void set3DGridPoints();
+    int getNCells();
+    int getAxisMax();
+    int getAxisMin();
+
 
 private:
     //------------------------------------------------------------------------------------------------------------------------------------------
@@ -55,6 +60,7 @@ private:
     /// @build minAxis
     // ----------------------------------------------------------------------------------------------------------------------------------------
     int m_axisMin;
+    std::vector<glm::vec3> m_gridPoints;
 };
 
 #endif // MARCHINGCUBE_H

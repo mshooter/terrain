@@ -15,30 +15,12 @@ MarchingCube::MarchingCube()
     m_axisMax = 60;
 
     m_axisRange = m_axisMax - m_axisMin;
+    set3DGridPoints();
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
 std::vector<glm::vec3> MarchingCube::getPoints()
 {
-    // points devide space into a 3D grid
-    glm::vec3 point;
-    std::vector<glm::vec3> points;
-    points.reserve(m_NCells * m_NCells * m_NCells);
-
-    for(int k = 0 ; k < m_NCells; ++k)
-    {
-        for(int j = 0 ; j < m_NCells; ++j)
-        {
-            for(int i = 0 ; i < m_NCells; ++i)
-            {
-
-                point = glm::vec3(static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * k / ( static_cast<float>(m_NCells-1)),
-                                  static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * j / ( static_cast<float>(m_NCells-1)),
-                                  static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * i / ( static_cast<float>(m_NCells-1)));
-                points.push_back( point );
-            }
-        }
-    }
-    return points;
+    return m_gridPoints;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
 void MarchingCube::MC( std::vector<glm::vec3> &_points, std::vector<float> &_values, std::vector<glm::vec3> &io_verts,
@@ -141,4 +123,41 @@ void MarchingCube::setAxisMin(int _minAxis)
 void MarchingCube::setAxisMax(int _maxAxis)
 {
     m_axisMax = _maxAxis;
+}
+//------------------------------------------------------------------------------------------------------------------------------------------
+void MarchingCube::set3DGridPoints()
+{
+    // points devide space into a 3D grid
+    glm::vec3 point;
+    m_gridPoints.reserve(m_NCells * m_NCells * m_NCells);
+
+    for(int k = 0 ; k < m_NCells; ++k)
+    {
+        for(int j = 0 ; j < m_NCells; ++j)
+        {
+            for(int i = 0 ; i < m_NCells; ++i)
+            {
+
+                point = glm::vec3(static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * k / ( static_cast<float>(m_NCells-1)),
+                                  static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * j / ( static_cast<float>(m_NCells-1)),
+                                  static_cast<float>(m_axisMin) + static_cast<float>(m_axisRange) * i / ( static_cast<float>(m_NCells-1)));
+                m_gridPoints.push_back( point );
+            }
+        }
+    }
+}
+//------------------------------------------------------------------------------------------------------------------------------------------
+int MarchingCube::getNCells()
+{
+    return m_NCells;
+}
+//------------------------------------------------------------------------------------------------------------------------------------------
+int MarchingCube::getAxisMax()
+{
+    return m_axisMax;
+}
+//------------------------------------------------------------------------------------------------------------------------------------------
+int MarchingCube::getAxisMin()
+{
+    return m_axisMin;
 }

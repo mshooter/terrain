@@ -47,7 +47,9 @@ HEADERS += \
     #include/MaterialEnvMap.h \
     include/MaterialTesselation.h \
     include/materialbump.h \ 
-    include/MaterialTerrain.h  
+    include/MaterialTerrain.h \
+    include/Mesh.h \
+    include/MeshVBO.h   
     
 
 SOURCES += \
@@ -64,7 +66,9 @@ SOURCES += \
     src/ShaderLib.cpp \
     src/MaterialWireframe.cpp \
     src/bump.cpp \ 
-    src/MaterialTerrain.cpp 
+    src/MaterialTerrain.cpp \
+    src/Mesh.cpp \
+    src/MeshVBO.cpp 
     #src/MaterialFractal.cpp \
     #src/MaterialEnvMap.cpp \
 

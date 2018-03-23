@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals)
+void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals, int _terrainModel)
 {
     glm::vec3 _position;
     // get the 3d grid points
@@ -11,7 +11,7 @@ void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &i
     // reserve space for the values
     m_values.reserve( points.size() );
     // fill in values
-    Noise noise = Noise(m_frequency, m_height ,1, m_randomSeed, 0.5);
+    Noise noise = Noise(m_frequency, m_height ,m_octaves, m_randomSeed, m_persistence);
 
     for( float i = 0; i < points.size(); ++i )
     {
@@ -21,7 +21,13 @@ void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &i
         float z = points[i].z;
         // creating terrain
         //std::max(lower, std::min(n, upper))
-        m_values[i] =  m_poly->createTerrain2(_position,noise);
+        switch(_terrainModel)
+        {
+        case MODEL1 : { m_values[i] = m_poly->createTerrain1(_position, noise); break; }
+        case MODEL2 : { m_values[i] = m_poly->createTerrain2(_position, noise); break; }
+        case MODEL3 : { m_values[i] = m_poly->createTerrain3(_position, noise); break; }
+        }
+
     }
     cube.MC(points,m_values, io_verts, io_indices, io_normals);
 }
@@ -56,4 +62,27 @@ void Grid::setSeed(int _seed)
     m_randomSeed = _seed;
 }
 
+void Grid::setOctaves(int _octaves)
+{
+    m_octaves = _octaves;
+}
 
+void Grid::setPersistence(int _persistence)
+{
+    m_persistence = _persistence;
+}
+
+float Grid::getFrequency()
+{
+    return m_frequency;
+}
+
+int Grid::getSeed()
+{
+    return m_randomSeed;
+}
+
+float Grid::getHeight()
+{
+    return m_height;
+}

@@ -39,12 +39,13 @@ float Polygon::displacement(glm::vec3 _pos)
     return d1+d2;
 }
 
-float Polygon::createTerrain1(glm::vec3 _pos, Noise &io_noise)
+float Polygon::createTerrain1(glm::vec3 _pos, Noise io_noise)
 {
-    return _pos.y + io_noise.getNoise(_pos.x,_pos.z);
+
+    return io_noise.getNoise(_pos.x,_pos.z) + _pos.y ;
 }
 
-float Polygon::createTerrain2(glm::vec3 _pos, Noise &io_noise)
+float Polygon::createTerrain2(glm::vec3 _pos, Noise io_noise)
 {
     return _pos.y + io_noise.getNoise(_pos.x,_pos.z) + io_noise.getNoise(_pos.z,_pos.y );
 }

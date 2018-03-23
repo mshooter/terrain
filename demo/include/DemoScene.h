@@ -80,6 +80,8 @@ public slots:
   /// the current Mesh.
   //-----------------------------------------------------------------------------------------------------
   void nextMaterial();
+  void changeFrequency(int _frequency);
+  void changeAmplitude(int _amplitude);
 
 
 private:
@@ -133,6 +135,8 @@ private:
   /// @brief Is the mesh rotating.
   //-----------------------------------------------------------------------------------------------------
   bool m_rotating = false;
+  float m_terrainFrequency = 0;
+  float m_terrainAmplitude = 0;
 
 
 

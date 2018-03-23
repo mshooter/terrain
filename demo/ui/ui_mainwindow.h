@@ -20,6 +20,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QWidget>
 
@@ -41,6 +42,8 @@ public:
     QPushButton *material;
     QCheckBox *m_rotating;
     QSpacerItem *verticalSpacer;
+    QSlider *frequency;
+    QSlider *amplitude;
     QMenuBar *menubar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -99,7 +102,21 @@ public:
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_2->addItem(verticalSpacer, 3, 1, 1, 1);
+        gridLayout_2->addItem(verticalSpacer, 4, 1, 1, 1);
+
+        frequency = new QSlider(s_drawGB);
+        frequency->setObjectName(QStringLiteral("frequency"));
+        frequency->setMaximum(100);
+        frequency->setSingleStep(1);
+        frequency->setOrientation(Qt::Horizontal);
+
+        gridLayout_2->addWidget(frequency, 3, 1, 1, 1);
+
+        amplitude = new QSlider(s_drawGB);
+        amplitude->setObjectName(QStringLiteral("amplitude"));
+        amplitude->setOrientation(Qt::Vertical);
+
+        gridLayout_2->addWidget(amplitude, 3, 2, 1, 1);
 
 
         s_mainWindowGridLayout->addWidget(s_drawGB, 2, 5, 1, 1);
