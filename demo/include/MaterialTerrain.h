@@ -14,13 +14,15 @@ public:
       const float _ao,
       const float _exposure,
       const float _roughness,
-      const float _metallic
+      const float _metallic,
+      const int _model
       ) :
     Material(io_camera, io_shaderLib, io_matrices),
     m_ao(_ao),
     m_exposure(_exposure),
     m_roughness(_roughness),
-    m_metallic(_metallic)
+    m_metallic(_metallic),
+    m_model(_model)
   {}
   MaterialTerrain(const MaterialTerrain&) = default;
   MaterialTerrain& operator=(const MaterialTerrain&) = default;
@@ -41,6 +43,7 @@ private:
   float m_exposure;
   float m_roughness;
   float m_metallic;
+  int m_model;
 
 };
 

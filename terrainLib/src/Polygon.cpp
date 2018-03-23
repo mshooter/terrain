@@ -48,3 +48,8 @@ float Polygon::createTerrain2(glm::vec3 _pos, Noise &io_noise)
 {
     return _pos.y + io_noise.getNoise(_pos.x,_pos.z) + io_noise.getNoise(_pos.z,_pos.y );
 }
+
+float Polygon::createTerrain3(glm::vec3 _pos, Noise _noise)
+{
+    return _pos.y + _noise.getNoise(_pos.x, _pos.z) + _noise.getNoise(_pos.z, _pos.y) + _noise.getNoise(_pos.x, _pos.y);
+}

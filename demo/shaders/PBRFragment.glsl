@@ -20,10 +20,10 @@ uniform float exposure;
 const float scale = 100.0f;
 const float height = 5.0f;
 const vec3 lightPositions[4] = vec3[4](
-      vec3(0,25,0),
-      vec3( 20, 25, 0),
-      vec3(-20, 25,  0),
-      vec3( scale, height,  scale)
+      vec3(100, 25,-100),
+      vec3( -100,25, 100),
+      vec3(-100, 25,  -100),
+      vec3( 100, 25, 100)
       );
 
 const float intensity = 3000.0f;

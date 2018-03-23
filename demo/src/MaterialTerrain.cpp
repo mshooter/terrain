@@ -10,6 +10,7 @@ void MaterialTerrain::init()
     shaderPtr->setUniformValue("exposure", m_exposure);
     shaderPtr->setUniformValue("roughness", m_roughness);
     shaderPtr->setUniformValue("metallic", m_metallic);
+    shaderPtr->setUniformValue("model", m_model);
     update();
 }
 

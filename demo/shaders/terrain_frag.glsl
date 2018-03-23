@@ -16,13 +16,16 @@ uniform float ao;
 uniform vec3 camPos;
 uniform float exposure;
 
+// uniform for choosing which material to use
+uniform int model;
+
 // lights
-const float scale = 100.0f;
-const float height = 5.0f;
+const float scale = 30.0f;
+const float height = 30.0f;
 const vec3 lightPositions[4] = vec3[4](
-      vec3(0,25,0),
-      vec3( 20, 25, 0),
-      vec3(-20, 25,  0),
+      vec3(scale, height, -scale),
+      vec3( -scale, height, scale),
+      vec3(-scale, height,  -scale),
       vec3( scale, height,  scale)
       );
 
@@ -81,27 +84,59 @@ vec3 fresnelSchlick(float cosTheta, vec3 F0)
 
 void main()
 {
-    vec3 terrain_colours[4];
+    // no external textures but could do
+    vec3 terrain_colours[6];
     terrain_colours[0] = vec3(1.0, 1.0, 1.0);
-    terrain_colours[1] = vec3(0.9, 0.4, 0.2);
+    terrain_colours[1] = vec3(0.8, 0.3, 0.2);
     terrain_colours[2] = vec3(0.2, 0.5, 0.2);
-    //terrain_colours[3] = vec3(0.0, 0.2, 0.5);
-    terrain_colours[3] = vec3(0.0, 0.5, 0.5);
-    if(WorldPos.y < -8)
+    terrain_colours[3] = vec3(0.0, 0.2, 0.5);
+    terrain_colours[4] = vec3(0.0, 0.5, 0.5);
+    terrain_colours[5] = vec3(0.85, 0.54, 0.25);
+
+    switch(model)
     {
-        albedo = terrain_colours[3];
-    }
-    else
+    // canyon
+    case 0 :
     {
-//        if(WorldPos.y > 10 && WorldPos.y < 100)
-//        {
-//            albedo = terrain_colours[0];
-//        }
-//        else
+        if(WorldPos.y < - 10 )
         {
-            albedo = terrain_colours[1];
+            albedo = terrain_colours[4];
         }
+        else
+        {
+            albedo = terrain_colours [1];
+        }
+        break;
     }
+    case 1 :
+    {
+        // mountains
+        if(WorldPos.y < -10)
+        {
+            albedo = terrain_colours[3];
+        }
+        else
+        {
+            if(WorldPos.y > 10 && WorldPos.y < 100)
+            {
+                albedo = terrain_colours[0];
+            }
+            else
+            {
+                albedo = terrain_colours[2];
+            }
+        }
+        break;
+    }
+    case 2 :
+    {
+        // sand
+        albedo = terrain_colours[5];
+    }
+        break;
+    }
+
+
   vec3 N = normalize(Normal);
   vec3 V = normalize(camPos - WorldPos);
   vec3 R = reflect(-V, N);

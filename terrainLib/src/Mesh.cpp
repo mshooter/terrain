@@ -6,9 +6,9 @@ void Mesh::loadMyMesh()
 //    terrain.setHeight(30);
 //    terrain.setSeed(8);
 
-    terrain.setFrequency(0.225);
+    terrain.setFrequency(0.2);
     terrain.setHeight(30);
-    terrain.setSeed(8);
+    terrain.setSeed(5);
     terrain.createGrid(m_vertices,m_indices,m_normals);
 }
 // ---------------------------------------------------------
