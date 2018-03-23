@@ -1,5 +1,6 @@
 #include "Grid.h"
 #include <algorithm>
+#include <iostream>
 
 
 void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals)

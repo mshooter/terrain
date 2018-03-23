@@ -67,11 +67,9 @@ void DemoScene::keyPress(QKeyEvent* io_event)
 void DemoScene::initMaterials()
 {
 
-  m_materials.reserve(5);
+  m_materials.reserve(3);
   m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices, 1.0f, 1.0f, 1.0f, 1.0f, 0));
   m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices, 1.0f, 1.0f, 1.0f, 1.0f, 1));
-  m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices, 1.0f, 1.0f, 1.0f, 1.0f, 2));
-    m_materials.emplace_back(new MaterialBump(m_camera, m_shaderLib, &m_matrices));
   for (size_t i = 0; i < m_materials.size(); ++i)
   {
     auto& mat = m_materials[i];
