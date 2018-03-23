@@ -1,5 +1,5 @@
 #include "Grid.h"
-#include "noise.h"
+#include <algorithm>
 
 
 void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals)
@@ -10,18 +10,17 @@ void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &i
     // reserve space for the values
     m_values.reserve( points.size() );
     // fill in values
-//    Noise noise = Noise(m_frequency, m_height, 3);
-    noise::module::Perlin noises;
+    Noise noise = Noise(m_frequency, m_height ,1, m_randomSeed, 0.5);
 
     for( float i = 0; i < points.size(); ++i )
     {
         _position = glm::vec3(points[i].x, points[i].y, points[i].z);
+        float x = points[i].x;
+        float y = points[i].y;
+        float z = points[i].z;
         // creating terrain
-        m_values[i] =
-        m_values[i] = m_poly->createSphere(_position,10);/*_position.y + noise.getNoise(_position.x,_position.z)+ noise.getNoise(_position.x/2,_position.z/2) + noise.getNoise(_position.x/3,_position.z/3);*/
-        /*m_poly->unions(_position.y + noise.getNoise(_position.x,_position.z) + noise.getNoise(_position.x/3,_position.z/3),
-                                     m_poly->createSphere(glm::vec3(_position.x,_position.y-3,_position.z-10),5));*/
-
+        //std::max(lower, std::min(n, upper))
+        m_values[i] =  y + noise.getNoise(x,z) + noise.getNoise(z,y);
     }
     cube.MC(points,m_values, io_verts, io_indices, io_normals);
 }

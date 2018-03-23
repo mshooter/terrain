@@ -4,12 +4,12 @@
 #include <numeric>
 #include <cmath>
 
-Noise::Noise(double _frequency, double _amplitude, int _randomSeed)
+Noise::Noise(double _frequency, double _amplitude, int _octaves, int _randomSeed, double _persistence)
 {
-    m_persistence = 1.0f;
+    m_persistence = _persistence;
     m_frequency = _frequency;
     m_amplitude = _amplitude;
-    m_octaves = 1;
+    m_octaves = _octaves;
     m_randomseed = 2 + _randomSeed * _randomSeed;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
@@ -30,12 +30,12 @@ void Noise::setNoise(double _frequency, double _amplitude, int _randomseed)
 double Noise::Total(double i, double j) const
 {
     double t = 0.0f;
-    double amp = 1;
     double freq = m_frequency;
+    double amp = 1;
 
     for(int k =0 ; k < m_octaves; ++k)
     {
-        t += GetValue(j * freq + m_randomseed, i * freq + m_randomseed) * amp;
+        t += GetValue(j * freq + m_randomseed, i * freq + m_randomseed);
         amp *= m_persistence;
         freq *= 2;
     }

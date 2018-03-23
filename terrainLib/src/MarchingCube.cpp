@@ -1,7 +1,7 @@
 #include <math.h>
 #include <array>
 #include <glm/gtx/compatibility.hpp>
-
+#include "gtx/normal.hpp"
 #include "MarchingCube.h"
 #include "McData.h"
 #include "Noise.h"
@@ -9,10 +9,10 @@
 MarchingCube::MarchingCube()
 {
     // amount of cells either double or half, this is the resolutions
-    m_NCells = 120;
+    m_NCells = 60;
     // size of the cube
-    m_axisMin = -50;
-    m_axisMax = 50;
+    m_axisMin = -60;
+    m_axisMax = 60;
 
     m_axisRange = m_axisMax - m_axisMin;
 }
@@ -116,15 +116,12 @@ void MarchingCube::MC( std::vector<glm::vec3> &_points, std::vector<float> &_val
             GLushort size = io_indices.size();
             GLushort size1 = size+1;
             GLushort size2 = size+2;
+            auto norm = glm::triangleNormal(vList[index],vList[index1],vList[index2]);
 
             io_verts.insert(io_verts.end(),{ vList[index], vList[index1], vList[index2]});
             io_indices.insert(io_indices.end(), {size, size1, size2});
-            io_normals.insert(io_normals.end(),{ vList[index], vList[index1], vList[index2]});
-//            auto edge1 = vList[index1] - vList[index];
-//            auto edge2 = vList[index2] - vList[index];
-//            io_normals.push_back(glm::cross(edge1,edge2)/3.0f);
-            //io_normals.insert(io_normals.end(),{ vList[index], vList[index1], vList[index2] });
-            //io_normals.push_back(glm::normalize(glm::cross(edge1,edge2)*2.0f));
+            io_normals.insert(io_normals.end(), {norm, norm, norm});
+
         }
       }
     }
