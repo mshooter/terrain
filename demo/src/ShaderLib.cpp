@@ -1,9 +1,10 @@
-#include "ShaderLib.h"
 #include <QFile>
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <array>
+#include "ShaderLib.h"
 
+//------------------------------------------------------------------------------------------------------------------------------------------
 std::string ShaderLib::loadShaderProg(const QString &_jsonFileName)
 {
   auto toStr = [](const auto& val){ return val.toString(); };
@@ -35,7 +36,7 @@ std::string ShaderLib::loadShaderProg(const QString &_jsonFileName)
 
   return shaderName;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 void ShaderLib::createShader(const std::string &_name, const std::array<QString, 5> &_shaderPaths)
 {
   QOpenGLShaderProgram *program = new QOpenGLShaderProgram();
@@ -59,18 +60,18 @@ void ShaderLib::createShader(const std::string &_name, const std::array<QString,
   program->link();
   m_shaderPrograms[_name].reset(program);
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 void ShaderLib::useShader(const std::string& _name)
 {
   m_currentShader = m_shaderPrograms[_name].get();
   m_currentShader->bind();
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 QOpenGLShaderProgram *ShaderLib::getShader(const std::string& _name)
 {
   return m_shaderPrograms[_name].get();
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 QOpenGLShaderProgram* ShaderLib::getCurrentShader()
 {
   return m_currentShader;

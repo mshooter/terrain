@@ -1,6 +1,13 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
+//-------------------------------------------------------------------------------------------------------
+/// @author Moira Shooter
+/// Modified from :-
+/// Jack Diver (08/03/2018). OpenGLTemplate
+/// @note changes has been to be compatible to demo the terrain library
+//-------------------------------------------------------------------------------------------------------
+
 #include <array>
 #include <mat4x4.hpp>
 #include <memory>

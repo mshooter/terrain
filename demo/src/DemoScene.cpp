@@ -1,9 +1,7 @@
-
+#include <QOpenGLContext>
 #include "DemoScene.h"
 #include "MaterialPBR.h"
 #include "MaterialTerrain.h"
-#include "materialbump.h"
-#include <QOpenGLContext>
 
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::writeMeshAttributes()
@@ -48,7 +46,7 @@ void DemoScene::init()
 void DemoScene::initGeo()
 {
 
-    m_meshes[0].loadMyMesh(Grid::MODELS::MODEL2);
+    m_meshes[0].loadMyMesh(m_typeGrid);
     // Create and bind our Vertex Array Object
     m_vao->create();
     m_vao->bind();
@@ -108,7 +106,6 @@ void DemoScene::nextMaterial()
 {
   makeCurrent();
   m_currentMaterial = (m_currentMaterial + 1) % m_materials.size();
-
   m_materials[m_currentMaterial]->apply();
   setAttributeBuffers();
 }
@@ -124,8 +121,8 @@ void DemoScene::renderScene()
   m_materials[m_currentMaterial]->update();
   m_meshes[0].changeFreq(m_terrainFrequency);
   m_meshes[0].changeAmplitude(m_terrainAmplitude);
-  //_meshes[0].changeSeed(m_terrainSeed, Grid::MODELS::MODEL3);
-  m_meshes[0].loadMyMesh(Grid::MODELS::MODEL2);
+  m_meshes[0].changeSeed(m_terrainSeed);
+  m_meshes[0].loadMyMesh(m_typeGrid);
   m_meshVBO.use();
   glDrawElements(GL_TRIANGLES, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
   generateNewGeometry();
@@ -136,12 +133,12 @@ void DemoScene::changeFrequency(int _frequency)
 {
     m_terrainFrequency = _frequency / 100.0f;
 }
-
+//-----------------------------------------------------------------------------------------------------
 void DemoScene::changeAmplitude(int _amplitude)
 {
     m_terrainAmplitude = _amplitude;
 }
-
+//-----------------------------------------------------------------------------------------------------
 void DemoScene::changeSeed(int _seed)
 {
     m_terrainSeed = _seed;

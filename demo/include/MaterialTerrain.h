@@ -1,6 +1,14 @@
 #ifndef MATERIALTERRAIN_H
 #define MATERIALTERRAIN_H
 
+//-------------------------------------------------------------------------------------------------------
+/// @author Moira Shooter
+/// @file MaterialTerrain.h
+/// @brief Produces a Material for terrain depending on the height
+/// @version
+/// @date last revision 24 March 2018
+/// \todo
+//-------------------------------------------------------------------------------------------------------
 #include "Material.h"
 #include "vec3.hpp"
 

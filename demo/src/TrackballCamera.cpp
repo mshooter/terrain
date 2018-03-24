@@ -1,14 +1,15 @@
-#include "TrackballCamera.h"
 #include <gtx/norm.hpp>
 #include <gtc/constants.hpp>
 #include <cmath>
+#include "TrackballCamera.h"
 
+//------------------------------------------------------------------------------------------------------------------------------------------
 const TrackballCamera::statePtr TrackballCamera::m_states[] = {
   statePtr{new CameraZoom},
   statePtr{new CameraRotate},
   statePtr{new CameraPassive}
 };
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 void TrackballCamera::handleMouseClick(const QMouseEvent &_action)
 {
   auto mousePos = _action.pos();
@@ -26,12 +27,12 @@ void TrackballCamera::handleMouseClick(const QMouseEvent &_action)
       + (type == ME::MouseButtonRelease) * TRACKBALL_PASSIVE;
   m_currentState = static_cast<CAM_STATE>(input);
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 void TrackballCamera::handleKey(const int _key, const bool _isPress)
 {
   m_states[m_currentState]->handleKey(this, _key, _isPress);
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 /**
  * @brief TrackballCamera::handleMouseMove
  * @param mouseX
@@ -42,7 +43,7 @@ void TrackballCamera::handleMouseMove(const glm::vec2 &_mousePos)
 {
   m_states[m_currentState]->handleMouseMove(this, _mousePos);
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 /**
  * @brief TrackballCamera::handleMouseMove
  * @param mouseX current mouse coordinate X
@@ -68,7 +69,7 @@ void TrackballCamera::mouseRotate(const glm::vec2 &_mousePos)
   // Update the last mouse position
   m_lastPos = _mousePos;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 /**
  * @brief TrackballCamera::mouseZoom
  * @param mouseX
@@ -80,7 +81,7 @@ void TrackballCamera::mouseZoom(const glm::vec2 &_mousePos)
   m_lastPos = _mousePos;
   m_zoom = glm::clamp(m_zoom, 0.0f, 10.0f);
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 glm::vec3 TrackballCamera::getCameraEye() const noexcept
 {
   // Now use lookat function to set the view matrix (assume y is up)
@@ -88,7 +89,7 @@ glm::vec3 TrackballCamera::getCameraEye() const noexcept
   glm::mat3 r_pitch = glm::mat3_cast(glm::angleAxis(m_pitch, glm::vec3(1.0f, 0.0f, 0.0f)));
   return m_target - (r_yaw * r_pitch * m_zoom *  (m_target - m_camOrigin));
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 void TrackballCamera::resetPosition()
 {
   Camera::resetPosition();
@@ -98,23 +99,23 @@ void TrackballCamera::resetPosition()
   m_lastYaw     = 0.0f;
   m_lastPitch   = 0.0f;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 void TrackballCamera::setZoom(const float _zoom) noexcept
 {
   m_zoom = _zoom;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 void TrackballCamera::setSensitivity(const float _sensitivity) noexcept
 {
   m_sensitivity = _sensitivity;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 void TrackballCamera::updateYawPitch()
 {
   m_lastYaw = m_yaw;
   m_lastPitch = m_pitch;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 /**
  * @brief TrackballCamera::update
  * The yaw and pitch are the rotations about the y and x axes respectively, constructed using angle and axis.

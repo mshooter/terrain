@@ -42,11 +42,9 @@ HEADERS += \
     include/DemoScene.h \
     #include/MaterialPhong.h \
     include/ShaderLib.h \
-    include/MaterialWireframe.h \
+    #include/MaterialWireframe.h \
     #include/MaterialFractal.h \
     #include/MaterialEnvMap.h \
-    include/MaterialTesselation.h \
-    include/materialbump.h \ 
     include/MaterialTerrain.h \
     include/Mesh.h \
     include/MeshVBO.h \ 
@@ -65,11 +63,10 @@ SOURCES += \
     src/DemoScene.cpp \
     #src/MaterialPhong.cpp \
     src/ShaderLib.cpp \
-    src/MaterialWireframe.cpp \
-    src/bump.cpp \ 
+    #src/MaterialWireframe.cpp \
     src/MaterialTerrain.cpp \
     src/Mesh.cpp \
-    src/MeshVBO.cpp 
+    src/MeshVBO.cpp \
     #src/MaterialFractal.cpp \
     #src/MaterialEnvMap.cpp \
     src/FustrumCulling.cpp
@@ -77,12 +74,9 @@ SOURCES += \
 OTHER_FILES += \
     shaders/PBRFragment.glsl \
     shaders/PBRVertex.glsl \
-    shaders/bump_vert.glsl \
-    shaders/bump_frag.glsl \
     shaders/terrain_vert.glsl \
     shaders/terrain_frag.glsl \ 
     shaderPrograms/PBR.json \
-    shaderPrograms/bump.json \ 
     shaderPrograms/Terrain.json \
     #$$files(shaders/*, true) \
     #$$files(shaderPrograms/*, true) \

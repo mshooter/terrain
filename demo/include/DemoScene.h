@@ -1,6 +1,15 @@
 #ifndef DEMOSCENE_H
 #define DEMOSCENE_H
 
+//-------------------------------------------------------------------------------------------------------
+/// @author Moira Shooter
+/// Modified from :-
+/// Jack Diver (08/03/2018). OpenGLTemplate
+/// @note changes has been to be compatible to demo the terrain library
+//-------------------------------------------------------------------------------------------------------
+
+
+
 #include "Scene.h"
 #include "MaterialPBR.h"
 #include "MaterialPhong.h"
@@ -104,7 +113,7 @@ private:
   //-----------------------------------------------------------------------------------------------------
   /// @brief Holds our test meshes.
   //-----------------------------------------------------------------------------------------------------
-  std::array<Mesh, 1> m_meshes;
+  std::array<Mesh, 3> m_meshes;
   //-----------------------------------------------------------------------------------------------------
   /// @brief Wraps up our OpenGL buffers and VAO.
   //-----------------------------------------------------------------------------------------------------
@@ -138,8 +147,9 @@ private:
   bool m_rotating = false;
   float m_terrainFrequency = 0;
   float m_terrainAmplitude = 0;
-  int m_terrainSeed = 0;
+  int m_terrainSeed = 1;
 
+  int m_typeGrid = Grid::MODELS::MODEL2;
 
 
 

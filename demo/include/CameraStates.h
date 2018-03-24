@@ -1,6 +1,18 @@
 #ifndef CAMERASTATES_H
 #define CAMERASTATES_H
 
+
+//-------------------------------------------------------------------------------------------------------
+/// @author Jack Diver
+/// Modified from :-
+/// Richard Southern (02/02/2017). Trackball workshop.
+/// @note Changes were made to the interface of camera, mouse rotate and zoom are pure virtual.
+/// @note The case statements have been removed in favour of CameraStates which use double dispatch,
+/// based on the camera and cameras state, to act accordingly.
+/// @note The eye is now the origin, and a function is used to return the eye vector, as this is
+/// calculated by applying transformations to the origin.
+//-------------------------------------------------------------------------------------------------------
+
 #include "vec2.hpp"
 
 class Camera;

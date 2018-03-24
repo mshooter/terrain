@@ -1,6 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+//-------------------------------------------------------------------------------------------------------
+/// @author Moira Shooter
+/// Modified from :-
+/// Jack Diver (08/03/2018). OpenGLTemplate
+/// @note changes has been to be compatible to demo the terrain library
+//-------------------------------------------------------------------------------------------------------
+
 #include <QMainWindow>
 #include "DemoScene.h"
 #include "ui_mainwindow.h"

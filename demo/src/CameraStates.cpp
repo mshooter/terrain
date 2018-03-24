@@ -1,8 +1,7 @@
-#include "CameraStates.h"
-#include "Camera.h"
 #include <QMouseEvent>
 #include <QKeyEvent>
-
+#include "CameraStates.h"
+#include "Camera.h"
 
 //-----------------------------------------------------------------------------------------------------
 void CameraState::resetPosition(Camera* const io_camera, const int _key, const bool _isPress)

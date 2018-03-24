@@ -1,8 +1,17 @@
 #ifndef NOISE_H
 #define NOISE_H
 
+// ----------------------------------------------------------------------------------------------------------------------------------------
+/// @author Moira Shooter
+/// @file Noise.h
+/// @brief Creates noise
+/// @version
+/// @date last revision 24 March 2018
+/// \todo
+// ----------------------------------------------------------------------------------------------------------------------------------------
+
 #include <array>
-// http://blog.kazade.co.uk/2014/05/a-public-domain-c11-1d2d3d-perlin-noise.html
+
 class Noise
 {
 public:

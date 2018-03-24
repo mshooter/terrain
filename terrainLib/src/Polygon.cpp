@@ -1,5 +1,7 @@
-#include "Polygon.h"
 #include <math.h>
+#include "Polygon.h"
+
+//------------------------------------------------------------------------------------------------------------------------------------------
 float Polygon::createCone(glm::vec3 _pos,
                          float _r,
                          float _h)
@@ -16,11 +18,11 @@ float Polygon::createPlane(glm::vec3 _pos)
 {
     return _pos.y;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------
 float Polygon::createCube(glm::vec3 _pos, float _size)
 {
     return std::min(std::min( -_pos.x * _pos.x, -_pos.y * _pos.y), -_pos.z * _pos.z ) + _size;
 }
-
 //------------------------------------------------------------------------------------------------------------------------------------------
 float Polygon::unions(float d1, float d2)
 {
@@ -53,8 +55,8 @@ float Polygon::createTerrain3(glm::vec3 _pos, Noise _noise)
 {
     return _pos.y + _noise.getNoise(_pos.x, _pos.z) + _noise.getNoise(_pos.z, _pos.y) + _noise.getNoise(_pos.x, _pos.y);
 }
-
-float Polygon::createTerrain4(glm::vec3 _pos, Noise _noise)
+//------------------------------------------------------------------------------------------------------------------------------------------
+float Polygon::createTerrain4(glm::vec3 _pos, Noise _noise, double _max, double _min)
 {
-    return std::min(15.0,std::max(_noise.getNoise(_pos.x,_pos.z),-15.0)) + _pos.y;
+    return std::min(_max,std::max(_noise.getNoise(_pos.x,_pos.z),-_min)) + _pos.y;
 }

@@ -1,6 +1,5 @@
 #include "Camera.h"
 
-
 //-----------------------------------------------------------------------------------------------------
 void Camera::resize(const int _width, const int _height)
 {

@@ -1,10 +1,9 @@
-#include "Scene.h"
 #include <iostream>
 #include <QColorDialog>
 #include <QGLWidget>
 #include <QImage>
 #include <QScreen>
-#include "MaterialPBR.h"
+#include "Scene.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 Scene::Scene(const std::shared_ptr<Camera> &io_camera , QWidget *io_parent) :

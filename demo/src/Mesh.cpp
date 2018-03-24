@@ -1,10 +1,13 @@
-#include "Mesh.h"
 #include <math.h>
+#include "Mesh.h"
+
+//-----------------------------------------------------------------------------------------------------
 void Mesh::loadMyMesh(int _model)
 {
+    reset();
     terrain.setFrequency(m_terrainFrequency);
     terrain.setHeight(m_terrainAmplitde);
-    terrain.setSeed(8);
+    terrain.setSeed(m_terrainSeed);
     terrain.setOctaves(1);
     terrain.setPersistence(1.0f);
     terrain.createGrid(m_vertices,m_indices,m_normals, _model);
@@ -80,18 +83,14 @@ int Mesh::getNData() const noexcept
 void Mesh::changeFreq(float _terrainFrequency)
 {
     m_terrainFrequency = _terrainFrequency;
-    reset();
 }
 // ---------------------------------------------------------
 void Mesh::changeAmplitude(float _amplitude)
 {
     m_terrainAmplitde = _amplitude;
-    reset();
 }
 // ---------------------------------------------------------
 void Mesh::changeSeed(int _seed)
 {
     m_terrainSeed = _seed;
-    reset();
 }
-

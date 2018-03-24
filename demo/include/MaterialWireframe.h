@@ -1,6 +1,8 @@
 #ifndef MATERIALWIREFRAME_H
 #define MATERIALWIREFRAME_H
 
+
+
 #include "Material.h"
 
 class Camera;

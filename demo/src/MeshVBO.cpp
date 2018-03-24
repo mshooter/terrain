@@ -1,5 +1,5 @@
-#include "MeshVBO.h"
 #include <numeric>
+#include "MeshVBO.h"
 
 //-----------------------------------------------------------------------------------------------------
 void MeshVBO::init()

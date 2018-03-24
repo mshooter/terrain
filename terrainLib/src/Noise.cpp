@@ -1,9 +1,10 @@
-#include "Noise.h"
-# include <algorithm>
+#include <algorithm>
 #include <random>
 #include <numeric>
 #include <cmath>
+#include "Noise.h"
 
+//------------------------------------------------------------------------------------------------------------------------------------------
 Noise::Noise(double _frequency, double _amplitude, int _octaves, int _randomSeed, double _persistence)
 {
     m_persistence = _persistence;
@@ -27,6 +28,9 @@ void Noise::setNoise(double _frequency, double _amplitude, int _octaves, int _ra
     m_randomseed = 2 + _randomseed * _randomseed;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
+/// The following section is from :-
+/// Nick Banks (2011). Perlin Noise Generation for Terrain [online]. [Accessed 2018].
+/// Available from: " http://stackoverflow.com/questions/4753055/perlin-noise-generation-for-terrain".
 double Noise::Total(double i, double j) const
 {
     double t = 0.0f;
@@ -102,4 +106,4 @@ double Noise::PNoise(int x, int y) const
     int t = (n * (n * n * 15731 + 789221) + 1376312589) & 0x7fffffff;
     return 1.0 - double(t) * 0.931322574615478515625e-9;/// 1073741824.0);
 }
-
+/// end of citation

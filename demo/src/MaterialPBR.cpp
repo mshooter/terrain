@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "ShaderLib.h"
 
+//-----------------------------------------------------------------------------------------------------
 void MaterialPBR::init()
 {
   auto shaderPtr = m_shaderLib->getCurrentShader();
@@ -14,7 +15,7 @@ void MaterialPBR::init()
   // Update our matrices
   update();
 }
-
+//-----------------------------------------------------------------------------------------------------
 void MaterialPBR::update()
 {
   auto shaderPtr = m_shaderLib->getShader(m_shaderName);
@@ -35,7 +36,7 @@ void MaterialPBR::update()
     }
   }
 }
-
+//-----------------------------------------------------------------------------------------------------
 const char* MaterialPBR::shaderFileName() const
 {
   return "shaderPrograms/PBR.json";

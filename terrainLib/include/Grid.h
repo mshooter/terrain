@@ -1,6 +1,14 @@
 #ifndef GRID_H
 #define GRID_H
 
+//-------------------------------------------------------------------------------------------------------
+/// @author Moira Shooter
+/// @file Grid.h
+/// @brief Creates different types of terrain, you can also edit terrain
+/// @version
+/// @date last revision 24 March 2018
+/// \todo
+//-------------------------------------------------------------------------------------------------------
 
 #include <vector>
 #include "vec3.hpp"

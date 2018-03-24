@@ -1,6 +1,10 @@
 #ifndef SHADERLIB_H
 #define SHADERLIB_H
 
+//-------------------------------------------------------------------------------------------------------
+/// @author Jack Diver
+//-------------------------------------------------------------------------------------------------------
+
 #include <vector>
 #include <unordered_map>
 #include <QOpenGLShaderProgram>

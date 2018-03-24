@@ -1,8 +1,8 @@
-#include "Grid.h"
 #include <algorithm>
 #include <iostream>
+#include "Grid.h"
 
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals, int _model)
 {
 
@@ -19,7 +19,7 @@ void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &i
         switch(_model)
         {
         case MODEL1 : { m_values[i] = m_poly->createTerrain1(_position, noise); break; }
-        case MODEL2 : { editTerrain(m_values[i], m_poly->createTerrain2(_position, noise), m_poly->createSphere(_position,10.0f)); break; }
+        case MODEL2 : { m_values[i] = m_poly->createTerrain2(_position, noise); break; }
         case MODEL3 : { m_values[i] = m_poly->createTerrain3(_position, noise); break; }
         }
 

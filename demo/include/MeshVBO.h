@@ -1,6 +1,10 @@
 #ifndef MESHVBO_H
 #define MESHVBO_H
 
+//-------------------------------------------------------------------------------------------------------
+/// @author Jack Diver
+//-------------------------------------------------------------------------------------------------------
+
 #include <QOpenGLVertexArrayObject>
 #include <QOpenGLBuffer>
 #include <iostream>

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.8.0
+** Created by: Qt User Interface Compiler version 5.9.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -17,6 +17,7 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -37,13 +38,17 @@ public:
     QSpacerItem *horizontalSpacer_5;
     QGroupBox *s_drawGB;
     QGridLayout *gridLayout_2;
+    QLabel *label_2;
     QPushButton *material;
     QSpacerItem *verticalSpacer;
-    QSlider *amplitude;
     QPushButton *generate;
     QCheckBox *m_rotating;
     QSpacerItem *horizontalSpacer_3;
     QSlider *frequency;
+    QLabel *label;
+    QSlider *amplitude;
+    QSlider *seed;
+    QLabel *label_3;
     QMenuBar *menubar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -79,6 +84,11 @@ public:
         s_drawGB->setObjectName(QStringLiteral("s_drawGB"));
         gridLayout_2 = new QGridLayout(s_drawGB);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        label_2 = new QLabel(s_drawGB);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        gridLayout_2->addWidget(label_2, 5, 1, 1, 1);
+
         material = new QPushButton(s_drawGB);
         material->setObjectName(QStringLiteral("material"));
 
@@ -86,13 +96,7 @@ public:
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_2->addItem(verticalSpacer, 6, 1, 1, 1);
-
-        amplitude = new QSlider(s_drawGB);
-        amplitude->setObjectName(QStringLiteral("amplitude"));
-        amplitude->setOrientation(Qt::Vertical);
-
-        gridLayout_2->addWidget(amplitude, 6, 2, 1, 1);
+        gridLayout_2->addItem(verticalSpacer, 9, 1, 1, 1);
 
         generate = new QPushButton(s_drawGB);
         generate->setObjectName(QStringLiteral("generate"));
@@ -116,7 +120,35 @@ public:
         frequency->setSingleStep(1);
         frequency->setOrientation(Qt::Horizontal);
 
-        gridLayout_2->addWidget(frequency, 3, 1, 1, 1);
+        gridLayout_2->addWidget(frequency, 4, 1, 1, 1);
+
+        label = new QLabel(s_drawGB);
+        label->setObjectName(QStringLiteral("label"));
+
+        gridLayout_2->addWidget(label, 3, 1, 1, 1);
+
+        amplitude = new QSlider(s_drawGB);
+        amplitude->setObjectName(QStringLiteral("amplitude"));
+        amplitude->setEnabled(true);
+        amplitude->setMaximum(100);
+        amplitude->setOrientation(Qt::Horizontal);
+        amplitude->setInvertedAppearance(false);
+        amplitude->setInvertedControls(false);
+
+        gridLayout_2->addWidget(amplitude, 6, 1, 1, 1);
+
+        seed = new QSlider(s_drawGB);
+        seed->setObjectName(QStringLiteral("seed"));
+        seed->setMinimum(1);
+        seed->setMaximum(100);
+        seed->setOrientation(Qt::Horizontal);
+
+        gridLayout_2->addWidget(seed, 8, 1, 1, 1);
+
+        label_3 = new QLabel(s_drawGB);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        gridLayout_2->addWidget(label_3, 7, 1, 1, 1);
 
 
         s_mainWindowGridLayout->addWidget(s_drawGB, 2, 5, 1, 1);
@@ -124,7 +156,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 22));
+        menubar->setGeometry(QRect(0, 0, 800, 26));
         MainWindow->setMenuBar(menubar);
 
         retranslateUi(MainWindow);
@@ -136,9 +168,12 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Terrain", Q_NULLPTR));
         s_drawGB->setTitle(QString());
+        label_2->setText(QApplication::translate("MainWindow", "Amplitude", Q_NULLPTR));
         material->setText(QApplication::translate("MainWindow", "Material", Q_NULLPTR));
         generate->setText(QApplication::translate("MainWindow", "Generate", Q_NULLPTR));
         m_rotating->setText(QApplication::translate("MainWindow", "Rotating", Q_NULLPTR));
+        label->setText(QApplication::translate("MainWindow", "Frequency", Q_NULLPTR));
+        label_3->setText(QApplication::translate("MainWindow", "Seed ", Q_NULLPTR));
     } // retranslateUi
 
 };

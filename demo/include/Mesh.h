@@ -1,6 +1,18 @@
 #ifndef MESH_H
 #define MESH_H
 
+//-------------------------------------------------------------------------------------------------------
+/// @author Moira Shooter
+/// Modified from :-
+/// Jack Diver (08/03/2018). OpenGLTemplate
+/// @note changed the class to demo the terrain Library
+/// @file Mesh.h
+/// @brief Creates a mesh
+/// @version
+/// @date last revision 24 March 2018
+/// \todo
+//-------------------------------------------------------------------------------------------------------
+
 #include <QOpenGLFunctions>
 #include <vector>
 #include <string>
@@ -9,6 +21,8 @@
 #include "vec2.hpp"
 #include "Grid.h"
 #include "MarchingCube.h"
+
+
 
 
 class Mesh
@@ -78,8 +92,6 @@ public:
   //-----------------------------------------------------------------------------------------------------
   int getNData() const noexcept;
 
-
-  Grid terrain;
   void changeFreq(float _terrainFrequency);
   void changeAmplitude(float _amplitude);
   void changeSeed(int _seed);
@@ -101,9 +113,12 @@ protected:
   //-----------------------------------------------------------------------------------------------------
   std::vector<GLushort> m_indices;
 
+  Grid terrain;
   float m_terrainFrequency;
   float m_terrainAmplitde;
   float m_terrainSeed;
+
+
 
 };
 

@@ -1,13 +1,19 @@
 #ifndef POLYGON_H
 #define POLYGON_H
 
+// ----------------------------------------------------------------------------------------------------------------------------------------
+/// @author Moira Shooter
+/// @file Polygon.h
+/// @brief Creates signed distance field functions, returns floats to create terrains or other "objects"
+/// @version
+/// @date last revision 24 March 2018
+/// \todo
+// ----------------------------------------------------------------------------------------------------------------------------------------
+
 #include <math.h>
 #include <vec3.hpp>
 #include <vector>
 #include "Noise.h"
-
-
-// todo : change into a base class and derivate classes
 
 
 class Polygon
@@ -62,11 +68,33 @@ public:
     /// @parm[_in] _pos : position of object
     // ----------------------------------------------------------------------------------------------------------------------------------------
     float displacement(glm::vec3 _pos);
-
+    // ----------------------------------------------------------------------------------------------------------------------------------------
+    /// @build method to create Terrain1
+    /// @parm[_in] _pos : position of object
+    /// @parm[_in] _noise : variable noise with all it's information
+    // ----------------------------------------------------------------------------------------------------------------------------------------
     float createTerrain1(glm::vec3 _pos,  Noise _noise);
+    // ----------------------------------------------------------------------------------------------------------------------------------------
+    /// @build method to create Terrain2
+    /// @parm[_in] _pos : position of object
+    /// @parm[_in] _noise : variable noise with all it's information
+    // ----------------------------------------------------------------------------------------------------------------------------------------
     float createTerrain2(glm::vec3 _pos, Noise _noise);
+    // ----------------------------------------------------------------------------------------------------------------------------------------
+    /// @build method to create Terrain3
+    /// @parm[_in] _pos : position of object
+    /// @parm[_in] _noise : variable noise with all it's information
+    // ----------------------------------------------------------------------------------------------------------------------------------------
     float createTerrain3(glm::vec3 _pos, Noise _noise);
-    float createTerrain4(glm::vec3 _pos, Noise _noise);
+    // ----------------------------------------------------------------------------------------------------------------------------------------
+    /// @build method to create Terrain4
+    /// @parm[_in] _pos : position of object
+    /// @parm[_in] _noise : variable noise with all it's information
+    /// @parm[_in] _max : maximum range for the terrain (height)
+    /// @parm[_in] _min : minimum range for the terrain (height)
+    // ----------------------------------------------------------------------------------------------------------------------------------------
+    float createTerrain4(glm::vec3 _pos, Noise _noise, double _max, double _min);
+
 private:
 
 

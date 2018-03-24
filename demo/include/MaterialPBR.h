@@ -1,6 +1,13 @@
 #ifndef MATERIALPBR_H
 #define MATERIALPBR_H
 
+//-------------------------------------------------------------------------------------------------------
+/// @author Moira Shooter
+/// Modified from :-
+/// Jack Diver (08/03/2018). OpenGLTemplate
+/// @note changes has been to be compatible to demo the terrain library
+//-------------------------------------------------------------------------------------------------------
+
 #include "Material.h"
 #include "vec3.hpp"
 

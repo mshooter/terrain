@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "ShaderLib.h"
 
+//-----------------------------------------------------------------------------------------------------
 void MaterialTerrain::init()
 {
     auto shaderPtr = m_shaderLib->getCurrentShader();
@@ -13,7 +14,7 @@ void MaterialTerrain::init()
     shaderPtr->setUniformValue("model", m_model);
     update();
 }
-
+//-----------------------------------------------------------------------------------------------------
 void MaterialTerrain::update()
 {
     auto shaderPtr = m_shaderLib->getShader(m_shaderName);
@@ -33,7 +34,7 @@ void MaterialTerrain::update()
       }
     }
 }
-
+//-----------------------------------------------------------------------------------------------------
 const char* MaterialTerrain::shaderFileName() const
 {
     return "shaderPrograms/Terrain.json";

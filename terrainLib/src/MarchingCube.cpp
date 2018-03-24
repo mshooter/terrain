@@ -6,6 +6,7 @@
 #include "McData.h"
 #include "Noise.h"
 
+//------------------------------------------------------------------------------------------------------------------------------------------
 MarchingCube::MarchingCube()
 {
     // amount of cells either double or half, this is the resolutions
