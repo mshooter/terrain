@@ -2,7 +2,7 @@
 #include "DemoScene.h"
 #include "MaterialPBR.h"
 #include "MaterialTerrain.h"
-
+#include <fstream>
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::writeMeshAttributes()
 {
@@ -41,6 +41,7 @@ void DemoScene::init()
     using namespace SceneMatrices;
     m_matrices[MODEL_VIEW] = glm::translate(m_matrices[MODEL_VIEW], glm::vec3(0.0f, 0.0f, -2.0f));
   }
+
 }
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::initGeo()
@@ -54,6 +55,7 @@ void DemoScene::initGeo()
     m_meshVBO.init();
 
     generateNewGeometry();
+    changeTerrain(m_typeGrid);
 }
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::keyPress(QKeyEvent* io_event)
@@ -67,8 +69,10 @@ void DemoScene::initMaterials()
 {
 
   m_materials.reserve(3);
-  m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices, 1.0f, 1.0f, 1.0f, 1.0f, 0));
   m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices, 1.0f, 1.0f, 1.0f, 1.0f, 1));
+  m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices, 1.0f, 1.0f, 1.0f, 1.0f, 0));
+  m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices, 1.0f, 1.0f, 1.0f, 1.0f, 2));
+  m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices, 1.0f, 1.0f, 1.0f, 1.0f, 3));
   for (size_t i = 0; i < m_materials.size(); ++i)
   {
     auto& mat = m_materials[i];
@@ -122,11 +126,12 @@ void DemoScene::renderScene()
   m_meshes[0].changeFreq(m_terrainFrequency);
   m_meshes[0].changeAmplitude(m_terrainAmplitude);
   m_meshes[0].changeSeed(m_terrainSeed);
+  m_meshes[0].changeResolution(m_terrainResolution);
+  m_meshes[0].changeRange(m_terrainRange);
   m_meshes[0].loadMyMesh(m_typeGrid);
   m_meshVBO.use();
   glDrawElements(GL_TRIANGLES, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
   generateNewGeometry();
-
 }
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::changeFrequency(int _frequency)
@@ -142,4 +147,21 @@ void DemoScene::changeAmplitude(int _amplitude)
 void DemoScene::changeSeed(int _seed)
 {
     m_terrainSeed = _seed;
+}
+//-----------------------------------------------------------------------------------------------------
+void DemoScene::changeResolution(int _resolution)
+{
+    m_terrainResolution = _resolution;
+}
+//-----------------------------------------------------------------------------------------------------
+void DemoScene::changeRange(int _range)
+{
+    m_terrainRange = _range;
+}
+//-----------------------------------------------------------------------------------------------------
+void DemoScene::changeTerrain(int _model)
+{
+    makeCurrent();
+    m_typeGrid = _model;
+    setAttributeBuffers();
 }

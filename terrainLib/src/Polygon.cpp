@@ -60,3 +60,8 @@ float Polygon::createTerrain4(glm::vec3 _pos, Noise _noise, double _max, double 
 {
     return std::min(_max,std::max(_noise.getNoise(_pos.x,_pos.z),-_min)) + _pos.y;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------
+float Polygon::createTerrain5(glm::vec3 _pos, Noise _noise)
+{
+    return unions(createTerrain2(_pos, _noise),_pos.y);
+}

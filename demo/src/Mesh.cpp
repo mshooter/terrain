@@ -5,12 +5,15 @@
 void Mesh::loadMyMesh(int _model)
 {
     reset();
+    terrain.setResolution(m_terrainResolution);
+    terrain.setRangeAxis(m_terrainRange);
     terrain.setFrequency(m_terrainFrequency);
     terrain.setHeight(m_terrainAmplitde);
     terrain.setSeed(m_terrainSeed);
     terrain.setOctaves(1);
     terrain.setPersistence(1.0f);
     terrain.createGrid(m_vertices,m_indices,m_normals, _model);
+
 }
 // ---------------------------------------------------------
 void Mesh::reset()
@@ -93,4 +96,19 @@ void Mesh::changeAmplitude(float _amplitude)
 void Mesh::changeSeed(int _seed)
 {
     m_terrainSeed = _seed;
+}
+// ---------------------------------------------------------
+void Mesh::changeResolution(int _resolution)
+{
+    m_terrainResolution = _resolution;
+}
+// ---------------------------------------------------------
+void Mesh::changeRange(int _range)
+{
+    m_terrainRange = _range;
+}
+
+std::vector<glm::vec3> Mesh::getVertices()
+{
+    return m_vertices;
 }

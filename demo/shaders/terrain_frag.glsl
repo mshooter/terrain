@@ -21,7 +21,7 @@ uniform int model;
 
 // lights
 const float scale = 30.0f;
-const float height = 30.0f;
+const float height = 40.0f;
 const vec3 lightPositions[4] = vec3[4](
       vec3(scale, height, -scale),
       vec3( -scale, height, scale),
@@ -91,7 +91,7 @@ void main()
     terrain_colours[2] = vec3(0.2, 0.5, 0.2);
     terrain_colours[3] = vec3(0.0, 0.2, 0.5);
     terrain_colours[4] = vec3(0.0, 0.5, 0.5);
-    terrain_colours[5] = vec3(0.85, 0.54, 0.25);
+    terrain_colours[5] = vec3(1.0, 0.73, 0.48);
 
     switch(model)
     {
@@ -131,9 +131,22 @@ void main()
     case 2 :
     {
         // sand
-        albedo = terrain_colours[5];
+        // (WorldPos.x * WorldPos.x + WorldPos.z * WorldPos.z) < 50
+        if(WorldPos.y >= 1)
+        {
+            albedo = terrain_colours[5];
+        }
+        else
+        {
+            albedo = terrain_colours[4];
+        }
     }
         break;
+    case 3 :
+    {
+         albedo = vec3(0.9, 0.3, 0.2);
+         break;
+    }
     }
 
 

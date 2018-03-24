@@ -7,13 +7,13 @@
 #include "Noise.h"
 
 //------------------------------------------------------------------------------------------------------------------------------------------
-MarchingCube::MarchingCube()
+MarchingCube::MarchingCube(int _NCells, int _axisMin, int _axisMax)
 {
     // amount of cells either double or half, this is the resolutions
-    m_NCells = 60;
+    m_NCells = _NCells;
     // size of the cube
-    m_axisMin = -60;
-    m_axisMax = 60;
+    m_axisMin = _axisMin;
+    m_axisMax = _axisMax;
 
     m_axisRange = m_axisMax - m_axisMin;
     set3DGridPoints();
@@ -74,7 +74,7 @@ void MarchingCube::MC( std::vector<glm::vec3> &_points, std::vector<float> &_val
         // check which edges are crossed, and estimate the point location
         // using a weighted average of scalar values at edge endpoints.
         // store the vertex in an array for use later.
-        float mu = 0.5f;
+        float mu = 1.0f;
 
         for (unsigned short i = 0; i < 12; ++i)
         {
@@ -110,21 +110,6 @@ void MarchingCube::MC( std::vector<glm::vec3> &_points, std::vector<float> &_val
   }
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
-void MarchingCube::setNCells(int _cells)
-{
-    m_NCells = _cells;
-}
-//------------------------------------------------------------------------------------------------------------------------------------------
-void MarchingCube::setAxisMin(int _minAxis)
-{
-    m_axisMin = _minAxis;
-}
-//------------------------------------------------------------------------------------------------------------------------------------------
-void MarchingCube::setAxisMax(int _maxAxis)
-{
-    m_axisMax = _maxAxis;
-}
-//------------------------------------------------------------------------------------------------------------------------------------------
 void MarchingCube::set3DGridPoints()
 {
     // points devide space into a 3D grid
@@ -144,19 +129,4 @@ void MarchingCube::set3DGridPoints()
             }
         }
     }
-}
-//------------------------------------------------------------------------------------------------------------------------------------------
-int MarchingCube::getNCells()
-{
-    return m_NCells;
-}
-//------------------------------------------------------------------------------------------------------------------------------------------
-int MarchingCube::getAxisMax()
-{
-    return m_axisMax;
-}
-//------------------------------------------------------------------------------------------------------------------------------------------
-int MarchingCube::getAxisMin()
-{
-    return m_axisMin;
 }

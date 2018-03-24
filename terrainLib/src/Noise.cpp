@@ -16,7 +16,7 @@ Noise::Noise(double _frequency, double _amplitude, int _octaves, int _randomSeed
 //------------------------------------------------------------------------------------------------------------------------------------------
 double Noise::getNoise(double _x, double _y) const
 {
-    return m_amplitude * Total(_x, _y) / 0.5f;
+    return m_amplitude * Total(_x, _y);
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
 void Noise::setNoise(double _frequency, double _amplitude, int _octaves, int _randomseed, double _persistence)

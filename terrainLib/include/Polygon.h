@@ -94,6 +94,12 @@ public:
     /// @parm[_in] _min : minimum range for the terrain (height)
     // ----------------------------------------------------------------------------------------------------------------------------------------
     float createTerrain4(glm::vec3 _pos, Noise _noise, double _max, double _min);
+    // ----------------------------------------------------------------------------------------------------------------------------------------
+    /// @build method to create Terrain5
+    /// @parm[_in] _pos : position of object
+    /// @parm[_in] _noise : variable noise with all it's information
+    // ----------------------------------------------------------------------------------------------------------------------------------------
+    float createTerrain5(glm::vec3 _pos, Noise _noise);
 
 private:
 

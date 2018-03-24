@@ -7,11 +7,13 @@ void MainWindow::init(const std::shared_ptr<Scene> &io_scene)
   m_ui.setupUi(this);
   m_ui.s_mainWindowGridLayout->addWidget(m_scene.get(),0,0,3,5);
   connect(m_ui.m_rotating, SIGNAL(clicked(bool)),m_scene.get(), SLOT(rotating(bool)));
-  connect(m_ui.generate, SIGNAL( clicked(bool)), m_scene.get(), SLOT(generateNewGeometry()));
   connect(m_ui.material, SIGNAL( clicked(bool)), m_scene.get(), SLOT(nextMaterial()));
   connect(m_ui.frequency, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeFrequency(int)));
   connect(m_ui.amplitude, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeAmplitude(int)));
   connect(m_ui.seed, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeSeed(int)));
+  connect(m_ui.resolution, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeResolution(int)));
+  connect(m_ui.range, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeRange(int)));
+  connect(m_ui.terrain, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeTerrain(int)));
 }
 //----------------------------------------------------------------------------------------------------------------------
 void MainWindow::keyPressEvent(QKeyEvent *io_event)

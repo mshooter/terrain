@@ -6,13 +6,15 @@
 void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals, int _model)
 {
 
+    cube = MarchingCube(m_resolution,-m_range,m_range);
+    noise.setNoise(m_frequency, m_height ,m_octaves, m_randomSeed, m_persistence);
+    // create a vec3 for the functions
     glm::vec3 _position;
     // get the 3d grid points
     std::vector<glm::vec3> points = cube.getPoints();
     // reserve space for the values
-    m_values.reserve( points.size() );
+    m_values.reserve( points.size());
     // fill in values
-    Noise noise(m_frequency, m_height ,m_octaves, m_randomSeed, m_persistence);
     for( float i = 0; i < points.size(); ++i )
     {
         _position = glm::vec3(points[i].x, points[i].y, points[i].z);
@@ -21,32 +23,28 @@ void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &i
         case MODEL1 : { m_values[i] = m_poly->createTerrain1(_position, noise); break; }
         case MODEL2 : { m_values[i] = m_poly->createTerrain2(_position, noise); break; }
         case MODEL3 : { m_values[i] = m_poly->createTerrain3(_position, noise); break; }
+        case MODEL4 : { m_values[i] = m_poly->createTerrain4(_position, noise, 20, 10); break; }
+        case MODEL5 : { m_values[i] = m_poly->createTerrain5(_position, noise); break; }
         }
-
 
     }
 
     cube.MC(points,m_values, io_verts, io_indices, io_normals);
 }
+//------------------------------------------------------------------------------------------------------------------------------------------
 void Grid::editTerrain(float &io_value, float _oldPrim, float _addPrim)
 {
     io_value = m_poly->unions(_oldPrim, _addPrim);
 }
-
 //------------------------------------------------------------------------------------------------------------------------------------------
-void Grid::setResolution(int _res)
+void Grid::setResolution(int _resolution)
 {
-    cube.setNCells(_res);
+    m_resolution = _resolution;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
-void Grid::setMinAxis(int _axis)
+void Grid::setRangeAxis(int _range)
 {
-    cube.setAxisMin(_axis);
-}
-//------------------------------------------------------------------------------------------------------------------------------------------
-void Grid::setMaxAxis(int _axis)
-{
-    cube.setAxisMax(_axis);
+    m_range = _range;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
 void Grid::setFrequency(float _freq)
