@@ -32,9 +32,26 @@ void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &i
     cube.MC(points,m_values, io_verts, io_indices, io_normals);
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
-void Grid::editTerrain(float &io_value, float _oldPrim, float _addPrim)
+void Grid::editTerrain(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals, glm::vec3 _toolPosition)
 {
-    io_value = m_poly->unions(_oldPrim, _addPrim);
+    cube = MarchingCube(30,-60,60);
+    // create a vec3 for the functions
+    glm::vec3 _position;
+    // get the 3d grid points
+    std::vector<glm::vec3> points = cube.getPoints();
+    // reserve space for the values
+    m_values.reserve( points.size());
+    // fill in values
+    for( float i = 0; i < points.size(); ++i )
+    {
+        _position = glm::vec3(points[i].x, points[i].y, points[i].z);
+
+
+       m_values[i] = m_poly->createSphere(_position + _toolPosition, 10.0f);
+
+
+    }
+    cube.MC(points,m_values,io_verts,io_indices,io_normals);
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
 void Grid::setResolution(int _resolution)

@@ -74,7 +74,7 @@ public:
     /// @parm[_in] _oldPrim : the mesh on the screen
     /// @parm[_in] _newPrim : the mesh (brush) we are editing with
     //------------------------------------------------------------------------------------------------------------------------------------------
-    void editTerrain(float &io_value, float _oldPrim, float _addPrim);
+    void editTerrain(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals, glm::vec3 _toolPosition);
     //------------------------------------------------------------------------------------------------------------------------------------------
     /// @build set resolution of grid method
     /// @parm[_in] _resolution : the amount of resolution on the grid
