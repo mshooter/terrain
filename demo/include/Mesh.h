@@ -80,8 +80,9 @@ public:
 
 
   Grid terrain;
-  void changeFreq(float _testFreq, int _model);
-  void changeAmplitude(float _amplitude, int _model);
+  void changeFreq(float _testFreq);
+  void changeAmplitude(float _amplitude);
+  void changeSeed(int _seed);
 protected:
   //-----------------------------------------------------------------------------------------------------
   /// @brief m_vertices contains the vertices
@@ -102,6 +103,7 @@ protected:
 
   float testFreq = 0.2;
   float m_terrainAmplitde;
+  float m_terrainSeed;
 
 };
 

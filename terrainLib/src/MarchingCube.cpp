@@ -11,8 +11,8 @@ MarchingCube::MarchingCube()
     // amount of cells either double or half, this is the resolutions
     m_NCells = 60;
     // size of the cube
-    m_axisMin = -60;
-    m_axisMax = 60;
+    m_axisMin = -50;
+    m_axisMax = 50;
 
     m_axisRange = m_axisMax - m_axisMin;
     set3DGridPoints();

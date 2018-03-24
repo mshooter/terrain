@@ -35,4 +35,5 @@ mac:{
   LIBS+= -L/usr/local/lib -lassimp
   INCLUDEPATH = ../terrainLib/include
   LIBS += -L$$PWD/../terrainLib/lib -lterrainLib -lgtest -pthread
+
 }

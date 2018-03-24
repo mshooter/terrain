@@ -82,6 +82,7 @@ public slots:
   void nextMaterial();
   void changeFrequency(int _frequency);
   void changeAmplitude(int _amplitude);
+  void changeSeed(int _seed);
 
 
 private:
@@ -137,6 +138,7 @@ private:
   bool m_rotating = false;
   float m_terrainFrequency = 0;
   float m_terrainAmplitude = 0;
+  int m_terrainSeed = 0;
 
 
 

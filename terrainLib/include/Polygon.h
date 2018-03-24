@@ -63,10 +63,10 @@ public:
     // ----------------------------------------------------------------------------------------------------------------------------------------
     float displacement(glm::vec3 _pos);
 
-    float createTerrain1(glm::vec3 _pos,  Noise io_noise);
-    float createTerrain2(glm::vec3 _pos, Noise io_noise);
+    float createTerrain1(glm::vec3 _pos,  Noise _noise);
+    float createTerrain2(glm::vec3 _pos, Noise _noise);
     float createTerrain3(glm::vec3 _pos, Noise _noise);
-
+    float createTerrain4(glm::vec3 _pos, Noise _noise);
 private:
 
 

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.0
+** Created by: Qt User Interface Compiler version 5.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -37,13 +37,13 @@ public:
     QSpacerItem *horizontalSpacer_5;
     QGroupBox *s_drawGB;
     QGridLayout *gridLayout_2;
-    QSpacerItem *horizontalSpacer_3;
-    QPushButton *generate;
     QPushButton *material;
-    QCheckBox *m_rotating;
     QSpacerItem *verticalSpacer;
-    QSlider *frequency;
     QSlider *amplitude;
+    QPushButton *generate;
+    QCheckBox *m_rotating;
+    QSpacerItem *horizontalSpacer_3;
+    QSlider *frequency;
     QMenuBar *menubar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -79,19 +79,25 @@ public:
         s_drawGB->setObjectName(QStringLiteral("s_drawGB"));
         gridLayout_2 = new QGridLayout(s_drawGB);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        material = new QPushButton(s_drawGB);
+        material->setObjectName(QStringLiteral("material"));
 
-        gridLayout_2->addItem(horizontalSpacer_3, 0, 2, 1, 1);
+        gridLayout_2->addWidget(material, 1, 1, 1, 1);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_2->addItem(verticalSpacer, 6, 1, 1, 1);
+
+        amplitude = new QSlider(s_drawGB);
+        amplitude->setObjectName(QStringLiteral("amplitude"));
+        amplitude->setOrientation(Qt::Vertical);
+
+        gridLayout_2->addWidget(amplitude, 6, 2, 1, 1);
 
         generate = new QPushButton(s_drawGB);
         generate->setObjectName(QStringLiteral("generate"));
 
         gridLayout_2->addWidget(generate, 0, 1, 1, 1);
-
-        material = new QPushButton(s_drawGB);
-        material->setObjectName(QStringLiteral("material"));
-
-        gridLayout_2->addWidget(material, 1, 1, 1, 1);
 
         m_rotating = new QCheckBox(s_drawGB);
         m_rotating->setObjectName(QStringLiteral("m_rotating"));
@@ -100,9 +106,9 @@ public:
 
         gridLayout_2->addWidget(m_rotating, 2, 1, 1, 1);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_2->addItem(verticalSpacer, 4, 1, 1, 1);
+        gridLayout_2->addItem(horizontalSpacer_3, 0, 2, 1, 1);
 
         frequency = new QSlider(s_drawGB);
         frequency->setObjectName(QStringLiteral("frequency"));
@@ -112,19 +118,13 @@ public:
 
         gridLayout_2->addWidget(frequency, 3, 1, 1, 1);
 
-        amplitude = new QSlider(s_drawGB);
-        amplitude->setObjectName(QStringLiteral("amplitude"));
-        amplitude->setOrientation(Qt::Vertical);
-
-        gridLayout_2->addWidget(amplitude, 3, 2, 1, 1);
-
 
         s_mainWindowGridLayout->addWidget(s_drawGB, 2, 5, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 26));
+        menubar->setGeometry(QRect(0, 0, 800, 22));
         MainWindow->setMenuBar(menubar);
 
         retranslateUi(MainWindow);
@@ -136,8 +136,8 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Terrain", Q_NULLPTR));
         s_drawGB->setTitle(QString());
-        generate->setText(QApplication::translate("MainWindow", "Generate", Q_NULLPTR));
         material->setText(QApplication::translate("MainWindow", "Material", Q_NULLPTR));
+        generate->setText(QApplication::translate("MainWindow", "Generate", Q_NULLPTR));
         m_rotating->setText(QApplication::translate("MainWindow", "Rotating", Q_NULLPTR));
     } // retranslateUi
 

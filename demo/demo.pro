@@ -49,7 +49,8 @@ HEADERS += \
     include/materialbump.h \ 
     include/MaterialTerrain.h \
     include/Mesh.h \
-    include/MeshVBO.h   
+    include/MeshVBO.h \ 
+    include/FustrumCulling.h 
     
 
 SOURCES += \
@@ -71,6 +72,7 @@ SOURCES += \
     src/MeshVBO.cpp 
     #src/MaterialFractal.cpp \
     #src/MaterialEnvMap.cpp \
+    src/FustrumCulling.cpp
 
 OTHER_FILES += \
     shaders/PBRFragment.glsl \

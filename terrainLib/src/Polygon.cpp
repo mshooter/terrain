@@ -1,5 +1,5 @@
 #include "Polygon.h"
-
+#include <math.h>
 float Polygon::createCone(glm::vec3 _pos,
                          float _r,
                          float _h)
@@ -38,19 +38,24 @@ float Polygon::displacement(glm::vec3 _pos)
     float d2 =  sin(20*_pos.x)*sin(20*_pos.y)*sin(20*_pos.z);
     return d1+d2;
 }
-
-float Polygon::createTerrain1(glm::vec3 _pos, Noise io_noise)
+//------------------------------------------------------------------------------------------------------------------------------------------
+float Polygon::createTerrain1(glm::vec3 _pos, Noise _noise)
 {
 
-    return io_noise.getNoise(_pos.x,_pos.z) + _pos.y ;
+    return _noise.getNoise(_pos.x, _pos.z) + _pos.y;
 }
-
-float Polygon::createTerrain2(glm::vec3 _pos, Noise io_noise)
+//------------------------------------------------------------------------------------------------------------------------------------------
+float Polygon::createTerrain2(glm::vec3 _pos, Noise _noise)
 {
-    return _pos.y + io_noise.getNoise(_pos.x,_pos.z) + io_noise.getNoise(_pos.z,_pos.y );
+    return _pos.y + _noise.getNoise(_pos.x,_pos.z) + _noise.getNoise(_pos.z,_pos.y );
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 float Polygon::createTerrain3(glm::vec3 _pos, Noise _noise)
 {
     return _pos.y + _noise.getNoise(_pos.x, _pos.z) + _noise.getNoise(_pos.z, _pos.y) + _noise.getNoise(_pos.x, _pos.y);
+}
+
+float Polygon::createTerrain4(glm::vec3 _pos, Noise _noise)
+{
+    return std::min(15.0,std::max(_noise.getNoise(_pos.x,_pos.z),-15.0)) + _pos.y;
 }

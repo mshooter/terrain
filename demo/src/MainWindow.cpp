@@ -11,6 +11,7 @@ void MainWindow::init(const std::shared_ptr<Scene> &io_scene)
   connect(m_ui.material, SIGNAL( clicked(bool)), m_scene.get(), SLOT(nextMaterial()));
   connect(m_ui.frequency, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeFrequency(int)));
   connect(m_ui.amplitude, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeAmplitude(int)));
+//  connect(m_ui., SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeSeed(int)));
 }
 
 //----------------------------------------------------------------------------------------------------------------------

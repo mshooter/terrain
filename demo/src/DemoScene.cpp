@@ -48,7 +48,7 @@ void DemoScene::init()
 void DemoScene::initGeo()
 {
 
-    m_meshes[0].loadMyMesh(Grid::MODELS::MODEL1);
+    m_meshes[0].loadMyMesh(Grid::MODELS::MODEL3);
     // Create and bind our Vertex Array Object
     m_vao->create();
     m_vao->bind();
@@ -90,7 +90,7 @@ void DemoScene::generateNewGeometry()
 {
 
   makeCurrent();
-  m_meshIndex = (m_meshIndex + 1) % m_meshes.size();
+  m_meshIndex = 0;
   auto& mesh = m_meshes[m_meshIndex];
   m_meshVBO.reset(
         sizeof(GLushort),
@@ -122,8 +122,10 @@ void DemoScene::renderScene()
     m_matrices[MODEL_VIEW] = glm::rotate(m_matrices[MODEL_VIEW], glm::radians(1.0f * m_rotating), glm::vec3(0.0f, 1.0f, 0.0f));
   }
   m_materials[m_currentMaterial]->update();
-  m_meshes[0].changeFreq(m_terrainFrequency,Grid::MODELS::MODEL1);
-  m_meshes[0].changeAmplitude(m_terrainAmplitude, Grid::MODELS::MODEL2);
+  m_meshes[0].changeFreq(m_terrainFrequency);
+  m_meshes[0].changeAmplitude(m_terrainAmplitude);
+  //_meshes[0].changeSeed(m_terrainSeed, Grid::MODELS::MODEL3);
+  m_meshes[0].loadMyMesh(Grid::MODELS::MODEL1);
   m_meshVBO.use();
   glDrawElements(GL_TRIANGLES, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
   //glDrawArrays(GL_TRIANGLES,0, m_meshes[m_meshIndex].getNData());
@@ -139,4 +141,9 @@ void DemoScene::changeFrequency(int _frequency)
 void DemoScene::changeAmplitude(int _amplitude)
 {
     m_terrainAmplitude = _amplitude;
+}
+
+void DemoScene::changeSeed(int _seed)
+{
+    m_terrainSeed = _seed;
 }

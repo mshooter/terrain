@@ -5,9 +5,9 @@ void Mesh::loadMyMesh(int _model)
 
     terrain.setFrequency(testFreq);
     terrain.setHeight(m_terrainAmplitde);
-    terrain.setSeed(8);
+    terrain.setSeed(10);
     terrain.setOctaves(1);
-    terrain.setPersistence(1);
+    terrain.setPersistence(0.2f);
     terrain.createGrid(m_vertices,m_indices,m_normals, _model);
 }
 // ---------------------------------------------------------
@@ -77,19 +77,22 @@ int Mesh::getNData() const noexcept
 {
     return getNVertData() + getNNormData() + getNUVData();
 }
-
-void Mesh::changeFreq(float _testFreq, int _model)
+// ---------------------------------------------------------
+void Mesh::changeFreq(float _testFreq)
 {
     testFreq = _testFreq;
     reset();
-    loadMyMesh(_model);
 }
-
-void Mesh::changeAmplitude(float _amplitude, int _model)
+// ---------------------------------------------------------
+void Mesh::changeAmplitude(float _amplitude)
 {
     m_terrainAmplitde = _amplitude;
     reset();
-    loadMyMesh(_model);
 }
-
+// ---------------------------------------------------------
+void Mesh::changeSeed(int _seed)
+{
+    m_terrainSeed = _seed;
+    reset();;
+}
 

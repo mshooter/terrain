@@ -56,7 +56,8 @@ public:
     //------------------------------------------------------------------------------------------------------------------------------------------
     void setSeed(int _seed);
     void setOctaves(int _octaves);
-    void setPersistence(int _persistence);
+    void setPersistence(float _persistence);
+    void addSphere();
 
 
     // getter funtions
@@ -96,6 +97,7 @@ private:
     int m_randomSeed;
     int m_octaves;
     int m_persistence;
+    glm::vec3 m_toolPosition;
 };
 
 #endif // GRID_H

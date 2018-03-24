@@ -12,18 +12,13 @@ void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &i
     m_values.reserve( points.size() );
     // fill in values
     Noise noise = Noise(m_frequency, m_height ,m_octaves, m_randomSeed, m_persistence);
-
+    m_toolPosition = glm::vec3(5,0,0);
     for( float i = 0; i < points.size(); ++i )
     {
         _position = glm::vec3(points[i].x, points[i].y, points[i].z);
-        float x = points[i].x;
-        float y = points[i].y;
-        float z = points[i].z;
-        // creating terrain
-        //std::max(lower, std::min(n, upper))
         switch(_terrainModel)
         {
-        case MODEL1 : { m_values[i] = m_poly->createTerrain1(_position, noise); break; }
+        case MODEL1 : { m_values[i] = m_poly->unions(m_poly->createSphere(_position + m_toolPosition,10),m_poly->createTerrain1(_position, noise)); break; }
         case MODEL2 : { m_values[i] = m_poly->createTerrain2(_position, noise); break; }
         case MODEL3 : { m_values[i] = m_poly->createTerrain3(_position, noise); break; }
         }
@@ -61,27 +56,27 @@ void Grid::setSeed(int _seed)
 {
     m_randomSeed = _seed;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 void Grid::setOctaves(int _octaves)
 {
     m_octaves = _octaves;
 }
-
-void Grid::setPersistence(int _persistence)
+//------------------------------------------------------------------------------------------------------------------------------------------
+void Grid::setPersistence(float _persistence)
 {
     m_persistence = _persistence;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 float Grid::getFrequency()
 {
     return m_frequency;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 int Grid::getSeed()
 {
     return m_randomSeed;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 float Grid::getHeight()
 {
     return m_height;
