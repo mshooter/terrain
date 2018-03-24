@@ -26,11 +26,11 @@ public:
     /// @build create grid method
     //------------------------------------------------------------------------------------------------------------------------------------------
     void createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices,
-                    std::vector<glm::vec3> &io_normals, int _terrainModel);
+                    std::vector<glm::vec3> &io_normals, int _model);
     //------------------------------------------------------------------------------------------------------------------------------------------
     /// @build create values method
     //------------------------------------------------------------------------------------------------------------------------------------------
-    std::vector<float> createValues();
+    std::vector<float> createValues(int _terrainModel);
     //------------------------------------------------------------------------------------------------------------------------------------------
     /// @build set resolution (0-60)
     //------------------------------------------------------------------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ public:
     void setSeed(int _seed);
     void setOctaves(int _octaves);
     void setPersistence(float _persistence);
-    void addSphere();
+    void editTerrain(float &io_value, float _oldPrim, float _addPrim);
 
 
     // getter funtions
@@ -97,7 +97,8 @@ private:
     int m_randomSeed;
     int m_octaves;
     int m_persistence;
-    glm::vec3 m_toolPosition;
+    float m_newValue;
+    float m_oldValue;
 };
 
 #endif // GRID_H

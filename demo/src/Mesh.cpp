@@ -2,12 +2,11 @@
 #include <math.h>
 void Mesh::loadMyMesh(int _model)
 {
-
-    terrain.setFrequency(testFreq);
+    terrain.setFrequency(m_terrainFrequency);
     terrain.setHeight(m_terrainAmplitde);
-    terrain.setSeed(10);
+    terrain.setSeed(8);
     terrain.setOctaves(1);
-    terrain.setPersistence(0.2f);
+    terrain.setPersistence(1.0f);
     terrain.createGrid(m_vertices,m_indices,m_normals, _model);
 }
 // ---------------------------------------------------------
@@ -78,9 +77,9 @@ int Mesh::getNData() const noexcept
     return getNVertData() + getNNormData() + getNUVData();
 }
 // ---------------------------------------------------------
-void Mesh::changeFreq(float _testFreq)
+void Mesh::changeFreq(float _terrainFrequency)
 {
-    testFreq = _testFreq;
+    m_terrainFrequency = _terrainFrequency;
     reset();
 }
 // ---------------------------------------------------------
@@ -93,6 +92,6 @@ void Mesh::changeAmplitude(float _amplitude)
 void Mesh::changeSeed(int _seed)
 {
     m_terrainSeed = _seed;
-    reset();;
+    reset();
 }
 

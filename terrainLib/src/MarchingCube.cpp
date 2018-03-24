@@ -11,8 +11,8 @@ MarchingCube::MarchingCube()
     // amount of cells either double or half, this is the resolutions
     m_NCells = 60;
     // size of the cube
-    m_axisMin = -50;
-    m_axisMax = 50;
+    m_axisMin = -60;
+    m_axisMax = 60;
 
     m_axisRange = m_axisMax - m_axisMin;
     set3DGridPoints();
@@ -29,7 +29,6 @@ void MarchingCube::MC( std::vector<glm::vec3> &_points, std::vector<float> &_val
   io_verts.reserve( m_NCells * 3);
   std::array<glm::vec3, 12> vList;
   float size = m_NCells * m_NCells;
-
   // store scalar values corresponding to vertices
   std::array<float, 8> values;
 
@@ -50,15 +49,15 @@ void MarchingCube::MC( std::vector<glm::vec3> &_points, std::vector<float> &_val
           point_ids[PYZ]  = point_ids[PY] + size;
           point_ids[PXYZ] = point_ids[PXY] + size;
 
+
           // store scalar values corresponding to vertices
           for (unsigned int i = 0; i < values.size(); ++i)
               values[i] = _values[point_ids[i]];
 
-        // place a "1" in bit positions corresponding to vertices whose
-        // isovalue is less than given constant.
-        int isolevel = 0;
-        int cubeindex = 0;
-
+          // place a "1" in bit positions corresponding to vertices whose
+          // isovalue is less than given constant.
+          int isolevel = 0;
+          int cubeindex = 0;
         for (unsigned short i = 0; i < 8; ++i)
         {
             if (values[i] <= isolevel) cubeindex |= powers[i];
@@ -130,7 +129,6 @@ void MarchingCube::set3DGridPoints()
     // points devide space into a 3D grid
     glm::vec3 point;
     m_gridPoints.reserve(m_NCells * m_NCells * m_NCells);
-
     for(int k = 0 ; k < m_NCells; ++k)
     {
         for(int j = 0 ; j < m_NCells; ++j)

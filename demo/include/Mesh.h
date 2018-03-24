@@ -80,7 +80,7 @@ public:
 
 
   Grid terrain;
-  void changeFreq(float _testFreq);
+  void changeFreq(float _terrainFrequency);
   void changeAmplitude(float _amplitude);
   void changeSeed(int _seed);
 protected:
@@ -101,7 +101,7 @@ protected:
   //-----------------------------------------------------------------------------------------------------
   std::vector<GLushort> m_indices;
 
-  float testFreq = 0.2;
+  float m_terrainFrequency;
   float m_terrainAmplitde;
   float m_terrainSeed;
 

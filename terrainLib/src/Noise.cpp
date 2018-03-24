@@ -15,15 +15,15 @@ Noise::Noise(double _frequency, double _amplitude, int _octaves, int _randomSeed
 //------------------------------------------------------------------------------------------------------------------------------------------
 double Noise::getNoise(double _x, double _y) const
 {
-    return m_amplitude * Total(_x, _y);
+    return m_amplitude * Total(_x, _y) / 0.5f;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
-void Noise::setNoise(double _frequency, double _amplitude, int _randomseed)
+void Noise::setNoise(double _frequency, double _amplitude, int _octaves, int _randomseed, double _persistence)
 {
-    m_persistence = 1.0f;
+    m_persistence = _persistence;
     m_frequency = _frequency;
     m_amplitude = _amplitude;
-    m_octaves = 1;
+    m_octaves = _octaves;
     m_randomseed = 2 + _randomseed * _randomseed;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------

@@ -48,7 +48,7 @@ void DemoScene::init()
 void DemoScene::initGeo()
 {
 
-    m_meshes[0].loadMyMesh(Grid::MODELS::MODEL3);
+    m_meshes[0].loadMyMesh(Grid::MODELS::MODEL2);
     // Create and bind our Vertex Array Object
     m_vao->create();
     m_vao->bind();
@@ -125,10 +125,9 @@ void DemoScene::renderScene()
   m_meshes[0].changeFreq(m_terrainFrequency);
   m_meshes[0].changeAmplitude(m_terrainAmplitude);
   //_meshes[0].changeSeed(m_terrainSeed, Grid::MODELS::MODEL3);
-  m_meshes[0].loadMyMesh(Grid::MODELS::MODEL1);
+  m_meshes[0].loadMyMesh(Grid::MODELS::MODEL2);
   m_meshVBO.use();
   glDrawElements(GL_TRIANGLES, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
-  //glDrawArrays(GL_TRIANGLES,0, m_meshes[m_meshIndex].getNData());
   generateNewGeometry();
 
 }

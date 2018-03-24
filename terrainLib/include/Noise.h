@@ -32,7 +32,7 @@ public:
     /// @parm[_in] _octaves : type of noise
     /// @parm[_in] _randomseed : the seed for randomization
     // ----------------------------------------------------------------------------------------------------------------------------------------
-    void setNoise(double _frequency, double _amplitude, int _randomseed);
+    void setNoise(double _frequency, double _amplitude, int _octaves, int _randomseed, double _persistence);
 
 private:
     // ----------------------------------------------------------------------------------------------------------------------------------------
