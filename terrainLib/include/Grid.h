@@ -7,7 +7,7 @@
 /// @brief Creates different types of terrain, you can also edit terrain
 /// @version
 /// @date last revision 24 March 2018
-/// \todo
+/// \todo add ncca comments
 //-------------------------------------------------------------------------------------------------------
 
 #include <vector>
