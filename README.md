@@ -1,9 +1,8 @@
-# **Terrain Generator**
+# Terrain Generator
 
 A terrain generator and editor using noies and Marching Cubes Algorithm, included a file exporter, to export the mesh into an .obj file so you can use it in software such as Houdini and Maya. 
--------------------------------------------------------------
-## **Content**
--------------------------------------------------------------
+
+## Content
 ### 1. **[Installation](#instalation)**
 ### 2. **[Dependencies](#dependencies)**
 ### 3. **[Building and running](#buildinAndRunning)**
@@ -24,7 +23,7 @@ To view the demo you have to go to the top level directory, run qmake change int
 I have written the tests with gtest and can be found in the directory tests. 
 -------------------------------------------------------------
 ## **User Instructions** 
-### **Demos** 
+## **Demos** 
 
 ## **Creating the terrain** 
 
