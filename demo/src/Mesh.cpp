@@ -12,14 +12,6 @@ void Mesh::loadMyMesh(int _model)
     terrain.setOctaves(1);
     terrain.setPersistence(1.0f);
     terrain.createGrid(m_vertices,m_indices,m_normals, _model);
-    for(int i = 0; i < 3 ; ++i)
-    {
-        for(int j = 0 ; j < 3 ; ++j)
-        {
-            terrain.editTerrain(m_vertices,m_indices,m_normals, glm::vec3(i*30,0, j*30));
-        }
-    }
-
 }
 // ---------------------------------------------------------
 void Mesh::reset()

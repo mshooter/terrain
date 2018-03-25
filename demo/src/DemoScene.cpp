@@ -130,7 +130,8 @@ void DemoScene::renderScene()
   m_meshes[0].changeRange(m_terrainRange);
   m_meshes[0].loadMyMesh(m_typeGrid);
   m_meshVBO.use();
-  glDrawElements(GL_TRIANGLES, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
+  glDrawArrays(GL_TRIANGLES, 0,m_meshes[m_meshIndex].getNData());
+  //glDrawElements(GL_TRIANGLES, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
   generateNewGeometry();
 }
 //-----------------------------------------------------------------------------------------------------
