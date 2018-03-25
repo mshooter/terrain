@@ -1,6 +1,6 @@
 # Terrain Generator
 
-A terrain generator and editor using noies and Marching Cubes Algorithm, included a file exporter, to export the mesh into an .obj file so you can use it in software such as Houdini and Maya. 
+A terrain generator and editor using noise and Marching Cubes Algorithm, included a file exporter, to export the mesh into an .obj file so you can use it in software such as Houdini and Maya. 
 
 ## Content
 ### 1. **[Installation](#instalation)**
