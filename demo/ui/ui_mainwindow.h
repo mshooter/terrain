@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.8.0
+** Created by: Qt User Interface Compiler version 5.9.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -40,8 +40,8 @@ public:
     QSpacerItem *horizontalSpacer;
     QGroupBox *s_drawGB;
     QGridLayout *gridLayout_2;
-    QTextBrowser *textBrowser;
     QSpacerItem *horizontalSpacer_3;
+    QTextBrowser *textBrowser;
     QLabel *label_4;
     QSlider *seed;
     QLabel *label_3;
@@ -53,8 +53,6 @@ public:
     QSlider *amplitude;
     QLabel *label_2;
     QSpacerItem *verticalSpacer;
-    QLabel *label_5;
-    QSlider *range;
     QPushButton *material;
     QLabel *label_6;
     QMenuBar *menubar;
@@ -92,14 +90,14 @@ public:
         s_drawGB->setObjectName(QStringLiteral("s_drawGB"));
         gridLayout_2 = new QGridLayout(s_drawGB);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        textBrowser = new QTextBrowser(s_drawGB);
-        textBrowser->setObjectName(QStringLiteral("textBrowser"));
-
-        gridLayout_2->addWidget(textBrowser, 15, 1, 1, 1);
-
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout_2->addItem(horizontalSpacer_3, 0, 2, 1, 2);
+
+        textBrowser = new QTextBrowser(s_drawGB);
+        textBrowser->setObjectName(QStringLiteral("textBrowser"));
+
+        gridLayout_2->addWidget(textBrowser, 13, 1, 1, 1);
 
         label_4 = new QLabel(s_drawGB);
         label_4->setObjectName(QStringLiteral("label_4"));
@@ -131,7 +129,7 @@ public:
         terrain->setObjectName(QStringLiteral("terrain"));
         terrain->setMaximum(4);
 
-        gridLayout_2->addWidget(terrain, 13, 1, 1, 1);
+        gridLayout_2->addWidget(terrain, 11, 1, 1, 1);
 
         m_rotating = new QCheckBox(s_drawGB);
         m_rotating->setObjectName(QStringLiteral("m_rotating"));
@@ -173,25 +171,7 @@ public:
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_2->addItem(verticalSpacer, 16, 1, 1, 1);
-
-        label_5 = new QLabel(s_drawGB);
-        label_5->setObjectName(QStringLiteral("label_5"));
-
-        gridLayout_2->addWidget(label_5, 10, 1, 1, 1);
-
-        range = new QSlider(s_drawGB);
-        range->setObjectName(QStringLiteral("range"));
-        range->setMinimum(2);
-        range->setMaximum(60);
-        range->setSingleStep(1);
-        range->setSliderPosition(60);
-        range->setTracking(true);
-        range->setOrientation(Qt::Horizontal);
-        range->setInvertedAppearance(false);
-        range->setInvertedControls(false);
-
-        gridLayout_2->addWidget(range, 11, 1, 1, 1);
+        gridLayout_2->addItem(verticalSpacer, 14, 1, 1, 1);
 
         material = new QPushButton(s_drawGB);
         material->setObjectName(QStringLiteral("material"));
@@ -201,7 +181,7 @@ public:
         label_6 = new QLabel(s_drawGB);
         label_6->setObjectName(QStringLiteral("label_6"));
 
-        gridLayout_2->addWidget(label_6, 12, 1, 1, 1);
+        gridLayout_2->addWidget(label_6, 10, 1, 1, 1);
 
 
         s_mainWindowGridLayout->addWidget(s_drawGB, 0, 5, 1, 1);
@@ -241,7 +221,6 @@ public:
         m_rotating->setText(QApplication::translate("MainWindow", "Rotating", Q_NULLPTR));
         label->setText(QApplication::translate("MainWindow", "Frequency", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "Amplitude             ", Q_NULLPTR));
-        label_5->setText(QApplication::translate("MainWindow", "Range", Q_NULLPTR));
         material->setText(QApplication::translate("MainWindow", "Material", Q_NULLPTR));
         label_6->setText(QApplication::translate("MainWindow", "Change Type of Terrain (function)", Q_NULLPTR));
     } // retranslateUi

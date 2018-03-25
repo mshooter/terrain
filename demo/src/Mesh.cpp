@@ -5,7 +5,6 @@ void Mesh::loadMyMesh(int _model)
 {
     reset();
     terrain.setResolution(m_terrainResolution);
-    terrain.setRangeAxis(m_terrainRange);
     terrain.setFrequency(m_terrainFrequency);
     terrain.setHeight(m_terrainAmplitde);
     terrain.setSeed(m_terrainSeed);
@@ -101,11 +100,6 @@ void Mesh::changeResolution(int _resolution)
     m_terrainResolution = _resolution;
 }
 // ---------------------------------------------------------
-void Mesh::changeRange(int _range)
-{
-    m_terrainRange = _range;
-}
-
 std::vector<glm::vec3> Mesh::getVertices()
 {
     return m_vertices;

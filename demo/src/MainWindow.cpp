@@ -12,7 +12,6 @@ void MainWindow::init(const std::shared_ptr<Scene> &io_scene)
   connect(m_ui.amplitude, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeAmplitude(int)));
   connect(m_ui.seed, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeSeed(int)));
   connect(m_ui.resolution, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeResolution(int)));
-  connect(m_ui.range, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeRange(int)));
   connect(m_ui.terrain, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeTerrain(int)));
 }
 //----------------------------------------------------------------------------------------------------------------------

@@ -6,7 +6,7 @@
 void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals, int _model)
 {
 
-    cube = MarchingCube(m_resolution,-m_range,m_range);
+    cube = MarchingCube(m_resolution,-60,60);
     noise.setNoise(m_frequency, m_height ,m_octaves, m_randomSeed, m_persistence);
     // create a vec3 for the functions
     glm::vec3 _position;
@@ -57,11 +57,6 @@ void Grid::editTerrain(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &
 void Grid::setResolution(int _resolution)
 {
     m_resolution = _resolution;
-}
-//------------------------------------------------------------------------------------------------------------------------------------------
-void Grid::setRangeAxis(int _range)
-{
-    m_range = _range;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
 void Grid::setFrequency(float _freq)

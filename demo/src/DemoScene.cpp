@@ -127,10 +127,9 @@ void DemoScene::renderScene()
   m_meshes[0].changeAmplitude(m_terrainAmplitude);
   m_meshes[0].changeSeed(m_terrainSeed);
   m_meshes[0].changeResolution(m_terrainResolution);
-  m_meshes[0].changeRange(m_terrainRange);
   m_meshes[0].loadMyMesh(m_typeGrid);
   m_meshVBO.use();
-  glDrawArrays(GL_TRIANGLES, 0,m_meshes[m_meshIndex].getNData());
+  glDrawArrays(GL_TRIANGLES, 0,m_meshes[m_meshIndex].getNVertData());
   //glDrawElements(GL_TRIANGLES, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
   generateNewGeometry();
 }
@@ -153,11 +152,6 @@ void DemoScene::changeSeed(int _seed)
 void DemoScene::changeResolution(int _resolution)
 {
     m_terrainResolution = _resolution;
-}
-//-----------------------------------------------------------------------------------------------------
-void DemoScene::changeRange(int _range)
-{
-    m_terrainRange = _range;
 }
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::changeTerrain(int _model)
