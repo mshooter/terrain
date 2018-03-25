@@ -19,7 +19,10 @@ A terrain generator and editor using noise and Marching Cubes Algorithm, include
 * Qt5 (used for OpenGL functions)
 * gtest
 ### **Building and running** 
-bla
+1. Git clone the project : git@github.com:mshooter/terrain.git 
+2. Go in the directory called terrain 
+3. Use qtcreator to open the project (open buildall.pro)
+4. 
 ## **User Instructions** 
 bla
 ## **Creating the terrain** 
