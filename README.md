@@ -29,13 +29,21 @@ A terrain generator and editor using noise and Marching Cubes Algorithm, include
 ## **User Instructions** 
 ### Controls (Demo)
 Material : Changes the material of the terrain (mountains, canyon with water, canyon without water and islands)
+
 Rotating : Rotates if you check the box 
+
 Exporting : Exports the mesh 
+
 Frequency : Changes the frequency of the hills
+
 Amplitude : Changes the height/amplitude of the terrain
+
 Seed : Changes the seed of the noise/terrain
+
 Resolution : Changes the resolution of the terrain
+
 Octaves : Changes the octaves of the terrain
+
 Persistence : Changes the influence of the octaves of the terrain 
 ## **Creating the terrain** 
 To create a terrain by using the library you do 
