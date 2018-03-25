@@ -5,9 +5,9 @@ A terrain generator and editor using noise and Marching Cubes Algorithm, include
 ## Content
 ## 1. **[Installation](#installation)**
 ### 2. **[Dependencies](#dependencies)**
-### 3. **[Building and running](#buildinAndRunning)**
-## 4. **[User Instructions](#userInstructions)**
-## 5. **[Creating the terrain](#creatingTheTerrain)**
+### 3. **[Building and running](#building-and-running)**
+## 4. **[User Instructions](#user-instructions)**
+## 5. **[Creating the terrain](#creating-the-terrain)**
 ## 6. **[Limitations](#limitations)**
 ## 7. **[References](#references)**
 -------------------------------------------------------------
