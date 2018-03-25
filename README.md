@@ -11,6 +11,7 @@ A terrain generator and editor using noise and Marching Cubes Algorithm, include
 ## 3. **[Creating the terrain](#creating-the-terrain)**
 ## 4. **[Limitations](#limitations)**
 ## 5. **[References](#references)**
+## 6. **[Extra Notes](#extra-notes)**
 -------------------------------------------------------------
 ## **Installation**
 ### **Dependencies** 
@@ -45,6 +46,8 @@ Resolution : Changes the resolution of the terrain
 Octaves : Changes the octaves of the terrain
 
 Persistence : Changes the influence of the octaves of the terrain 
+
+You can zoom in and out with the right mouse click, and with the left mouse click you can set to different views.
 ## **Creating the terrain** 
 To create a terrain by using the library you do 
 ```C++
@@ -94,3 +97,6 @@ You can't edit the terrain manually. In the Polygon class you have functions (si
 [3] Cubes, G. (2018). Generating terrain using Marching Cubes. [online] Gamedev.stackexchange.com. Available at: https://gamedev.stackexchange.com/questions/54912/generating-terrain-using-marching-cubes [Accessed 24 Mar. 2018].
 
 [4] target, H. (2018). GPU Gems 3: Procedural Terrain in Unity - A Naive Exploration. [online] Unity Community. Available at: https://forum.unity.com/threads/gpu-gems-3-procedural-terrain-in-unity-a-naive-exploration.260645/ [Accessed 24 Mar. 2018].
+
+## **Extra Notes** 
+For the demo I have used Jack Diver's OpenGLTemplate: https://github.com/nitronoid/OpenGLTemplate. I have modified it to make it function with my library. I have modified a PBR shader, called MaterialTerrain(.cpp), so when the terrain point is on a certain height it would change colour. 
