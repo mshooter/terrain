@@ -15,6 +15,7 @@ void MainWindow::init(const std::shared_ptr<Scene> &io_scene)
   connect(m_ui.terrain, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeTerrain(int)));
   connect(m_ui.octaves, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changeOctaves(int)));
   connect(m_ui.persistence, SIGNAL(valueChanged(int)), m_scene.get(), SLOT(changePersistence(int)));
+  connect(m_ui.exports, SIGNAL(clicked(bool)), m_scene.get(), SLOT(exporting(bool)));
 }
 //----------------------------------------------------------------------------------------------------------------------
 void MainWindow::keyPressEvent(QKeyEvent *io_event)

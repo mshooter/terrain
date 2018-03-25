@@ -73,7 +73,9 @@ public:
   /// @brief The file name of the json shader file that this material works with.
   //-----------------------------------------------------------------------------------------------------
   virtual const char* shaderFileName() const = 0;
-
+  //-----------------------------------------------------------------------------------------------------
+  /// @brief handles the keys for material
+  //-----------------------------------------------------------------------------------------------------
   virtual void handleKey(QKeyEvent* io_event, QOpenGLContext* io_context);
 
 protected:

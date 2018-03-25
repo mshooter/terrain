@@ -3,7 +3,7 @@
 /// @file McData.h
 /// @brief Data needed for marching cubes
 /// @version
-/// @date last revision 24 March 2018
+/// @date last revision 25 March 2018
 /// \todo
 // ----------------------------------------------------------------------------------------------------------------------------------------
 

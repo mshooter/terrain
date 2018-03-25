@@ -85,7 +85,7 @@
        <string/>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="17" column="1">
+       <item row="18" column="1">
         <widget class="QTextBrowser" name="textBrowser">
          <property name="html">
           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -118,14 +118,14 @@ p, li { white-space: pre-wrap; }
          </property>
         </spacer>
        </item>
-       <item row="8" column="1">
+       <item row="9" column="1">
         <widget class="QLabel" name="label_4">
          <property name="text">
           <string>Resolution</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="1">
+       <item row="8" column="1">
         <widget class="QSlider" name="seed">
          <property name="minimum">
           <number>1</number>
@@ -138,27 +138,27 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="6" column="1">
+       <item row="7" column="1">
         <widget class="QLabel" name="label_3">
          <property name="text">
           <string>Seed </string>
          </property>
         </widget>
        </item>
-       <item row="9" column="1">
+       <item row="10" column="1">
         <widget class="QSlider" name="resolution">
          <property name="minimum">
           <number>2</number>
          </property>
          <property name="maximum">
-          <number>100</number>
+          <number>60</number>
          </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
        </item>
-       <item row="15" column="1">
+       <item row="16" column="1">
         <widget class="QSpinBox" name="terrain">
          <property name="maximum">
           <number>4</number>
@@ -178,7 +178,7 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
+       <item row="4" column="1">
         <widget class="QSlider" name="frequency">
          <property name="maximum">
           <number>100</number>
@@ -191,14 +191,14 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
+       <item row="3" column="1">
         <widget class="QLabel" name="label">
          <property name="text">
           <string>Frequency</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="6" column="1">
         <widget class="QSlider" name="amplitude">
          <property name="enabled">
           <bool>true</bool>
@@ -226,14 +226,14 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="5" column="1">
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>Amplitude             </string>
          </property>
         </widget>
        </item>
-       <item row="18" column="1">
+       <item row="19" column="1">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -253,28 +253,28 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="14" column="1">
+       <item row="15" column="1">
         <widget class="QLabel" name="label_6">
          <property name="text">
           <string>Change Type of Terrain (function)</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="1">
+       <item row="12" column="1">
         <widget class="QSlider" name="octaves">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
        </item>
-       <item row="10" column="1">
+       <item row="11" column="1">
         <widget class="QLabel" name="label_5">
          <property name="text">
           <string>Octaves</string>
          </property>
         </widget>
        </item>
-       <item row="13" column="1">
+       <item row="14" column="1">
         <widget class="QSlider" name="persistence">
          <property name="maximum">
           <number>1000</number>
@@ -284,10 +284,17 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="12" column="1">
+       <item row="13" column="1">
         <widget class="QLabel" name="label_7">
          <property name="text">
           <string>Persistence</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="exports">
+         <property name="text">
+          <string>Exporting</string>
          </property>
         </widget>
        </item>

@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DemoScene_t {
-    QByteArrayData data[19];
-    char stringdata0[218];
+    QByteArrayData data[21];
+    char stringdata0[236];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -49,7 +49,9 @@ QT_MOC_LITERAL(14, 157, 8), // "_octaves"
 QT_MOC_LITERAL(15, 166, 17), // "changePersistence"
 QT_MOC_LITERAL(16, 184, 12), // "_persistence"
 QT_MOC_LITERAL(17, 197, 13), // "changeTerrain"
-QT_MOC_LITERAL(18, 211, 6) // "_model"
+QT_MOC_LITERAL(18, 211, 6), // "_model"
+QT_MOC_LITERAL(19, 218, 9), // "exporting"
+QT_MOC_LITERAL(20, 228, 7) // "_export"
 
     },
     "DemoScene\0rotating\0\0_rotating\0"
@@ -57,7 +59,8 @@ QT_MOC_LITERAL(18, 211, 6) // "_model"
     "changeAmplitude\0_amplitude\0changeSeed\0"
     "_seed\0changeResolution\0_resolution\0"
     "changeOctaves\0_octaves\0changePersistence\0"
-    "_persistence\0changeTerrain\0_model"
+    "_persistence\0changeTerrain\0_model\0"
+    "exporting\0_export"
 };
 #undef QT_MOC_LITERAL
 
@@ -67,7 +70,7 @@ static const uint qt_meta_data_DemoScene[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -75,15 +78,16 @@ static const uint qt_meta_data_DemoScene[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   59,    2, 0x0a /* Public */,
-       4,    0,   62,    2, 0x0a /* Public */,
-       5,    1,   63,    2, 0x0a /* Public */,
-       7,    1,   66,    2, 0x0a /* Public */,
-       9,    1,   69,    2, 0x0a /* Public */,
-      11,    1,   72,    2, 0x0a /* Public */,
-      13,    1,   75,    2, 0x0a /* Public */,
-      15,    1,   78,    2, 0x0a /* Public */,
-      17,    1,   81,    2, 0x0a /* Public */,
+       1,    1,   64,    2, 0x0a /* Public */,
+       4,    0,   67,    2, 0x0a /* Public */,
+       5,    1,   68,    2, 0x0a /* Public */,
+       7,    1,   71,    2, 0x0a /* Public */,
+       9,    1,   74,    2, 0x0a /* Public */,
+      11,    1,   77,    2, 0x0a /* Public */,
+      13,    1,   80,    2, 0x0a /* Public */,
+      15,    1,   83,    2, 0x0a /* Public */,
+      17,    1,   86,    2, 0x0a /* Public */,
+      19,    1,   89,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Bool,    3,
@@ -95,6 +99,7 @@ static const uint qt_meta_data_DemoScene[] = {
     QMetaType::Void, QMetaType::Int,   14,
     QMetaType::Void, QMetaType::Int,   16,
     QMetaType::Void, QMetaType::Int,   18,
+    QMetaType::Void, QMetaType::Bool,   20,
 
        0        // eod
 };
@@ -114,6 +119,7 @@ void DemoScene::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 6: _t->changeOctaves((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 7: _t->changePersistence((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 8: _t->changeTerrain((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 9: _t->exporting((*reinterpret_cast< const bool(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -144,13 +150,13 @@ int DemoScene::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

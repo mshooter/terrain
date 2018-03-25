@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include "Grid.h"
-
+#include <fstream>
 //------------------------------------------------------------------------------------------------------------------------------------------
 void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals, int _model)
 {
@@ -30,28 +30,7 @@ void Grid::createGrid(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &i
     }
 
     cube.MC(points,m_values, io_verts, io_indices, io_normals);
-}
-//------------------------------------------------------------------------------------------------------------------------------------------
-void Grid::editTerrain(std::vector<glm::vec3> &io_verts, std::vector<GLushort> &io_indices, std::vector<glm::vec3> &io_normals, glm::vec3 _toolPosition)
-{
-    cube = MarchingCube(30,-60,60);
-    // create a vec3 for the functions
-    glm::vec3 _position;
-    // get the 3d grid points
-    std::vector<glm::vec3> points = cube.getPoints();
-    // reserve space for the values
-    m_values.reserve( points.size());
-    // fill in values
-    for( float i = 0; i < points.size(); ++i )
-    {
-        _position = glm::vec3(points[i].x, points[i].y, points[i].z);
-
-
-       m_values[i] = m_poly->createSphere(_position + _toolPosition, 10.0f);
-
-
-    }
-    cube.MC(points,m_values,io_verts,io_indices,io_normals);
+    m_gridCreated = true;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
 void Grid::setResolution(int _resolution)
@@ -84,6 +63,32 @@ void Grid::setPersistence(float _persistence)
     m_persistence = _persistence;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
+void Grid::exportToObj(std::vector<glm::vec3> _vertices, std::vector<glm::vec3> _normals, std::vector<GLushort> _indices)
+{
+
+    std::ofstream afile;
+    afile.open("test.obj");
+    afile<<"g test"<<'\n';
+    afile<<'\n';
+    for(unsigned int i = 0 ; i < _vertices.size(); ++i)
+    {
+        afile<<"v "<<_vertices[i].x<<".0"<<" "<<_vertices[i].y<<".0"<<" "<<_vertices[i].z<<".0"<<'\n';
+    }
+    afile<<'\n';
+    for(unsigned int i = 0 ; i < _normals.size(); ++i)
+    {
+        afile<<"vn "<<_normals[i].x<<".0"<<" "<<_normals[i].y<<".0"<<" "<<_normals[i].z<<".0"<<'\n';
+    }
+    afile<<'\n';
+      for(unsigned int j = 0 ; j < _vertices.size(); j+=3)
+      {
+          afile<<"f "<<_indices[j]+1<<" "<<_indices[j]+2<<" "<<_indices[j]+3<<'\n';
+      }
+    afile.close();
+    m_fileExported = true;
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------
 float Grid::getFrequency()
 {
     return m_frequency;
@@ -97,4 +102,14 @@ int Grid::getSeed()
 float Grid::getHeight()
 {
     return m_height;
+}
+//------------------------------------------------------------------------------------------------------------------------------------------
+bool Grid::getFileExported()
+{
+    return m_fileExported;
+}
+//------------------------------------------------------------------------------------------------------------------------------------------
+bool Grid::getIsGridCreated()
+{
+    return m_gridCreated;
 }

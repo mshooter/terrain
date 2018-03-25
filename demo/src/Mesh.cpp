@@ -1,6 +1,5 @@
 #include <math.h>
 #include "Mesh.h"
-
 //-----------------------------------------------------------------------------------------------------
 void Mesh::loadMyMesh(int _model)
 {
@@ -10,8 +9,12 @@ void Mesh::loadMyMesh(int _model)
     terrain.setHeight(m_terrainAmplitde);
     terrain.setSeed(m_terrainSeed);
     terrain.setOctaves(m_terrainOctaves);
-    terrain.setPersistence(1.0f);
+    terrain.setPersistence(m_terrainPersistence);
     terrain.createGrid(m_vertices,m_indices,m_normals, _model);
+    if(m_terrainExport)
+    {
+        terrain.exportToObj(m_vertices, m_normals, m_indices);
+    }
 
 }
 // ---------------------------------------------------------
@@ -106,8 +109,13 @@ void Mesh::changeOctaves(int _octaves)
 {
     m_terrainOctaves = _octaves;
 }
-
+//-----------------------------------------------------------------------------------------------------
 void Mesh::changePersistence(float _persistence)
 {
     m_terrainPersistence = _persistence;
+}
+//-----------------------------------------------------------------------------------------------------
+void Mesh::exportObj(bool _export)
+{
+    m_terrainExport = _export;
 }

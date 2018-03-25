@@ -2,7 +2,6 @@
 #include "DemoScene.h"
 #include "MaterialPBR.h"
 #include "MaterialTerrain.h"
-#include <fstream>
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::writeMeshAttributes()
 {
@@ -71,8 +70,8 @@ void DemoScene::initMaterials()
   m_materials.reserve(3);
   m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices, 1.0f, 1.0f, 1.0f, 1.0f, 1));
   m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices, 1.0f, 1.0f, 1.0f, 1.0f, 0));
-  m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices, 1.0f, 1.0f, 1.0f, 1.0f, 2));
   m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices, 1.0f, 1.0f, 1.0f, 1.0f, 3));
+  m_materials.emplace_back(new MaterialTerrain(m_camera, m_shaderLib, &m_matrices, 1.0f, 1.0f, 1.0f, 1.0f, 2));
   for (size_t i = 0; i < m_materials.size(); ++i)
   {
     auto& mat = m_materials[i];
@@ -128,11 +127,16 @@ void DemoScene::renderScene()
   m_meshes[0].changeSeed(m_terrainSeed);
   m_meshes[0].changeResolution(m_terrainResolution);
   m_meshes[0].changeOctaves(m_terrainOctaves);
+  m_meshes[0].changePersistence(m_terrainPersistence);
   m_meshes[0].loadMyMesh(m_typeGrid);
   m_meshVBO.use();
-  glDrawArrays(GL_TRIANGLES, 0,m_meshes[m_meshIndex].getNVertData());
-  //glDrawElements(GL_TRIANGLES, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
+  //glDrawArrays(GL_TRIANGLES, 0,m_meshes[m_meshIndex].getNVertData());
+  glDrawElements(GL_TRIANGLES, m_meshes[m_meshIndex].getNIndicesData(), GL_UNSIGNED_SHORT, nullptr);
   generateNewGeometry();
+  if(m_export)
+  {
+      m_meshes[0].exportObj(m_export);
+  }
 }
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::changeFrequency(int _frequency)
@@ -165,8 +169,13 @@ void DemoScene::changeTerrain(int _model)
     m_typeGrid = _model;
     setAttributeBuffers();
 }
-
+//-----------------------------------------------------------------------------------------------------
 void DemoScene::changePersistence(int _persistence)
 {
     m_terrainPersistence = _persistence / 5.0f;
+}
+//-----------------------------------------------------------------------------------------------------
+void DemoScene::exporting(const bool _export)
+{
+    m_export = _export;
 }

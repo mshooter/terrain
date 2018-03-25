@@ -6,7 +6,7 @@
 /// @file Noise.h
 /// @brief Creates noise
 /// @version
-/// @date last revision 24 March 2018
+/// @date last revision 25 March 2018
 /// \todo
 // ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -21,6 +21,11 @@ public:
     Noise() = default;
     // ----------------------------------------------------------------------------------------------------------------------------------------
     /// @build copy constructor
+    /// @parm[_in] _frequency : amount of frequency of the noise
+    /// @parm[_in] _amplitude : amount of amplitude of the noise
+    /// @parm[_in] _octaves : amount of octaves aloud in the noise
+    /// @parm[_in] _seed : what seed of the noise
+    /// @parm[_in] _persistence : amount that influences the octaves
     // ----------------------------------------------------------------------------------------------------------------------------------------
     Noise(double _frequency, double _amplitude, int _octaves, int _randomSeed, double _persistence);
     // ----------------------------------------------------------------------------------------------------------------------------------------
@@ -31,6 +36,7 @@ public:
     /// @build value get Noise
     /// @parm[_in] _x : position x
     /// @parm[_in] _y : position y
+    /// @return noise value
     // ----------------------------------------------------------------------------------------------------------------------------------------
     double getNoise(double _x, double _y) const;
     // ----------------------------------------------------------------------------------------------------------------------------------------
@@ -46,18 +52,31 @@ public:
 private:
     // ----------------------------------------------------------------------------------------------------------------------------------------
     /// @build method that brings everyting together
+    /// @parm[_in] i : point of x, y or z axis
+    /// @parm[_in] j : point of x, y or z axis
+    /// @return the total value without multiplied by the amplitude
     // ----------------------------------------------------------------------------------------------------------------------------------------
     double Total(double i, double j) const;
     // ----------------------------------------------------------------------------------------------------------------------------------------
     /// @build method that gets the value
+    /// @parm[_in] x : value of x
+    /// @parm[_in] y : value of y
+    /// @return a value
     // ----------------------------------------------------------------------------------------------------------------------------------------
     double GetValue(double x, double y) const;
     // ----------------------------------------------------------------------------------------------------------------------------------------
-    /// @build method that interpolates between two
+    /// @build method that interpolates between two points
+    /// @parm[_in] x : x value
+    /// @parm[_in] y : y value
+    /// @parm[_in] z : a value
+    /// @return the interpolation between two points
     // ----------------------------------------------------------------------------------------------------------------------------------------
     double Interpolate(double x, double y, double a) const;
     // ----------------------------------------------------------------------------------------------------------------------------------------
     /// @build method that calculats the perlin Noise
+    /// @parm[_in] x : x value
+    /// @parm[_in] y : y value
+    /// @return Perlin noise value
     // ----------------------------------------------------------------------------------------------------------------------------------------
     double PNoise(int x, int y) const;
     // ----------------------------------------------------------------------------------------------------------------------------------------

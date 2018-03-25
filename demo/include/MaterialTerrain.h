@@ -6,7 +6,7 @@
 /// @file MaterialTerrain.h
 /// @brief Produces a Material for terrain depending on the height
 /// @version
-/// @date last revision 24 March 2018
+/// @date last revision 25 March 2018
 /// \todo
 //-------------------------------------------------------------------------------------------------------
 #include "Material.h"
@@ -15,7 +15,10 @@
 class MaterialTerrain : public Material
 {
 public:
-  MaterialTerrain(
+    //-----------------------------------------------------------------------------------------------------
+    /// @brief copy constructor
+    //-----------------------------------------------------------------------------------------------------
+    MaterialTerrain(
       const std::shared_ptr<Camera> &io_camera,
       const std::shared_ptr<ShaderLib> &io_shaderLib,
       std::array<glm::mat4, 3>* io_matrices,
@@ -31,27 +34,59 @@ public:
     m_roughness(_roughness),
     m_metallic(_metallic),
     m_model(_model)
-  {}
-  MaterialTerrain(const MaterialTerrain&) = default;
-  MaterialTerrain& operator=(const MaterialTerrain&) = default;
-  MaterialTerrain(MaterialTerrain&&) = default;
-  MaterialTerrain& operator=(MaterialTerrain&&) = default;
-  ~MaterialTerrain() override = default;
+    {}
+    //-----------------------------------------------------------------------------------------------------
+    /// @brief default constructor
+    //-----------------------------------------------------------------------------------------------------
+    MaterialTerrain(const MaterialTerrain&) = default;
+    //-----------------------------------------------------------------------------------------------------
+    /// @brief assignment constructor
+    //-----------------------------------------------------------------------------------------------------
+    MaterialTerrain& operator=(const MaterialTerrain&) = default;
+    //-----------------------------------------------------------------------------------------------------
+    /// @brief move constructor
+    //-----------------------------------------------------------------------------------------------------
+    MaterialTerrain(MaterialTerrain&&) = default;
+    //-----------------------------------------------------------------------------------------------------
+    /// @brief assignment operator for move constructor
+    //-----------------------------------------------------------------------------------------------------
+    MaterialTerrain& operator=(MaterialTerrain&&) = default;
+    ~MaterialTerrain() override = default;
+    //-----------------------------------------------------------------------------------------------------
+    /// @brief method that inits the material
+    //-----------------------------------------------------------------------------------------------------
+    virtual void init() override;
+    //-----------------------------------------------------------------------------------------------------
+    /// @brief method that updates the material
+    //-----------------------------------------------------------------------------------------------------
+    virtual void update() override;
+    //-----------------------------------------------------------------------------------------------------
+    /// @brief holds the file name
+    //-----------------------------------------------------------------------------------------------------
+    virtual const char* shaderFileName() const override;
 
-  virtual void init() override;
 
-  virtual void update() override;
-
-  virtual const char* shaderFileName() const override;
-
-
-private:
-  glm::vec3 m_albedo;
-  float m_ao;
-  float m_exposure;
-  float m_roughness;
-  float m_metallic;
-  int m_model;
+    private:
+    //-----------------------------------------------------------------------------------------------------
+    /// @brief variable for the ao
+    //-----------------------------------------------------------------------------------------------------
+    float m_ao;
+    //-----------------------------------------------------------------------------------------------------
+    /// @brief variable for the exposure
+    //-----------------------------------------------------------------------------------------------------
+    float m_exposure;
+    //-----------------------------------------------------------------------------------------------------
+    /// @brief variable for the roughness of the material
+    //-----------------------------------------------------------------------------------------------------
+    float m_roughness;
+    //-----------------------------------------------------------------------------------------------------
+    /// @brief variable for the metalicness of the material
+    //-----------------------------------------------------------------------------------------------------
+    float m_metallic;
+    //-----------------------------------------------------------------------------------------------------
+    /// @brief variable that tells, which material we want
+    //-----------------------------------------------------------------------------------------------------
+    int m_model;
 
 };
 

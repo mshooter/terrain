@@ -59,6 +59,7 @@ public:
     QLabel *label_5;
     QSlider *persistence;
     QLabel *label_7;
+    QCheckBox *exports;
     QMenuBar *menubar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -97,7 +98,7 @@ public:
         textBrowser = new QTextBrowser(s_drawGB);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
 
-        gridLayout_2->addWidget(textBrowser, 17, 1, 1, 1);
+        gridLayout_2->addWidget(textBrowser, 18, 1, 1, 1);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -106,7 +107,7 @@ public:
         label_4 = new QLabel(s_drawGB);
         label_4->setObjectName(QStringLiteral("label_4"));
 
-        gridLayout_2->addWidget(label_4, 8, 1, 1, 1);
+        gridLayout_2->addWidget(label_4, 9, 1, 1, 1);
 
         seed = new QSlider(s_drawGB);
         seed->setObjectName(QStringLiteral("seed"));
@@ -114,26 +115,26 @@ public:
         seed->setMaximum(100);
         seed->setOrientation(Qt::Horizontal);
 
-        gridLayout_2->addWidget(seed, 7, 1, 1, 1);
+        gridLayout_2->addWidget(seed, 8, 1, 1, 1);
 
         label_3 = new QLabel(s_drawGB);
         label_3->setObjectName(QStringLiteral("label_3"));
 
-        gridLayout_2->addWidget(label_3, 6, 1, 1, 1);
+        gridLayout_2->addWidget(label_3, 7, 1, 1, 1);
 
         resolution = new QSlider(s_drawGB);
         resolution->setObjectName(QStringLiteral("resolution"));
         resolution->setMinimum(2);
-        resolution->setMaximum(100);
+        resolution->setMaximum(60);
         resolution->setOrientation(Qt::Horizontal);
 
-        gridLayout_2->addWidget(resolution, 9, 1, 1, 1);
+        gridLayout_2->addWidget(resolution, 10, 1, 1, 1);
 
         terrain = new QSpinBox(s_drawGB);
         terrain->setObjectName(QStringLiteral("terrain"));
         terrain->setMaximum(4);
 
-        gridLayout_2->addWidget(terrain, 15, 1, 1, 1);
+        gridLayout_2->addWidget(terrain, 16, 1, 1, 1);
 
         m_rotating = new QCheckBox(s_drawGB);
         m_rotating->setObjectName(QStringLiteral("m_rotating"));
@@ -148,12 +149,12 @@ public:
         frequency->setSingleStep(1);
         frequency->setOrientation(Qt::Horizontal);
 
-        gridLayout_2->addWidget(frequency, 3, 1, 1, 1);
+        gridLayout_2->addWidget(frequency, 4, 1, 1, 1);
 
         label = new QLabel(s_drawGB);
         label->setObjectName(QStringLiteral("label"));
 
-        gridLayout_2->addWidget(label, 2, 1, 1, 1);
+        gridLayout_2->addWidget(label, 3, 1, 1, 1);
 
         amplitude = new QSlider(s_drawGB);
         amplitude->setObjectName(QStringLiteral("amplitude"));
@@ -166,16 +167,16 @@ public:
         amplitude->setInvertedControls(false);
         amplitude->setTickPosition(QSlider::TicksAbove);
 
-        gridLayout_2->addWidget(amplitude, 5, 1, 1, 1);
+        gridLayout_2->addWidget(amplitude, 6, 1, 1, 1);
 
         label_2 = new QLabel(s_drawGB);
         label_2->setObjectName(QStringLiteral("label_2"));
 
-        gridLayout_2->addWidget(label_2, 4, 1, 1, 1);
+        gridLayout_2->addWidget(label_2, 5, 1, 1, 1);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_2->addItem(verticalSpacer, 18, 1, 1, 1);
+        gridLayout_2->addItem(verticalSpacer, 19, 1, 1, 1);
 
         material = new QPushButton(s_drawGB);
         material->setObjectName(QStringLiteral("material"));
@@ -185,30 +186,35 @@ public:
         label_6 = new QLabel(s_drawGB);
         label_6->setObjectName(QStringLiteral("label_6"));
 
-        gridLayout_2->addWidget(label_6, 14, 1, 1, 1);
+        gridLayout_2->addWidget(label_6, 15, 1, 1, 1);
 
         octaves = new QSlider(s_drawGB);
         octaves->setObjectName(QStringLiteral("octaves"));
         octaves->setOrientation(Qt::Horizontal);
 
-        gridLayout_2->addWidget(octaves, 11, 1, 1, 1);
+        gridLayout_2->addWidget(octaves, 12, 1, 1, 1);
 
         label_5 = new QLabel(s_drawGB);
         label_5->setObjectName(QStringLiteral("label_5"));
 
-        gridLayout_2->addWidget(label_5, 10, 1, 1, 1);
+        gridLayout_2->addWidget(label_5, 11, 1, 1, 1);
 
         persistence = new QSlider(s_drawGB);
         persistence->setObjectName(QStringLiteral("persistence"));
         persistence->setMaximum(1000);
         persistence->setOrientation(Qt::Horizontal);
 
-        gridLayout_2->addWidget(persistence, 13, 1, 1, 1);
+        gridLayout_2->addWidget(persistence, 14, 1, 1, 1);
 
         label_7 = new QLabel(s_drawGB);
         label_7->setObjectName(QStringLiteral("label_7"));
 
-        gridLayout_2->addWidget(label_7, 12, 1, 1, 1);
+        gridLayout_2->addWidget(label_7, 13, 1, 1, 1);
+
+        exports = new QCheckBox(s_drawGB);
+        exports->setObjectName(QStringLiteral("exports"));
+
+        gridLayout_2->addWidget(exports, 2, 1, 1, 1);
 
 
         s_mainWindowGridLayout->addWidget(s_drawGB, 0, 5, 1, 1);
@@ -252,6 +258,7 @@ public:
         label_6->setText(QApplication::translate("MainWindow", "Change Type of Terrain (function)", Q_NULLPTR));
         label_5->setText(QApplication::translate("MainWindow", "Octaves", Q_NULLPTR));
         label_7->setText(QApplication::translate("MainWindow", "Persistence", Q_NULLPTR));
+        exports->setText(QApplication::translate("MainWindow", "Exporting", Q_NULLPTR));
     } // retranslateUi
 
 };
