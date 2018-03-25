@@ -104,10 +104,13 @@ public slots:
   /// @brief Used to link a Qt button to the scene, to change the resolution of the mesh
   //-----------------------------------------------------------------------------------------------------
   void changeResolution(int _resolution);
+  void changeOctaves(int _octaves);
+  void changePersistence(int _persistence);
   //-----------------------------------------------------------------------------------------------------
   /// @brief Used to link a Qt button to the scene, to have different functions, different type of terrains
   //-----------------------------------------------------------------------------------------------------
   void changeTerrain(int _model);
+
 
 
 
@@ -178,6 +181,8 @@ private:
   /// @brief variable that holds the terrain resolution
   //-----------------------------------------------------------------------------------------------------
   int m_terrainResolution = 2;
+  int m_terrainOctaves = 0;
+  int m_terrainPersistence = 0;
   //-----------------------------------------------------------------------------------------------------
   /// @brief checks which type of grid we are using
   //-----------------------------------------------------------------------------------------------------

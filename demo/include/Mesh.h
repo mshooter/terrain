@@ -107,8 +107,8 @@ public:
   /// @brief method that changes the resolution of the terrain
   //-----------------------------------------------------------------------------------------------------
   void changeResolution(int _resolution);
-
-  std::vector<glm::vec3> getVertices();
+  void changeOctaves(int _octaves);
+  void changePersistence(float _persistence);
 
 protected:
   //-----------------------------------------------------------------------------------------------------
@@ -143,6 +143,8 @@ protected:
   /// @brief variable that holdes the seed of the terrain
   //-----------------------------------------------------------------------------------------------------
   float m_terrainSeed;
+  float m_terrainOctaves;
+  float m_terrainPersistence;
   //-----------------------------------------------------------------------------------------------------
   /// @brief variable that holdes the resolution of the terrain
   //-----------------------------------------------------------------------------------------------------

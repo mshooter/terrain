@@ -1,5 +1,6 @@
 #include <math.h>
 #include "Mesh.h"
+
 //-----------------------------------------------------------------------------------------------------
 void Mesh::loadMyMesh(int _model)
 {
@@ -8,9 +9,10 @@ void Mesh::loadMyMesh(int _model)
     terrain.setFrequency(m_terrainFrequency);
     terrain.setHeight(m_terrainAmplitde);
     terrain.setSeed(m_terrainSeed);
-    terrain.setOctaves(1);
+    terrain.setOctaves(m_terrainOctaves);
     terrain.setPersistence(1.0f);
     terrain.createGrid(m_vertices,m_indices,m_normals, _model);
+
 }
 // ---------------------------------------------------------
 void Mesh::reset()
@@ -100,7 +102,12 @@ void Mesh::changeResolution(int _resolution)
     m_terrainResolution = _resolution;
 }
 // ---------------------------------------------------------
-std::vector<glm::vec3> Mesh::getVertices()
+void Mesh::changeOctaves(int _octaves)
 {
-    return m_vertices;
+    m_terrainOctaves = _octaves;
+}
+
+void Mesh::changePersistence(float _persistence)
+{
+    m_terrainPersistence = _persistence;
 }

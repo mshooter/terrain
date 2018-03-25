@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DemoScene_t {
-    QByteArrayData data[15];
-    char stringdata0[164];
+    QByteArrayData data[19];
+    char stringdata0[218];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,15 +44,20 @@ QT_MOC_LITERAL(9, 97, 10), // "changeSeed"
 QT_MOC_LITERAL(10, 108, 5), // "_seed"
 QT_MOC_LITERAL(11, 114, 16), // "changeResolution"
 QT_MOC_LITERAL(12, 131, 11), // "_resolution"
-QT_MOC_LITERAL(13, 143, 13), // "changeTerrain"
-QT_MOC_LITERAL(14, 157, 6) // "_model"
+QT_MOC_LITERAL(13, 143, 13), // "changeOctaves"
+QT_MOC_LITERAL(14, 157, 8), // "_octaves"
+QT_MOC_LITERAL(15, 166, 17), // "changePersistence"
+QT_MOC_LITERAL(16, 184, 12), // "_persistence"
+QT_MOC_LITERAL(17, 197, 13), // "changeTerrain"
+QT_MOC_LITERAL(18, 211, 6) // "_model"
 
     },
     "DemoScene\0rotating\0\0_rotating\0"
     "nextMaterial\0changeFrequency\0_frequency\0"
     "changeAmplitude\0_amplitude\0changeSeed\0"
     "_seed\0changeResolution\0_resolution\0"
-    "changeTerrain\0_model"
+    "changeOctaves\0_octaves\0changePersistence\0"
+    "_persistence\0changeTerrain\0_model"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,7 +67,7 @@ static const uint qt_meta_data_DemoScene[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -70,13 +75,15 @@ static const uint qt_meta_data_DemoScene[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   49,    2, 0x0a /* Public */,
-       4,    0,   52,    2, 0x0a /* Public */,
-       5,    1,   53,    2, 0x0a /* Public */,
-       7,    1,   56,    2, 0x0a /* Public */,
-       9,    1,   59,    2, 0x0a /* Public */,
-      11,    1,   62,    2, 0x0a /* Public */,
-      13,    1,   65,    2, 0x0a /* Public */,
+       1,    1,   59,    2, 0x0a /* Public */,
+       4,    0,   62,    2, 0x0a /* Public */,
+       5,    1,   63,    2, 0x0a /* Public */,
+       7,    1,   66,    2, 0x0a /* Public */,
+       9,    1,   69,    2, 0x0a /* Public */,
+      11,    1,   72,    2, 0x0a /* Public */,
+      13,    1,   75,    2, 0x0a /* Public */,
+      15,    1,   78,    2, 0x0a /* Public */,
+      17,    1,   81,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Bool,    3,
@@ -86,6 +93,8 @@ static const uint qt_meta_data_DemoScene[] = {
     QMetaType::Void, QMetaType::Int,   10,
     QMetaType::Void, QMetaType::Int,   12,
     QMetaType::Void, QMetaType::Int,   14,
+    QMetaType::Void, QMetaType::Int,   16,
+    QMetaType::Void, QMetaType::Int,   18,
 
        0        // eod
 };
@@ -102,7 +111,9 @@ void DemoScene::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 3: _t->changeAmplitude((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 4: _t->changeSeed((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 5: _t->changeResolution((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 6: _t->changeTerrain((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 6: _t->changeOctaves((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 7: _t->changePersistence((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: _t->changeTerrain((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -133,13 +144,13 @@ int DemoScene::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 9;
     }
     return _id;
 }

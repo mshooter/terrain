@@ -9,7 +9,7 @@ TEST(Grid, setFrequency)
     EXPECT_EQ(testFrequency,terrain.getFrequency());
 
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 TEST(Grid, setSeed)
 {
     Grid terrain;
@@ -17,7 +17,7 @@ TEST(Grid, setSeed)
     terrain.setSeed(testSeed);
     EXPECT_EQ(terrain.getSeed(), testSeed);
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 TEST(Grid, setHeight)
 {
     Grid terrain;
@@ -26,3 +26,4 @@ TEST(Grid, setHeight)
     EXPECT_EQ(terrain.getHeight(), testHeight);
 
 }
+//------------------------------------------------------------------------------------------------------------------------------------------

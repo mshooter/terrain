@@ -40,8 +40,8 @@ public:
     QSpacerItem *horizontalSpacer;
     QGroupBox *s_drawGB;
     QGridLayout *gridLayout_2;
-    QSpacerItem *horizontalSpacer_3;
     QTextBrowser *textBrowser;
+    QSpacerItem *horizontalSpacer_3;
     QLabel *label_4;
     QSlider *seed;
     QLabel *label_3;
@@ -55,6 +55,10 @@ public:
     QSpacerItem *verticalSpacer;
     QPushButton *material;
     QLabel *label_6;
+    QSlider *octaves;
+    QLabel *label_5;
+    QSlider *persistence;
+    QLabel *label_7;
     QMenuBar *menubar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -90,14 +94,14 @@ public:
         s_drawGB->setObjectName(QStringLiteral("s_drawGB"));
         gridLayout_2 = new QGridLayout(s_drawGB);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_2->addItem(horizontalSpacer_3, 0, 2, 1, 2);
-
         textBrowser = new QTextBrowser(s_drawGB);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
 
-        gridLayout_2->addWidget(textBrowser, 13, 1, 1, 1);
+        gridLayout_2->addWidget(textBrowser, 17, 1, 1, 1);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_3, 0, 2, 1, 2);
 
         label_4 = new QLabel(s_drawGB);
         label_4->setObjectName(QStringLiteral("label_4"));
@@ -120,7 +124,7 @@ public:
         resolution = new QSlider(s_drawGB);
         resolution->setObjectName(QStringLiteral("resolution"));
         resolution->setMinimum(2);
-        resolution->setMaximum(60);
+        resolution->setMaximum(100);
         resolution->setOrientation(Qt::Horizontal);
 
         gridLayout_2->addWidget(resolution, 9, 1, 1, 1);
@@ -129,7 +133,7 @@ public:
         terrain->setObjectName(QStringLiteral("terrain"));
         terrain->setMaximum(4);
 
-        gridLayout_2->addWidget(terrain, 11, 1, 1, 1);
+        gridLayout_2->addWidget(terrain, 15, 1, 1, 1);
 
         m_rotating = new QCheckBox(s_drawGB);
         m_rotating->setObjectName(QStringLiteral("m_rotating"));
@@ -171,7 +175,7 @@ public:
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_2->addItem(verticalSpacer, 14, 1, 1, 1);
+        gridLayout_2->addItem(verticalSpacer, 18, 1, 1, 1);
 
         material = new QPushButton(s_drawGB);
         material->setObjectName(QStringLiteral("material"));
@@ -181,7 +185,30 @@ public:
         label_6 = new QLabel(s_drawGB);
         label_6->setObjectName(QStringLiteral("label_6"));
 
-        gridLayout_2->addWidget(label_6, 10, 1, 1, 1);
+        gridLayout_2->addWidget(label_6, 14, 1, 1, 1);
+
+        octaves = new QSlider(s_drawGB);
+        octaves->setObjectName(QStringLiteral("octaves"));
+        octaves->setOrientation(Qt::Horizontal);
+
+        gridLayout_2->addWidget(octaves, 11, 1, 1, 1);
+
+        label_5 = new QLabel(s_drawGB);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        gridLayout_2->addWidget(label_5, 10, 1, 1, 1);
+
+        persistence = new QSlider(s_drawGB);
+        persistence->setObjectName(QStringLiteral("persistence"));
+        persistence->setMaximum(1000);
+        persistence->setOrientation(Qt::Horizontal);
+
+        gridLayout_2->addWidget(persistence, 13, 1, 1, 1);
+
+        label_7 = new QLabel(s_drawGB);
+        label_7->setObjectName(QStringLiteral("label_7"));
+
+        gridLayout_2->addWidget(label_7, 12, 1, 1, 1);
 
 
         s_mainWindowGridLayout->addWidget(s_drawGB, 0, 5, 1, 1);
@@ -223,6 +250,8 @@ public:
         label_2->setText(QApplication::translate("MainWindow", "Amplitude             ", Q_NULLPTR));
         material->setText(QApplication::translate("MainWindow", "Material", Q_NULLPTR));
         label_6->setText(QApplication::translate("MainWindow", "Change Type of Terrain (function)", Q_NULLPTR));
+        label_5->setText(QApplication::translate("MainWindow", "Octaves", Q_NULLPTR));
+        label_7->setText(QApplication::translate("MainWindow", "Persistence", Q_NULLPTR));
     } // retranslateUi
 
 };

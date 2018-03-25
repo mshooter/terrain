@@ -127,6 +127,7 @@ void DemoScene::renderScene()
   m_meshes[0].changeAmplitude(m_terrainAmplitude);
   m_meshes[0].changeSeed(m_terrainSeed);
   m_meshes[0].changeResolution(m_terrainResolution);
+  m_meshes[0].changeOctaves(m_terrainOctaves);
   m_meshes[0].loadMyMesh(m_typeGrid);
   m_meshVBO.use();
   glDrawArrays(GL_TRIANGLES, 0,m_meshes[m_meshIndex].getNVertData());
@@ -153,10 +154,19 @@ void DemoScene::changeResolution(int _resolution)
 {
     m_terrainResolution = _resolution;
 }
+void DemoScene::changeOctaves(int _octaves)
+{
+    m_terrainOctaves = _octaves;
+}
 //-----------------------------------------------------------------------------------------------------
 void DemoScene::changeTerrain(int _model)
 {
     makeCurrent();
     m_typeGrid = _model;
     setAttributeBuffers();
+}
+
+void DemoScene::changePersistence(int _persistence)
+{
+    m_terrainPersistence = _persistence / 5.0f;
 }
