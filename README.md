@@ -35,9 +35,7 @@ To load a terrain you can choose different modes
 terrain.createGrid(vertices, indices, normals, mode);
 ```
 the vertices is a vector<glm::vec3> that holds the vertices, same for normals. 
-
 and for indices it is a vector<GLushort> that holds the indices of the mesh.
-
 Because it is procedurally made you can edit the terrain by changing the frequency, amplitude, seed, octaves and persistence. 
 
 Here is an example. 
@@ -49,7 +47,6 @@ terrain.setOctaves(_octaves);
 terrain.setPersistence(_persistence);
 ```
 In the demo, I have set it to change it with the QtSliders, so it is easier to see a result.
-
 Next you can also change the resolution of the terrain. 
 ```c++
 terrain.setResolution(_resolution);
