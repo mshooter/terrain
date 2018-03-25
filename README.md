@@ -4,12 +4,13 @@ A terrain generator and editor using noise and Marching Cubes Algorithm, include
 
 ## Content
 ## 1. **[Installation](#installation)**
-### 2. **[Dependencies](#dependencies)**
-### 3. **[Building and running](#building-and-running)**
-## 4. **[User Instructions](#user-instructions)**
-## 5. **[Creating the terrain](#creating-the-terrain)**
-## 6. **[Limitations](#limitations)**
-## 7. **[References](#references)**
+### 1.1 **[Dependencies](#dependencies)**
+### 1.2 **[Building and running](#building-and-running)**
+## 2. **[User Instructions](#user-instructions)**
+### 2.1 **[Controls](#controls)**
+## 3. **[Creating the terrain](#creating-the-terrain)**
+## 4. **[Limitations](#limitations)**
+## 5. **[References](#references)**
 -------------------------------------------------------------
 ## **Installation**
 ### **Dependencies** 
@@ -22,9 +23,20 @@ A terrain generator and editor using noise and Marching Cubes Algorithm, include
 1. Git clone the project : git@github.com:mshooter/terrain.git 
 2. Go in the directory called terrain 
 3. Use qtcreator to open the project (open buildall.pro)
-4. 
+4. Make sure the shadow build is off and the terminal 
+5. As an argument you can set it to -j 
+6. Run the program
 ## **User Instructions** 
-bla
+### Controls (Demo)
+Material : Changes the material of the terrain (mountains, canyon with water, canyon without water and islands)
+Rotating : Rotates if you check the box 
+Exporting : Exports the mesh 
+Frequency : Changes the frequency of the hills
+Amplitude : Changes the height/amplitude of the terrain
+Seed : Changes the seed of the noise/terrain
+Resolution : Changes the resolution of the terrain
+Octaves : Changes the octaves of the terrain
+Persistence : Changes the influence of the octaves of the terrain 
 ## **Creating the terrain** 
 To create a terrain by using the library you do 
 ```C++
