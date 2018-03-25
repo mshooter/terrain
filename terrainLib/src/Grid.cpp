@@ -67,7 +67,7 @@ void Grid::exportToObj(std::vector<glm::vec3> _vertices, std::vector<glm::vec3> 
 {
 
     std::ofstream afile;
-    afile.open("test.obj");
+    afile.open("terrainModel.obj");
     afile<<"g test"<<'\n';
     afile<<'\n';
     for(unsigned int i = 0 ; i < _vertices.size(); ++i)
