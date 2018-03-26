@@ -10,6 +10,8 @@ A terrain generator and editor using noise and Marching Cubes Algorithm, include
 ### 2.1 **[Controls](#controls)**
 ## 3. **[Creating the terrain](#creating-the-terrain)**
 ## 4. **[Pictures](#pictures)**
+### 4.1 **[Export .obj file example](#export-.obj-file-example)**
+### 4.2 **[More examples of terrains](#more-examples-of-terrains)**
 ## 5. **[Limitations](#limitations)**
 ## 6. **[Extra Notes](#extra-notes)**
 ## 7. **[References](#references)**
@@ -89,7 +91,15 @@ You have to insert the vertices, normals and indices vectors into the function s
 In the demo I have added an checkBox so when you are happy with the terrain you have, you check it to export. It may take time if the resolution is high. You have to uncheck it or close the application to get the correct .obj file. 
 Then check in the demo directory for a terrainModel.obj file and import it in whatever software you want to use.
 ## **Pictures**
-
+### **Export .obj file example**
+![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Houdini_0.png)
+![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Houdini_02.png)
+### **More examples of terrains**
+![alt tag](https://github.com/mshooter/terrain/blob/master/READMEImages/mountain.png)
+![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/canyon.png)
+![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Island.png)
+![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Canyon2.png)
+![alt tag](https://github.com/mshooter/terrain/blob/master/READMEImages/Caves.png)
 ## **Limitations** 
 You can't edit the terrain manually. In the Polygon class you have functions (signed distance field) that creates spheres, cones and cubes. I have added a union and difference function to add meshes together or take a part of a mesh out from one another. With this you could implement a method to carve out the mesh or modify the mesh by using the union/difference method.
 ## **Extra Notes** 
