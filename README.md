@@ -10,7 +10,7 @@ A terrain generator and editor using noise and Marching Cubes Algorithm, include
 ### 2.1 **[Controls](#controls)**
 ## 3. **[Creating the terrain](#creating-the-terrain)**
 ## 4. **[Pictures](#pictures)**
-### 4.1 **[Export .obj file example](#export-.obj-file-example)**
+### 4.1 **[Export obj file example](#export-obj-file-example)**
 ### 4.2 **[More examples of terrains](#more-examples-of-terrains)**
 ## 5. **[Tests](#tests)**
 ## 6. **[Limitations](#limitations)**
@@ -28,9 +28,11 @@ A terrain generator and editor using noise and Marching Cubes Algorithm, include
 1. Git clone the project : git@github.com:mshooter/terrain.git 
 2. Go in the directory called terrain 
 3. Use qtcreator to open the project (open buildall.pro)
+3. (optional) you can open the different projects instead of builall.pro, you can open the terrainLib.pro, demo.pro and tests.pro
 4. Make sure the shadow build is off and the terminal 
 5. As an argument you can set it to -j 
-6. Run the program
+6. clean the projects, run qmake and rebuild it
+7. Finally run the program
 ## **User Instructions** 
 ### Controls (Demo)
 Material : Changes the material of the terrain (mountains, canyon with water, canyon without water and islands)
@@ -85,7 +87,7 @@ You have to insert the vertices, normals and indices vectors into the function s
 In the demo I have added an checkBox so when you are happy with the terrain you have, you check it to export. It may take time if the resolution is high. You have to uncheck it or close the application to get the correct .obj file. 
 Then check in the demo directory for a terrainModel.obj file and import it in whatever software you want to use.
 ## **Pictures**
-### **Export .obj file example**
+### **Export obj file example**
 ![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Houdini_0.png)
 ![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Houdini_02.png)
 ### **More examples of terrains**
