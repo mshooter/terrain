@@ -12,7 +12,7 @@ A terrain generator and editor using noise and Marching Cubes Algorithm, include
 ## 4. **[Pictures](#pictures)**
 ### 4.1 **[Export .obj file example](#export-.obj-file-example)**
 ### 4.2 **[More examples of terrains](#more-examples-of-terrains)**
-## 5. Tests **[Tests](#tests)**
+## 5. **[Tests](#tests)**
 ## 6. **[Limitations](#limitations)**
 ## 7. **[Extra Notes](#extra-notes)**
 ## 8. **[References](#references)**
