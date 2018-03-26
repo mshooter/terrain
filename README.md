@@ -12,9 +12,10 @@ A terrain generator and editor using noise and Marching Cubes Algorithm, include
 ## 4. **[Pictures](#pictures)**
 ### 4.1 **[Export .obj file example](#export-.obj-file-example)**
 ### 4.2 **[More examples of terrains](#more-examples-of-terrains)**
-## 5. **[Limitations](#limitations)**
-## 6. **[Extra Notes](#extra-notes)**
-## 7. **[References](#references)**
+## 5. Tests **[Tests](#tests)**
+## 6. **[Limitations](#limitations)**
+## 7. **[Extra Notes](#extra-notes)**
+## 8. **[References](#references)**
 -------------------------------------------------------------
 ## **Installation**
 ### **Dependencies** 
@@ -100,6 +101,19 @@ Then check in the demo directory for a terrainModel.obj file and import it in wh
 ![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Island.png)
 ![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Canyon2.png)
 ![alt tag](https://github.com/mshooter/terrain/blob/master/READMEImages/Caves.png)
+## Tests
+I wrote tests with googletest. I tested if for example void functions were working or if I had the right value. 
+For example I tested if setting the height function of the terrain worked 
+```c++
+TEST(Grid, setHeight)
+{
+    Grid terrain;
+    float testHeight = 10.0f;
+    terrain.setHeight(testHeight);
+    EXPECT_EQ(terrain.getHeight(), testHeight);
+
+}
+```
 ## **Limitations** 
 You can't edit the terrain manually. In the Polygon class you have functions (signed distance field) that creates spheres, cones and cubes. I have added a union and difference function to add meshes together or take a part of a mesh out from one another. With this you could implement a method to carve out the mesh or modify the mesh by using the union/difference method.
 ## **Extra Notes** 
