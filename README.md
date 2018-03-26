@@ -92,14 +92,14 @@ In the demo I have added an checkBox so when you are happy with the terrain you 
 Then check in the demo directory for a terrainModel.obj file and import it in whatever software you want to use.
 ## **Pictures**
 ### **Export .obj file example**
-![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Houdini_0.png)
-![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Houdini_02.png)
+![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Houdini_0.png=100x20)
+![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Houdini_02.png=100x20)
 ### **More examples of terrains**
-![alt tag](https://github.com/mshooter/terrain/blob/master/READMEImages/mountain.png)
-![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/canyon.png)
-![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Island.png)
-![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Canyon2.png)
-![alt tag](https://github.com/mshooter/terrain/blob/master/READMEImages/Caves.png)
+![alt tag](https://github.com/mshooter/terrain/blob/master/READMEImages/mountain.png=100x20)
+![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/canyon.png=100x20)
+![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Island.png=100x20)
+![screenshot](https://github.com/mshooter/terrain/blob/master/READMEImages/Canyon2.png=100x20)
+![alt tag](https://github.com/mshooter/terrain/blob/master/READMEImages/Caves.png=100x20)
 ## **Limitations** 
 You can't edit the terrain manually. In the Polygon class you have functions (signed distance field) that creates spheres, cones and cubes. I have added a union and difference function to add meshes together or take a part of a mesh out from one another. With this you could implement a method to carve out the mesh or modify the mesh by using the union/difference method.
 ## **Extra Notes** 
