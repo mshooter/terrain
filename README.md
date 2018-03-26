@@ -9,9 +9,10 @@ A terrain generator and editor using noise and Marching Cubes Algorithm, include
 ## 2. **[User Instructions](#user-instructions)**
 ### 2.1 **[Controls](#controls)**
 ## 3. **[Creating the terrain](#creating-the-terrain)**
-## 4. **[Limitations](#limitations)**
-## 5. **[References](#references)**
+## 4. **[Pictures](#pictures)**
+## 5. **[Limitations](#limitations)**
 ## 6. **[Extra Notes](#extra-notes)**
+## 7. **[References](#references)**
 -------------------------------------------------------------
 ## **Installation**
 ### **Dependencies** 
@@ -87,8 +88,12 @@ You have to insert the vertices, normals and indices vectors into the function s
 
 In the demo I have added an checkBox so when you are happy with the terrain you have, you check it to export. It may take time if the resolution is high. You have to uncheck it or close the application to get the correct .obj file. 
 Then check in the demo directory for a terrainModel.obj file and import it in whatever software you want to use.
+## **Pictures**
+
 ## **Limitations** 
-You can't edit the terrain manually. In the Polygon class you have functions (signed distance field) that creates spheres, cones and cubes. I have added a union and difference function to add meshes together or take a part of a mesh out from one another. With this you could implement a method to carve out the mesh or modify the mesh by using the union/difference method. 
+You can't edit the terrain manually. In the Polygon class you have functions (signed distance field) that creates spheres, cones and cubes. I have added a union and difference function to add meshes together or take a part of a mesh out from one another. With this you could implement a method to carve out the mesh or modify the mesh by using the union/difference method.
+## **Extra Notes** 
+For the demo I have used Jack Diver's OpenGLTemplate: https://github.com/nitronoid/OpenGLTemplate. I have modified it to make it function with my library. I have modified a PBR shader, called MaterialTerrain(.cpp), so when the terrain point is on a certain height it would change colour. 
 ## **References** 
 [1] Paulbourke.net. (2018). Polygonising a scalar field (Marching Cubes). [online] Available at: http://paulbourke.net/geometry/polygonise/ [Accessed 24 Mar. 2018].
 
@@ -98,5 +103,3 @@ You can't edit the terrain manually. In the Polygon class you have functions (si
 
 [4] target, H. (2018). GPU Gems 3: Procedural Terrain in Unity - A Naive Exploration. [online] Unity Community. Available at: https://forum.unity.com/threads/gpu-gems-3-procedural-terrain-in-unity-a-naive-exploration.260645/ [Accessed 24 Mar. 2018].
 
-## **Extra Notes** 
-For the demo I have used Jack Diver's OpenGLTemplate: https://github.com/nitronoid/OpenGLTemplate. I have modified it to make it function with my library. I have modified a PBR shader, called MaterialTerrain(.cpp), so when the terrain point is on a certain height it would change colour. 
